@@ -1,2 +1,2 @@
 # BilderCHInfra
-BilderCHInfra project - creating (new) vizualisations for complex infrastucture networks
+BilderCHInfra project - creating (new) visualisations for complex infrastucture networks
