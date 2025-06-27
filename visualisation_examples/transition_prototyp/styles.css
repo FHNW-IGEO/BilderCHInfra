@@ -1,0 +1,260 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  height: 100vh; /* Full height for proper layout */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1, h3 {
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Grid Layout */
+.container {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  grid-template-columns: 1fr 3fr;
+  grid-template-areas:
+      "header header"
+      "svg svg"
+      "info slider";
+  width: 100vw;
+  height: 100vh;
+}
+
+.header {
+  grid-area: header;
+  font-weight: bold;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  position: relative;
+  padding: 10px 20px;
+  background-color: #f1f1f1;
+}
+
+.title-left {
+  flex: 0 0 auto;
+  text-align: left;
+}
+
+.mode-center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title-box {
+  background-color: #f0f0f0; /* light grey background */
+  border: 1px solid #ccc; /* subtle border */
+  padding: 8px 12px;
+  border-radius: 6px;
+  color: #333; /* dark grey text */
+  font-size: 14px;
+  display: inline-block;
+}
+
+/* SVG Container */
+.svg-container {
+  position: relative;
+  grid-area: svg;
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Ensure vertical centering */
+  width: 100%;
+  height: 100%;
+  overflow: hidden; /* Prevent children from overflowing */
+}
+
+/* SVG Styling */
+svg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Helps keep it within bounds */
+}
+
+
+/* Info Chart */
+.info-chart {
+  grid-area: info;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f1f1f1;
+  width: 100%;
+  height: 100%;
+}
+
+/* Info Container */
+.info-container {
+  grid-area: info;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  position: relative;
+}
+
+.slider-container {
+  grid-area: slider;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* centers content horizontally */
+  justify-content: center; /* centers content vertically */
+  padding: 20px;
+  background-color: #f1f1f1;
+  width: 100%;
+  height: 100%;
+}
+
+/* Slider */
+input[type="range"]{
+  width: 100%;
+  max-width: 600px;
+  margin: 0;
+  padding: 0;
+}
+
+.slider-labels {
+  display: flex;
+  width: 100%;
+  max-width: 600px;
+  font-size: 14px;
+  margin-top: 5px;
+  justify-content: space-between;
+  text-align: center;
+}
+
+/* Ensures slider and knobs display properly */
+#slider-range {
+  width: 100%;
+  height: 2px;
+  background: #e0e0e0;
+  border-radius: 4px;
+  position: relative;
+  justify-content: center;
+  margin: 10px 0;
+}
+
+.ui-slider-handle {
+  top: -6px !important;
+  width: 12px !important;
+  height: 12px !important;
+  background: #007bff !important;
+  border-radius: 50% !important;
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
+  max-width: 600;
+}
+
+.ui-slider-handle:hover {
+  background: #0056b3 !important;
+}
+
+#minValue, #maxValue {
+  position: absolute;
+  top: 20px; /* Ensure text appears right above the slider */
+  font-size: 12px;
+}
+
+#minValue {
+  left: 0; /* Align min value to the left side */
+}
+
+#maxValue {
+  right: 0; /* Align max value to the right side */
+}
+
+/* Tooltip Styling */
+.tooltip {
+  position: absolute;
+  border: 1px solid #ccc;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 8px;
+  border-radius: 5px;
+  font-size: 12px;
+  pointer-events: none;
+  visibility: hidden;
+  max-width: 80%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Bar Chart */
+.bar {
+  fill: steelblue;
+}
+
+.bar:hover {
+  fill: orange;
+}
+
+/* Axis Styling */
+.axis text {
+  font-size: 12px;
+}
+
+.axis path,
+.axis line {
+  stroke: #000;
+}
+
+#view-box {
+  width: 100%;
+  height: auto;
+}
+
+.json-table-container {
+  position: absolute; /* Aligns over the SVG */
+  align-items: left;
+  background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white */
+  z-index: 10; /* Ensures it overlays the SVG */
+  overflow-y: auto;
+  display: none; /* Initially hidden */
+}
+
+.json-table {
+  width: 100%;
+  height: 100%;
+  border-collapse: collapse;
+}
+
+.json-table th, .json-table td {
+  border: 1px solid #ddd;
+  padding: 5px;
+  text-align: left;
+  font-size: 14px;
+}
+
+.json-table th {
+  background-color: #f2f2f2;
+}
+
+.timecontainer {
+  display: none;
+  justify-content: center; /* Horizontally center */
+  align-items: center; /* Vertically center */
+  width: 100%;
+  position: relative;
+  padding-bottom: 20px;
+}
+
+.timeslider-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* centers slider block horizontally */
+  width: 60%; /* slider takes up 60% of the parent */
+  max-width: 600px;
+  min-width: 300px;
+}
