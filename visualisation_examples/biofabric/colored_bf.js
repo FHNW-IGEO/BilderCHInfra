@@ -56,6 +56,7 @@ function startAnimation() {
     isAnimating = true;
     document.getElementById('startBtn').disabled = true;
     document.getElementById('resetBtn').disabled = false;
+    document.getElementById('startBtn2').disabled = true;
 
     const {svg, link, node, nodeLines, nodes} = createChart();
     const duration1 = 1500;

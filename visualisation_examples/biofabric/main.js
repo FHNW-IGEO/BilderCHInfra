@@ -197,7 +197,4 @@
         document.getElementById('resetBtn').disabled = true;
     }
 
-    window.addEventListener("resize", () => {
-    drawNetwork(); // or custom resize handler if needed
-});
-
+   
