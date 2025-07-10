@@ -90,8 +90,8 @@
         if (isAnimating) return;
         isAnimating = true;
         document.getElementById('startBtn2').disabled = true;
+        document.getElementById('resetBtn').disabled = false;
         document.getElementById('startBtn').disabled = true;
-        document.getElementById('resetBtn').disabled = true;
 
         const {svg, link, node, nodeLines, nodes, linkCapsTop, linkCapsBottom} = createChart_2();
         const duration1 = 1500;
