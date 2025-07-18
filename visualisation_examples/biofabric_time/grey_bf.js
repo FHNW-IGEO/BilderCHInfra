@@ -269,7 +269,6 @@ function resetVisualization() {
 }
 
 function activateTime() {
-    link.attr("stroke-opacity", 1)
     const timeslider = document.getElementById("timeBtn");
     const sliderContainer = document.getElementById('timecontainer');
     sliderContainer.style.display = 'block'; // Show slider container when activated
@@ -410,6 +409,7 @@ function updateNodeStyles(minVal, maxVal) {
         });
 
     } else {
+            link.attr("stroke-opacity", 1)
         const currentYear = new Date().getFullYear(); // Get the current year
         const affectedNodes = new Set();
 
