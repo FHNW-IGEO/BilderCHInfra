@@ -36,148 +36,148 @@
       "name": "Architekten",
       "thema": "Architekten"
     },
+  {
+    "id": "Kernkraftwerk_Gösgen",
+    "group": "Kraftwerke",
+    "objekt_id": 1,
+    "name": "Kernkraftwerk Gösgen",
+    "thema": "Kraftwerke",
+    "von": 1979,
+    "bis": "Aktiv",
+    "koordinaten": "47.365, 7.965",
+    "region": "Solothurn",
+    "funktion": "Energieerzeugung",
+    "geometry": null,
+    "url": ""
+  },
+  {
+    "id": "Kernkraftwerk_Mühleberg",
+    "group": "Kraftwerke",
+    "objekt_id": 2,
+    "name": "Kernkraftwerk Mühleberg",
+    "thema": "Kraftwerke",
+    "von": 1972,
+    "bis": 2019,
+    "koordinaten": "46.970, 7.270",
+    "region": "Bern",
+    "funktion": "Energieerzeugung",
+    "geometry": null,
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/KernkraftwerkM%C3%BChleberg.jpg/640px-KernkraftwerkM%C3%BChleberg.jpg"
+  },
+  {
+    "id": "Wasserkraftwerk_Cleuson",
+    "group": "Kraftwerke",
+    "objekt_id": 3,
+    "name": "Wasserkraftwerk Cleuson",
+    "thema": "Kraftwerke",
+    "von": 1950,
+    "bis": "Aktiv",
+    "koordinaten": "46.185, 7.286",
+    "region": "Wallis",
+    "funktion": "Energieerzeugung",
+    "geometry": null,
+    "url": "https://www.alpiq.com/fileadmin/_processed_/a/a/csm_cleuson_dixence_dam_speicherkraftwerke_1540x960_ceedba483c.jpg"
+  },
+  {
+    "id": "Biomassekraftwerk_Zürich",
+    "group": "Kraftwerke",
+    "objekt_id": 4,
+    "name": "Biomassekraftwerk Zürich",
+    "thema": "Kraftwerke",
+    "von": 2010,
+    "bis": "Aktiv",
+    "koordinaten": "47.368, 8.547",
+    "region": "Zürich",
+    "funktion": "Energieerzeugung",
+    "geometry": null,
+    "url": "https://www.stromtip.de/UserFiles/Image/Bilder_640/ewe_biogas-werlte.jpg"
+  },
+  {
+    "id": "Kohlekraftwerk_Monthey",
+    "group": "Kraftwerke",
+    "objekt_id": 5,
+    "name": "Kohlekraftwerk Monthey",
+    "thema": "Kraftwerke",
+    "von": 1932,
+    "bis": 1985,
+    "koordinaten": "46.251, 6.948",
+    "region": "Wallis",
+    "funktion": "Energieerzeugung",
+    "geometry": null,
+    "url": "https://www.watson.ch/imgdb/f902/Qx,B,0,0,534,301,222,125,89,50/4680434350705169"
+  },
+  {
+    "id": "Geothermiekraftwerk_Riehen",
+    "group": "Kraftwerke",
+    "objekt_id": 6,
+    "name": "Geothermiekraftwerk Riehen",
+    "thema": "Kraftwerke",
+    "von": 1994,
+    "bis": "Aktiv",
+    "koordinaten": "47.577, 7.646",
+    "region": "Basel-Stadt",
+    "funktion": "Energieerzeugung",
+    "geometry": null,
+    "url": ""
+  },
+  {
+    "id": "Kraftwerk_Chavalon_de_Vouvry",
+    "group": "Kraftwerke",
+    "objekt_id": 7,
+    "name": "Kraftwerk Chavalon de Vouvry",
+    "thema": "Kraftwerke",
+    "von": 1965,
+    "bis": 1999,
+    "koordinaten": "46.332, 6.903",
+    "region": "Wallis",
+    "funktion": "Öl-/Gas-Kraftwerk",
+    "geometry": null,
+    "url": "https://cdn.unitycms.io/images/Ctvijngx40lB1pjPtmb08Y.jpg?op=ocroped&val=1200,630,1000,1000,0,0&sum=XC-guq51TWA"
+  },
+  {
+    "id": "Kernkraftwerk_Leibstadt",
+    "group": "Kraftwerke",
+    "objekt_id": 16,
+    "name": "Kernkraftwerk Leibstadt",
+    "thema": "Kraftwerke",
+    "von": 1984,
+    "bis": "Aktiv",
+    "koordinaten": "47.600, 8.183",
+    "region": "Aargau",
+    "funktion": "Energieerzeugung",
+    "geometry": null,
+    "url": ""
+  },
+  {
+    "id": "Wasserkraftwerk_Grand_Dixence",
+    "group": "Kraftwerke",
+    "objekt_id": 17,
+    "name": "Wasserkraftwerk Grand Dixence",
+    "thema": "Kraftwerke",
+    "von": 1961,
+    "bis": "Aktiv",
+    "koordinaten": "46.080, 7.410",
+    "region": "Wallis",
+    "funktion": "Energieerzeugung",
+    "geometry": null,
+    "url": ""
+  },
+  {
+    "id": "Wasserkraftwerk_Rüchlig",
+    "group": "Kraftwerke",
+    "objekt_id": 18,
+    "name": "Wasserkraftwerk Rüchlig",
+    "thema": "Kraftwerke",
+    "von": 1943,
+    "bis": "Aktiv",
+    "koordinaten": "47.414, 8.641",
+    "region": "Aargau",
+    "funktion": "Energieerzeugung",
+    "geometry": null,
+    "url": ""
+  },
     {
-      "id": "Kernkraftwerk Gösgen",
-      "group": "Kraftwerke",
-      "objekt_id": 1,
-      "name": "Kernkraftwerk Gösgen",
-      "thema": "Kraftwerke",
-      "von": 1979,
-      "bis": "Aktiv",
-      "koordinaten": "47.365, 7.965",
-      "region": "Solothurn",
-      "funktion": "Energieerzeugung",
-      "geometry": null,
-      "url": ""
-    },
-    {
-      "id": "Kernkraftwerk Mühleberg",
-      "group": "Kraftwerke",
-      "objekt_id": 2,
-      "name": "Kernkraftwerk Mühleberg",
-      "thema": "Kraftwerke",
-      "von": 1972,
-      "bis": 2019,
-      "koordinaten": "46.970, 7.270",
-      "region": "Bern",
-      "funktion": "Energieerzeugung",
-      "geometry": null,
-      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/KernkraftwerkM%C3%BChleberg.jpg/640px-KernkraftwerkM%C3%BChleberg.jpg"
-    },
-    {
-      "id": "Wasserkraftwerk Cleuson",
-      "group": "Kraftwerke",
-      "objekt_id": 3,
-      "name": "Wasserkraftwerk Cleuson",
-      "thema": "Kraftwerke",
-      "von": 1950,
-      "bis": "Aktiv",
-      "koordinaten": "46.185, 7.286",
-      "region": "Wallis",
-      "funktion": "Energieerzeugung",
-      "geometry": null,
-      "url": "https://www.alpiq.com/fileadmin/_processed_/a/a/csm_cleuson_dixence_dam_speicherkraftwerke_1540x960_ceedba483c.jpg"
-    },
-    {
-      "id": "Biomassekraftwerk Zürich",
-      "group": "Kraftwerke",
-      "objekt_id": 4,
-      "name": "Biomassekraftwerk Zürich",
-      "thema": "Kraftwerke",
-      "von": 2010,
-      "bis": "Aktiv",
-      "koordinaten": "47.368, 8.547",
-      "region": "Zürich",
-      "funktion": "Energieerzeugung",
-      "geometry": null,
-      "url": "https://www.stromtip.de/UserFiles/Image/Bilder_640/ewe_biogas-werlte.jpg"
-    },
-    {
-      "id": "Kohlekraftwerk Monthey",
-      "group": "Kraftwerke",
-      "objekt_id": 5,
-      "name": "Kohlekraftwerk Monthey",
-      "thema": "Kraftwerke",
-      "von": 1932,
-      "bis": 1985,
-      "koordinaten": "46.251, 6.948",
-      "region": "Wallis",
-      "funktion": "Energieerzeugung",
-      "geometry": null,
-      "url": "https://www.watson.ch/imgdb/f902/Qx,B,0,0,534,301,222,125,89,50/4680434350705169"
-    },
-    {
-      "id": "Geothermiekraftwerk Riehen",
-      "group": "Kraftwerke",
-      "objekt_id": 6,
-      "name": "Geothermiekraftwerk Riehen",
-      "thema": "Kraftwerke",
-      "von": 1994,
-      "bis": "Aktiv",
-      "koordinaten": "47.577, 7.646",
-      "region": "Basel-Stadt",
-      "funktion": "Energieerzeugung",
-      "geometry": null,
-      "url": ""
-    },
-    {
-      "id": "Kraftwerk Chavalon de Vouvry",
-      "group": "Kraftwerke",
-      "objekt_id": 7,
-      "name": "Kraftwerk Chavalon de Vouvry",
-      "thema": "Kraftwerke",
-      "von": 1965,
-      "bis": 1999,
-      "koordinaten": "46.332, 6.903",
-      "region": "Wallis",
-      "funktion": "Öl-/Gas-Kraftwerk",
-      "geometry": null,
-      "url": "https://cdn.unitycms.io/images/Ctvijngx40lB1pjPtmb08Y.jpg?op=ocroped&val=1200,630,1000,1000,0,0&sum=XC-guq51TWA"
-    },
-    {
-      "id": "Kernkraftwerk Leibstadt",
-      "group": "Kraftwerke",
-      "objekt_id": 16,
-      "name": "Kernkraftwerk Leibstadt",
-      "thema": "Kraftwerke",
-      "von": 1984,
-      "bis": "Aktiv",
-      "koordinaten": "47.600, 8.183",
-      "region": "Aargau",
-      "funktion": "Energieerzeugung",
-      "geometry": null,
-      "url": ""
-    },
-    {
-      "id": "Wasserkraftwerk Grand Dixence",
-      "group": "Kraftwerke",
-      "objekt_id": 17,
-      "name": "Wasserkraftwerk Grand Dixence",
-      "thema": "Kraftwerke",
-      "von": 1961,
-      "bis": "Aktiv",
-      "koordinaten": "46.080, 7.410",
-      "region": "Wallis",
-      "funktion": "Energieerzeugung",
-      "geometry": null,
-      "url": ""
-    },
-    {
-      "id": "Wasserkraftwerk Rüchlig",
-      "group": "Kraftwerke",
-      "objekt_id": 18,
-      "name": "Wasserkraftwerk Rüchlig",
-      "thema": "Kraftwerke",
-      "von": 1943,
-      "bis": "Aktiv",
-      "koordinaten": "47.414, 8.641",
-      "region": "Aargau",
-      "funktion": "Energieerzeugung",
-      "geometry": null,
-      "url": ""
-    },
-    {
-      "id": "Kernkraftwerk Beznau I",
+      "id": "Kernkraftwerk_Beznau_I",
       "group": "Reaktoren",
       "objekt_id": 8,
       "name": "Kernkraftwerk Beznau I",
@@ -191,7 +191,7 @@
       "url": ""
     },
     {
-      "id": "Kernkraftwerk Beznau II",
+      "id": "Kernkraftwerk_Beznau_II",
       "group": "Reaktoren",
       "objekt_id": 9,
       "name": "Kernkraftwerk Beznau II",
@@ -205,7 +205,7 @@
       "url": ""
     },
     {
-      "id": "Raffinerie Collombey",
+      "id": "Raffinerie_Collombey",
       "group": "Raffinerien",
       "objekt_id": 10,
       "name": "Raffinerie Collombey",
@@ -219,7 +219,7 @@
       "url": ""
     },
     {
-      "id": "Raffinerie Cressier",
+      "id": "Raffinerie_Cressier",
       "group": "Raffinerien",
       "objekt_id": 11,
       "name": "Raffinerie Cressier",
@@ -261,7 +261,7 @@
       "url": ""
     },
     {
-      "id": "Autobahn N1",
+      "id": "Autobahn_N1",
       "group": "Nationalstrassen",
       "objekt_id": 12,
       "name": "Autobahn N1",
@@ -274,134 +274,134 @@
       "geometry": "LINESTRING(47.416 8.566, 46.948 7.447, 46.206 6.146)",
       "url": ""
     },
+  {
+    "id": "Autobahn_N2",
+    "group": "Nationalstrassen",
+    "objekt_id": 13,
+    "name": "Autobahn N2",
+    "thema": "Nationalstrassen",
+    "von": 1964,
+    "bis": "Aktiv",
+    "koordinaten": "46.545, 7.880",
+    "region": "Nord–Süd",
+    "funktion": "Verkehrsinfrastruktur",
+    "geometry": "LINESTRING(47.559 7.587, 46.519 6.634)",
+    "url": ""
+  },
+  {
+    "id": "Autobahn_N3",
+    "group": "Nationalstrassen",
+    "objekt_id": 19,
+    "name": "Autobahn N3",
+    "thema": "Nationalstrassen",
+    "von": 1964,
+    "bis": "Aktiv",
+    "koordinaten": "47.172, 9.516",
+    "region": "Nordost–Südwest",
+    "funktion": "Verkehrsinfrastruktur",
+    "geometry": "LINESTRING(47.559 7.587, 47.172 9.516, 46.948 7.447)",
+    "url": ""
+  },
+  {
+    "id": "Autobahn_N4",
+    "group": "Nationalstrassen",
+    "objekt_id": 20,
+    "name": "Autobahn N4",
+    "thema": "Nationalstrassen",
+    "von": 1996,
+    "bis": "Aktiv",
+    "koordinaten": "47.015, 8.308",
+    "region": "Zentral",
+    "funktion": "Verkehrsinfrastruktur",
+    "geometry": "LINESTRING(47.101 8.544, 47.015 8.308, 46.861 8.227)",
+    "url": ""
+  },
+  {
+    "id": "Autobahn_N13",
+    "group": "Nationalstrassen",
+    "objekt_id": 21,
+    "name": "Autobahn N13",
+    "thema": "Nationalstrassen",
+    "von": 1967,
+    "bis": "Aktiv",
+    "koordinaten": "46.869, 9.530",
+    "region": "Graubünden",
+    "funktion": "Verkehrsinfrastruktur",
+    "geometry": "LINESTRING(46.869 9.530, 46.376 9.071, 46.091 8.975)",
+    "url": ""
+  },
+  {
+    "id": "Autobahn_N9",
+    "group": "Nationalstrassen",
+    "objekt_id": 22,
+    "name": "Autobahn N9",
+    "thema": "Nationalstrassen",
+    "von": 1970,
+    "bis": "Aktiv",
+    "koordinaten": "46.3208, 6.9399549",
+    "region": "Wallis",
+    "funktion": "Verkehrsinfrastruktur",
+    "geometry": "LINESTRING(46.869 9.530, 46.376 9.071, 46.091 8.975)",
+    "url": ""
+  },
+  {
+    "id": "Kernkraftwerk_Lucens",
+    "group": "Kraftwerke",
+    "objekt_id": 23,
+    "name": "Kernkraftwerk Lucens",
+    "thema": "Kraftwerke",
+    "von": 1962,
+    "bis": 1969,
+    "koordinaten": "46.708, 6.841",
+    "region": "Waadt",
+    "funktion": "Energieerzeugung",
+    "geometry": null,
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Centrale_nucleaire_de_Lucens.jpg/640px-Centrale_nucleaire_de_Lucens.jpg"
+  },
+  {
+    "id": "Speicherkraftwerk_Linth-Limmern",
+    "group": "Kraftwerke",
+    "objekt_id": 24,
+    "name": "Speicherkraftwerk Linth-Limmern",
+    "thema": "Kraftwerke",
+    "von": 1963,
+    "bis": "Aktiv",
+    "koordinaten": "46.898, 9.009",
+    "region": "Glarus",
+    "funktion": "Energieerzeugung",
+    "geometry": null,
+    "url": "https://www.axpo.com/content/dam/axpo23/master/images/power-plants/water/Limmern.jpg"
+  },
+  {
+    "id": "Rhein",
+    "group": "Gewässer",
+    "objekt_id": 25,
+    "name": "Rhein",
+    "thema": "Gewässer",
+    "von": "Aktiv",
+    "bis": "Aktiv",
+    "koordinaten": "47.567, 8.101",
+    "region": "Nordostschweiz",
+    "funktion": "Wasserquelle",
+    "geometry": null,
+    "url": ""
+  },
+  {
+    "id": "Raffinerie_Emmen",
+    "group": "Raffinerien",
+    "objekt_id": 26,
+    "name": "Raffinerie Emmen",
+    "thema": "Raffinerien",
+    "von": 1956,
+    "bis": 2004,
+    "koordinaten": "47.071, 8.304",
+    "region": "Luzern",
+    "funktion": "Treibstoffproduktion",
+    "geometry": null,
+    "url": ""
+  },
     {
-      "id": "Autobahn N2",
-      "group": "Nationalstrassen",
-      "objekt_id": 13,
-      "name": "Autobahn N2",
-      "thema": "Nationalstrassen",
-      "von": 1964,
-      "bis": "Aktiv",
-      "koordinaten": "46.545, 7.880",
-      "region": "Nord–Süd",
-      "funktion": "Verkehrsinfrastruktur",
-      "geometry": "LINESTRING(47.559 7.587, 46.519 6.634)",
-      "url": ""
-    },
-    {
-      "id": "Autobahn N3",
-      "group": "Nationalstrassen",
-      "objekt_id": 19,
-      "name": "Autobahn N3",
-      "thema": "Nationalstrassen",
-      "von": 1964,
-      "bis": "Aktiv",
-      "koordinaten": "47.172, 9.516",
-      "region": "Nordost–Südwest",
-      "funktion": "Verkehrsinfrastruktur",
-      "geometry": "LINESTRING(47.559 7.587, 47.172 9.516, 46.948 7.447)",
-      "url": ""
-    },
-    {
-      "id": "Autobahn N4",
-      "group": "Nationalstrassen",
-      "objekt_id": 20,
-      "name": "Autobahn N4",
-      "thema": "Nationalstrassen",
-      "von": 1996,
-      "bis": "Aktiv",
-      "koordinaten": "47.015, 8.308",
-      "region": "Zentral",
-      "funktion": "Verkehrsinfrastruktur",
-      "geometry": "LINESTRING(47.101 8.544, 47.015 8.308, 46.861 8.227)",
-      "url": ""
-    },
-    {
-      "id": "Autobahn N13",
-      "group": "Nationalstrassen",
-      "objekt_id": 21,
-      "name": "Autobahn N13",
-      "thema": "Nationalstrassen",
-      "von": 1967,
-      "bis": "Aktiv",
-      "koordinaten": "46.869, 9.530",
-      "region": "Graubünden",
-      "funktion": "Verkehrsinfrastruktur",
-      "geometry": "LINESTRING(46.869 9.530, 46.376 9.071, 46.091 8.975)",
-      "url": ""
-    },
-    {
-      "id": "Autobahn N9",
-      "group": "Nationalstrassen",
-      "objekt_id": 22,
-      "name": "Autobahn N9",
-      "thema": "Nationalstrassen",
-      "von": 1970,
-      "bis": "Aktiv",
-      "koordinaten": "46.3208, 6.9399549",
-      "region": "Wallis",
-      "funktion": "Verkehrsinfrastruktur",
-      "geometry": "LINESTRING(46.869 9.530, 46.376 9.071, 46.091 8.975)",
-      "url": ""
-    },
-    {
-      "id": "Kernkraftwerk Lucens",
-      "group": "Kraftwerke",
-      "objekt_id": 23,
-      "name": "Kernkraftwerk Lucens",
-      "thema": "Kraftwerke",
-      "von": 1962,
-      "bis": 1969,
-      "koordinaten": "46.708, 6.841",
-      "region": "Waadt",
-      "funktion": "Energieerzeugung",
-      "geometry": null,
-      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Centrale_nucleaire_de_Lucens.jpg/640px-Centrale_nucleaire_de_Lucens.jpg"
-    },
-    {
-      "id": "Speicherkraftwerk Linth-Limmern",
-      "group": "Kraftwerke",
-      "objekt_id": 24,
-      "name": "Speicherkraftwerk Linth-Limmern",
-      "thema": "Kraftwerke",
-      "von": 1963,
-      "bis": "Aktiv",
-      "koordinaten": "46.898, 9.009",
-      "region": "Glarus",
-      "funktion": "Energieerzeugung",
-      "geometry": null,
-      "url": "https://www.axpo.com/content/dam/axpo23/master/images/power-plants/water/Limmern.jpg"
-    },
-    {
-      "id": "Rhein",
-      "group": "Gewässer",
-      "objekt_id": 25,
-      "name": "Rhein",
-      "thema": "Gewässer",
-      "von": "Aktiv",
-      "bis": "Aktiv",
-      "koordinaten": "47.567, 8.101",
-      "region": "Nordostschweiz",
-      "funktion": "Wasserquelle",
-      "geometry": null,
-      "url": ""
-    },
-    {
-      "id": "Raffinerie Emmen",
-      "group": "Raffinerien",
-      "objekt_id": 26,
-      "name": "Raffinerie Emmen",
-      "thema": "Raffinerien",
-      "von": 1956,
-      "bis": 2004,
-      "koordinaten": "47.071, 8.304",
-      "region": "Luzern",
-      "funktion": "Treibstoffproduktion",
-      "geometry": null,
-      "url": ""
-    },
-    {
-      "id": "Autobahn N5",
+      "id": "Autobahn_N5",
       "group": "Nationalstrassen",
       "objekt_id": 27,
       "name": "Autobahn N5",
@@ -415,7 +415,7 @@
       "url": ""
     },
     {
-      "id": "Solarpark Mont-Soleil",
+      "id": "Solarpark_Mont-Soleil",
       "group": "Kraftwerke",
       "objekt_id": 28,
       "name": "Solarpark Mont-Soleil",
@@ -429,7 +429,7 @@
       "url": "https://www.bkw.ch/fileadmin/bilder/ueber-die-bkw/Mont-Soleil.jpg"
     },
     {
-      "id": "Windpark Juvent",
+      "id": "Windpark_Juvent",
       "group": "Kraftwerke",
       "objekt_id": 29,
       "name": "Windpark Juvent",
@@ -443,7 +443,7 @@
       "url": ""
     },
     {
-      "id": "Kohlekraftwerk Zürich",
+      "id": "Kohlekraftwerk_Zürich",
       "group": "Kraftwerke",
       "objekt_id": 30,
       "name": "Kohlekraftwerk Zürich",
@@ -485,7 +485,7 @@
       "url": ""
     },
     {
-      "id": "Versuchsreaktor DIORIT",
+      "id": "Versuchsreaktor_DIORIT",
       "group": "Reaktoren",
       "objekt_id": 33,
       "name": "Versuchsreaktor DIORIT",
@@ -499,7 +499,7 @@
       "url": ""
     },
     {
-      "id": "Öllager Landquart",
+      "id": "Öllager_Landquart",
       "group": "Raffinerien",
       "objekt_id": 34,
       "name": "Öllager Landquart",
@@ -513,7 +513,7 @@
       "url": ""
     },
     {
-      "id": "Autobahn N6",
+      "id": "Autobahn_N6",
       "group": "Nationalstrassen",
       "objekt_id": 35,
       "name": "Autobahn N6",
@@ -527,7 +527,7 @@
       "url": ""
     },
     {
-      "id": "Autobahn N8",
+      "id": "Autobahn_N8",
       "group": "Nationalstrassen",
       "objekt_id": 36,
       "name": "Autobahn N8",
@@ -541,7 +541,7 @@
       "url": ""
     },
     {
-      "id": "Wasserkraftwerk Eglisau-Glattfelden",
+      "id": "Wasserkraftwerk_Eglisau-Glattfelden",
       "group": "Kraftwerke",
       "objekt_id": 37,
       "name": "Wasserkraftwerk Eglisau-Glattfelden",
@@ -555,7 +555,7 @@
       "url": ""
     },
     {
-      "id": "Pumpspeicherwerk Nant de Drance",
+      "id": "Pumpspeicherwerk_Nant_de_Drance",
       "group": "Kraftwerke",
       "objekt_id": 38,
       "name": "Pumpspeicherwerk Nant de Drance",
@@ -569,7 +569,7 @@
       "url": "https://www.nantdedrance.ch/sites/default/files/styles/large/public/2022-06/NDD_ext_01.jpg"
     },
     {
-      "id": "Solarpark Lac des Toules",
+      "id": "Solarpark_Lac_des_Toules",
       "group": "Kraftwerke",
       "objekt_id": 39,
       "name": "Solarpark Lac des Toules",
@@ -611,7 +611,7 @@
       "url": ""
     },
     {
-      "id": "Forschungsreaktor SAPHIR",
+      "id": "Forschungsreaktor_SAPHIR",
       "group": "Reaktoren",
       "objekt_id": 42,
       "name": "Forschungsreaktor SAPHIR",
@@ -625,7 +625,7 @@
       "url": ""
     },
     {
-      "id": "Autobahn N7",
+      "id": "Autobahn_N7",
       "group": "Nationalstrassen",
       "objekt_id": 44,
       "name": "Autobahn N7",
@@ -639,7 +639,7 @@
       "url": ""
     },
     {
-      "id": "Autobahn N20",
+      "id": "Autobahn_N20",
       "group": "Nationalstrassen",
       "objekt_id": 45,
       "name": "Autobahn N20",
@@ -653,7 +653,7 @@
       "url": ""
     },
     {
-      "id": "Erdgasspeicher Rümlang",
+      "id": "Erdgasspeicher_Rümlang",
       "group": "Raffinerien",
       "objekt_id": 46,
       "name": "Erdgasspeicher Rümlang",
@@ -667,7 +667,7 @@
       "url": ""
     },
     {
-      "id": "Max Dudler",
+      "id": "Max_Dudler",
       "group": "Architekten",
        "objekt_id": 50,
       "name": "Max Dudler",
@@ -681,7 +681,7 @@
       "url": null
     },
     {
-      "id": "Mario Botta",
+      "id": "Mario_Botta",
        "objekt_id": 51,
       "group": "Architekten",
       "name": "Mario Botta",
@@ -695,7 +695,7 @@
       "url": null
     },
         {
-      "id": "Peter Zumthor",
+      "id": "Peter_Zumthor",
        "objekt_id": 53,
       "group": "Architekten",
       "name": "Peter Zumthor",
@@ -709,7 +709,7 @@
       "url": null
     },
     {
-      "id": "Herzog & de Meuron",
+      "id": "Herzog_und_de_Meuron",
        "objekt_id": 52,
       "group": "Architekten",
       "name": "Herzog & de Meuron",
@@ -723,285 +723,285 @@
       "url": null
     }
   ],
-  "links": [
-    {
-      "source": "Kernkraftwerk Gösgen",
-      "target": "Kernkraftwerk Beznau I",
-      "type": "Enthält Reaktor"
-    },
-    {
-      "source": "Kernkraftwerk Mühleberg",
-      "target": "Kernkraftwerk Beznau II",
-      "type": "Enthält Reaktor"
-    },
-    {
-      "source": "Kernkraftwerk Gösgen",
-      "target": "Geothermiekraftwerk Riehen",
-      "type": "Nutzt Stromnetz"
-    },
-    {
-      "source": "Kernkraftwerk Mühleberg",
-      "target": "Geothermiekraftwerk Riehen",
-      "type": "Liefert Strom"
-    },
-    {
-      "source": "Raffinerie Collombey",
-      "target": "Kraftwerk Chavalon de Vouvry",
-      "type": "Hat beliefert"
-    },
-    {
-      "source": "Raffinerie Collombey",
-      "target": "Raffinerie Cressier",
-      "type": "Parallel zu"
-    },
-    {
-      "source": "Kraftwerk Chavalon de Vouvry",
-      "target": "Geothermiekraftwerk Riehen",
-      "type": "War verbunden mit"
-    },
-    {
-      "source": "Autobahn N1",
-      "target": "Genfersee",
-      "type": "Speist ein"
-    },
-    {
-      "source": "Autobahn N2",
-      "target": "Genfersee",
-      "type": "Nutzt Wasser"
-    },
-    {
-      "source": "Kernkraftwerk Leibstadt",
-      "target": "Kernkraftwerk Beznau I",
-      "type": "Verbindet"
-    },
-    {
-      "source": "Wasserkraftwerk Grand Dixence",
-      "target": "Wasserkraftwerk Cleuson",
-      "type": "Teilt Wasser"
-    },
-    {
-      "source": "Autobahn N3",
-      "target": "Autobahn N1",
-      "type": "Verknüpft"
-    },
-    {
-      "source": "Autobahn N3",
-      "target": "Autobahn N2",
-      "type": "Verbindet"
-    },
-    {
-      "source": "Autobahn N4",
-      "target": "Autobahn N1",
-      "type": "Verzweigung"
-    },
-    {
-      "source": "Autobahn N4",
-      "target": "Autobahn N3",
-      "type": "Verzweigung"
-    },
-    {
-      "source": "Autobahn N13",
-      "target": "Autobahn N2",
-      "type": "Verknüpft"
-    },
-    {
-      "source": "Autobahn N13",
-      "target": "Autobahn N3",
-      "type": "Ergänzt"
-    },
-    {
-      "source": "Kraftwerk Chavalon de Vouvry",
-      "target": "Autobahn N9",
-      "type": "Hat Bau beeinflusst"
-    },
-    {
-      "source": "Gewässer",
-      "target": "Genfersee",
-      "type": "Belongs to"
-    },
-    {
-      "source": "Gewässer",
-      "target": "Aare",
-      "type": "Belongs to"
-    },
-    {
-      "source": "Kraftwerke",
-      "target": "Kernkraftwerk Gösgen",
-      "type": "Belongs to"
-    },
-    {
-      "source": "Kraftwerke",
-      "target": "Kernkraftwerk Mühleberg",
-      "type": "Belongs to"
-    },
-    {
-      "source": "Kraftwerke",
-      "target": "Wasserkraftwerk Cleuson",
-      "type": "Belongs to"
-    },
-    {
-      "source": "Kraftwerke",
-      "target": "Biomassekraftwerk Zürich",
-      "type": "Belongs to"
-    },
-    {
-      "source": "Kraftwerke",
-      "target": "Kohlekraftwerk Monthey",
-      "type": "Belongs to"
-    },
-    {
-      "source": "Kraftwerke",
-      "target": "Geothermiekraftwerk Riehen",
-      "type": "Belongs to"
-    },
-    {
-      "source": "Kraftwerke",
-      "target": "Kraftwerk Chavalon de Vouvry",
-      "type": "Belongs to"
-    },
-    {
-      "source": "Kraftwerke",
-      "target": "Wasserkraftwerk Rüchlig",
-      "type": "Belongs to"
-    },
-    {
-      "source": "Kraftwerke",
-      "target": "Kernkraftwerk Leibstadt",
-      "type": "Belongs to"
-    },
-    {
-      "source": "Reaktoren",
-      "target": "Kernkraftwerk Beznau I",
-      "type": "Belongs to"
-    },
-    {
-      "source": "Reaktoren",
-      "target": "Kernkraftwerk Beznau II",
-      "type": "Belongs to"
-    },
-    {
-      "source": "Raffinerien",
-      "target": "Raffinerie Collombey",
-      "type": "Belongs to"
-    },
-    {
-      "source": "Raffinerien",
-      "target": "Raffinerie Cressier",
-      "type": "Belongs to"
-    },
-    {
-      "source": "Nationalstrassen",
-      "target": "Autobahn N1",
-      "type": "Belongs to"
-    },
-    {
-      "source": "Nationalstrassen",
-      "target": "Autobahn N2",
-      "type": "Belongs to"
-    },
-    {
-      "source": "Nationalstrassen",
-      "target": "Autobahn N3",
-      "type": "Belongs to"
-    },
-    {
-      "source": "Nationalstrassen",
-      "target": "Autobahn N4",
-      "type": "Belongs to"
-    },
-    {
-      "source": "Nationalstrassen",
-      "target": "Autobahn N13",
-      "type": "Belongs to"
-    },
-    {
-      "source": "Nationalstrassen",
-      "target": "Autobahn N9",
-      "type": "Belongs to"
-    },
-    {
-      "source": "Nationalstrassen",
-      "target": "Kraftwerke",
-      "type": "Influenced"
-    },
-    {
-      "source": "Kernkraftwerk Lucens",
-      "target": "Kernkraftwerk Beznau I",
-      "type": "War Vorgänger"
-    },
-    {
-      "source": "Kernkraftwerk Lucens",
-      "target": "Kernkraftwerk Mühleberg",
-      "type": "Technologischer Einfluss"
-    },
-    {
-      "source": "Speicherkraftwerk Linth-Limmern",
-      "target": "Wasserkraftwerk Cleuson",
-      "type": "Vergleichbar mit"
-    },
-    {
-      "source": "Rhein",
-      "target": "Aare",
-      "type": "Zufluss von"
-    },
-    {
-      "source": "Rhein",
-      "target": "Wasserkraftwerk Rüchlig",
-      "type": "Betreibt"
-    },
-    {
-      "source": "Raffinerie Emmen",
-      "target": "Raffinerie Cressier",
-      "type": "Versorgte"
-    },
-    {
-      "source": "Autobahn N5",
-      "target": "Autobahn N1",
-      "type": "Verbindet sich mit"
-    },
-    {
-      "source": "Kraftwerke",
-      "target": "Kernkraftwerk Lucens",
-      "type": "Belongs to"
-    },
-    {
-      "source": "Kraftwerke",
-      "target": "Speicherkraftwerk Linth-Limmern",
-      "type": "Belongs to"
-    },
-    {
-      "source": "Gewässer",
-      "target": "Rhein",
-      "type": "Belongs to"
-    },
-    {
-      "source": "Raffinerien",
-      "target": "Raffinerie Emmen",
-      "type": "Belongs to"
-    },
-    {
-      "source": "Nationalstrassen",
-      "target": "Autobahn N5",
-      "type": "Belongs to"
-    },
-    {
-      "source": "Solarpark Mont-Soleil",
-      "target": "Windpark Juvent",
-      "type": "Betreiber gemeinsam"
-    },
-    {
-      "source": "Solarpark Mont-Soleil",
-      "target": "Vierwaldstättersee",
-      "type": "Versorgt Region"
-    },
-    {
-      "source": "Windpark Juvent",
-      "target": "Autobahn N5",
+"links": [
+  {
+    "source": "Kernkraftwerk_Gösgen",
+    "target": "Kernkraftwerk_Beznau_I",
+    "type": "Enthält_Reaktor"
+  },
+  {
+    "source": "Kernkraftwerk_Mühleberg",
+    "target": "Kernkraftwerk_Beznau_II",
+    "type": "Enthält_Reaktor"
+  },
+  {
+    "source": "Kernkraftwerk_Gösgen",
+    "target": "Geothermiekraftwerk_Riehen",
+    "type": "Nutzt_Stromnetz"
+  },
+  {
+    "source": "Kernkraftwerk_Mühleberg",
+    "target": "Geothermiekraftwerk_Riehen",
+    "type": "Liefert_Strom"
+  },
+  {
+    "source": "Raffinerie_Collombey",
+    "target": "Kraftwerk_Chavalon_de_Vouvry",
+    "type": "Hat_beliefert"
+  },
+  {
+    "source": "Raffinerie_Collombey",
+    "target": "Raffinerie_Cressier",
+    "type": "Parallel_zu"
+  },
+  {
+    "source": "Kraftwerk_Chavalon_de_Vouvry",
+    "target": "Geothermiekraftwerk_Riehen",
+    "type": "War_verbunden_mit"
+  },
+  {
+    "source": "Autobahn_N1",
+    "target": "Genfersee",
+    "type": "Speist_ein"
+  },
+  {
+    "source": "Autobahn_N2",
+    "target": "Genfersee",
+    "type": "Nutzt_Wasser"
+  },
+  {
+    "source": "Kernkraftwerk_Leibstadt",
+    "target": "Kernkraftwerk_Beznau_I",
+    "type": "Verbindet"
+  },
+  {
+    "source": "Wasserkraftwerk_Grand_Dixence",
+    "target": "Wasserkraftwerk_Cleuson",
+    "type": "Teilt_Wasser"
+  },
+  {
+    "source": "Autobahn_N3",
+    "target": "Autobahn_N1",
+    "type": "Verknüpft"
+  },
+  {
+    "source": "Autobahn_N3",
+    "target": "Autobahn_N2",
+    "type": "Verbindet"
+  },
+  {
+    "source": "Autobahn_N4",
+    "target": "Autobahn_N1",
+    "type": "Verzweigung"
+  },
+  {
+    "source": "Autobahn_N4",
+    "target": "Autobahn_N3",
+    "type": "Verzweigung"
+  },
+  {
+    "source": "Autobahn_N13",
+    "target": "Autobahn_N2",
+    "type": "Verknüpft"
+  },
+  {
+    "source": "Autobahn_N13",
+    "target": "Autobahn_N3",
+    "type": "Ergänzt"
+  },
+  {
+    "source": "Kraftwerk_Chavalon_de_Vouvry",
+    "target": "Autobahn_N9",
+    "type": "Hat_Bau_beeinflusst"
+  },
+  {
+    "source": "Gewässer",
+    "target": "Genfersee",
+    "type": "Belongs_to"
+  },
+  {
+    "source": "Gewässer",
+    "target": "Aare",
+    "type": "Belongs_to"
+  },
+  {
+    "source": "Kraftwerke",
+    "target": "Kernkraftwerk_Gösgen",
+    "type": "Belongs_to"
+  },
+  {
+    "source": "Kraftwerke",
+    "target": "Kernkraftwerk_Mühleberg",
+    "type": "Belongs_to"
+  },
+  {
+    "source": "Kraftwerke",
+    "target": "Wasserkraftwerk_Cleuson",
+    "type": "Belongs_to"
+  },
+  {
+    "source": "Kraftwerke",
+    "target": "Biomassekraftwerk_Zürich",
+    "type": "Belongs_to"
+  },
+  {
+    "source": "Kraftwerke",
+    "target": "Kohlekraftwerk_Monthey",
+    "type": "Belongs_to"
+  },
+  {
+    "source": "Kraftwerke",
+    "target": "Geothermiekraftwerk_Riehen",
+    "type": "Belongs_to"
+  },
+  {
+    "source": "Kraftwerke",
+    "target": "Kraftwerk_Chavalon_de_Vouvry",
+    "type": "Belongs_to"
+  },
+  {
+    "source": "Kraftwerke",
+    "target": "Wasserkraftwerk_Rüchlig",
+    "type": "Belongs_to"
+  },
+  {
+    "source": "Kraftwerke",
+    "target": "Kernkraftwerk_Leibstadt",
+    "type": "Belongs_to"
+  },
+  {
+    "source": "Reaktoren",
+    "target": "Kernkraftwerk_Beznau_I",
+    "type": "Belongs_to"
+  },
+  {
+    "source": "Reaktoren",
+    "target": "Kernkraftwerk_Beznau_II",
+    "type": "Belongs_to"
+  },
+  {
+    "source": "Raffinerien",
+    "target": "Raffinerie_Collombey",
+    "type": "Belongs_to"
+  },
+  {
+    "source": "Raffinerien",
+    "target": "Raffinerie_Cressier",
+    "type": "Belongs_to"
+  },
+  {
+    "source": "Nationalstrassen",
+    "target": "Autobahn_N1",
+    "type": "Belongs_to"
+  },
+  {
+    "source": "Nationalstrassen",
+    "target": "Autobahn_N2",
+    "type": "Belongs_to"
+  },
+  {
+    "source": "Nationalstrassen",
+    "target": "Autobahn_N3",
+    "type": "Belongs_to"
+  },
+  {
+    "source": "Nationalstrassen",
+    "target": "Autobahn_N4",
+    "type": "Belongs_to"
+  },
+  {
+    "source": "Nationalstrassen",
+    "target": "Autobahn_N13",
+    "type": "Belongs_to"
+  },
+  {
+    "source": "Nationalstrassen",
+    "target": "Autobahn_N9",
+    "type": "Belongs_to"
+  },
+  {
+    "source": "Nationalstrassen",
+    "target": "Kraftwerke",
+    "type": "Influenced"
+  },
+  {
+    "source": "Kernkraftwerk_Lucens",
+    "target": "Kernkraftwerk_Beznau_I",
+    "type": "War_Vorgänger"
+  },
+  {
+    "source": "Kernkraftwerk_Lucens",
+    "target": "Kernkraftwerk_Mühleberg",
+    "type": "Technologischer_Einfluss"
+  },
+  {
+    "source": "Speicherkraftwerk_Linth-Limmern",
+    "target": "Wasserkraftwerk_Cleuson",
+    "type": "Vergleichbar_mit"
+  },
+  {
+    "source": "Rhein",
+    "target": "Aare",
+    "type": "Zufluss_von"
+  },
+  {
+    "source": "Rhein",
+    "target": "Wasserkraftwerk_Rüchlig",
+    "type": "Betreibt"
+  },
+  {
+    "source": "Raffinerie_Emmen",
+    "target": "Raffinerie_Cressier",
+    "type": "Versorgte"
+  },
+  {
+    "source": "Autobahn_N5",
+    "target": "Autobahn_N1",
+    "type": "Verbindet_sich_mit"
+  },
+  {
+    "source": "Kraftwerke",
+    "target": "Kernkraftwerk_Lucens",
+    "type": "Belongs_to"
+  },
+  {
+    "source": "Kraftwerke",
+    "target": "Speicherkraftwerk_Linth-Limmern",
+    "type": "Belongs_to"
+  },
+  {
+    "source": "Gewässer",
+    "target": "Rhein",
+    "type": "Belongs_to"
+  },
+  {
+    "source": "Raffinerien",
+    "target": "Raffinerie_Emmen",
+    "type": "Belongs_to"
+  },
+  {
+    "source": "Nationalstrassen",
+    "target": "Autobahn_N5",
+    "type": "Belongs_to"
+  },
+  {
+    "source": "Solarpark_Mont-Soleil",
+    "target": "Windpark_Juvent",
+    "type": "Betreiber_gemeinsam"
+  },
+  {
+    "source": "Solarpark_Mont-Soleil",
+    "target": "Vierwaldstättersee",
+    "type": "Versorgt_Region"
+  },
+  {
+    "source": "Windpark_Juvent",
+    "target": "Autobahn_N5",
       "type": "Nähe zu"
     },
     {
-      "source": "Kohlekraftwerk Zürich",
-      "target": "Kernkraftwerk Lucens",
+      "source": "Kohlekraftwerk_Zürich",
+      "target": "Kernkraftwerk_Lucens",
       "type": "Ablösung durch"
     },
     {
@@ -1010,189 +1010,189 @@
       "type": "Abfluss in"
     },
     {
-      "source": "Versuchsreaktor DIORIT",
-      "target": "Kernkraftwerk Beznau I",
+      "source": "Versuchsreaktor_DIORIT",
+      "target": "Kernkraftwerk_Beznau_I",
       "type": "Forschungsbasis für"
     },
     {
-      "source": "Raffinerie Emmen",
-      "target": "Öllager Landquart",
+      "source": "Raffinerie_Emmen",
+      "target": "Öllager_Landquart",
       "type": "Logistikkette"
     },
     {
-      "source": "Autobahn N6",
-      "target": "Autobahn N8",
+      "source": "Autobahn_N6",
+      "target": "Autobahn_N8",
       "type": "Knotenpunkt"
     },
     {
       "source": "Nationalstrassen",
-      "target": "Autobahn N6",
+      "target": "Autobahn_N6",
       "type": "Belongs to"
     },
     {
       "source": "Nationalstrassen",
-      "target": "Autobahn N8",
+      "target": "Autobahn_N8",
       "type": "Belongs to"
     },
     {
-      "source": "Pumpspeicherwerk Nant de Drance",
-      "target": "Solarpark Lac des Toules",
+      "source": "Pumpspeicherwerk_Nant_de_Drance",
+      "target": "Solarpark_Lac_des_Toules",
       "type": "Ergänzt saisonal"
     },
-    {
-      "source": "Solarpark Mont-Soleil",
-      "target": "Solarpark Lac des Toules",
-      "type": "Beide alpine Solaranlagen"
-    },
-    {
-      "source": "Wasserkraftwerk Eglisau-Glattfelden",
-      "target": "Rhein",
-      "type": "Nutzt Wasser"
-    },
-    {
-      "source": "Autobahn N7",
-      "target": "Bodensee",
-      "type": "Verläuft entlang"
-    },
-    {
-      "source": "Autobahn N20",
-      "target": "Autobahn N5",
-      "type": "Verbindet"
-    },
-    {
-      "source": "Forschungsreaktor SAPHIR",
-      "target": "Versuchsreaktor DIORIT",
-      "type": "Nachfolgeprojekt"
-    },
-    {
-      "source": "Raffinerie Cressier",
-      "target": "Erdgasspeicher Rümlang",
-      "type": "Versorgt teilweise"
-    },
-    {
-      "source": "Wasserkraftwerk Eglisau-Glattfelden",
-      "target": "Autobahn N7",
-      "type": "Liegt in der Nähe von"
-    },
-    {
-      "source": "Pumpspeicherwerk Nant de Drance",
-      "target": "Wasserkraftwerk Cleuson",
-      "type": "Stromnetz verbunden"
-    },
-    {
-      "source": "Pumpspeicherwerk Nant de Drance",
-      "target": "Rhone",
-      "type": "Zufluss"
-    },
-    {
-      "source": "Solarpark Lac des Toules",
-      "target": "Pumpspeicherwerk Nant de Drance",
-      "type": "Saisonale Ergänzung"
-    },
-    {
-      "source": "Solarpark Lac des Toules",
-      "target": "Autobahn N9",
-      "type": "Zufahrt über"
-    },
-    {
-      "source": "Bodensee",
-      "target": "Rhein",
-      "type": "Abfluss in"
-    },
-    {
-      "source": "Bodensee",
-      "target": "Autobahn N7",
-      "type": "Verläuft entlang"
-    },
-    {
-      "source": "Reuss",
-      "target": "Vierwaldstättersee",
-      "type": "Zufluss"
-    },
-    {
-      "source": "Reuss",
-      "target": "Wasserkraftwerk Rüchlig",
-      "type": "Versorgt"
-    },
-    {
-      "source": "Forschungsreaktor SAPHIR",
-      "target": "Versuchsreaktor DIORIT",
-      "type": "Forschungstechnische Nachfolge"
-    },
-    {
-      "source": "Forschungsreaktor SAPHIR",
-      "target": "Kernkraftwerk Beznau II",
-      "type": "Wissenschaftlicher Bezug"
-    },
-    {
-      "source": "Erdgasspeicher Rümlang",
-      "target": "Raffinerie Cressier",
-      "type": "Beliefert teilweise"
-    },
-    {
-      "source": "Erdgasspeicher Rümlang",
-      "target": "Autobahn N1",
-      "type": "Anbindung"
-    },
-    {
-      "source": "Autobahn N7",
-      "target": "Autobahn N1",
-      "type": "Verbindet sich mit"
-    },
-    {
-      "source": "Autobahn N7",
-      "target": "Autobahn N13",
-      "type": "Netzergänzung"
-    },
-    {
-      "source": "Autobahn N20",
-      "target": "Autobahn N5",
-      "type": "Verzweigt sich bei"
-    },
-    {
-      "source": "Autobahn N20",
-      "target": "Rhone",
-      "type": "Brücke über"
-    },
-    {
-      "source": "Autobahn N20",
-      "target": "Autobahn N5",
-      "type": "Verbindet sich mit"
-    },
      {
-      "source": "Max Dudler",
-      "target": "Kernkraftwerk Gösgen",
-      "type": "Entworfen"
-    },
-    {
-      "source": "Max Dudler",
-      "target": "Wasserkraftwerk Cleuson",
-      "type": "Entworfen"
-    },
-    {
-      "source": "Mario Botta",
-      "target": "Kernkraftwerk Mühleberg",
-      "type": "Entworfen"
-    },
-    {
-      "source": "Mario Botta",
-      "target": "Autobahn N1",
-      "type": "Gestalterisch beeinflusst"
-    },
-    {
-      "source": "Herzog & de Meuron",
-      "target": "Biomassekraftwerk Zürich",
-      "type": "Entworfen"
-    },
-    {
-      "source": "Herzog & de Meuron",
-      "target": "Solarpark Mont-Soleil",
-      "type": "Entworfen"
-    },
-    {
-      "source": "Peter Zumthor",
-      "target": "Pumpspeicherwerk Nant de Drance",
-      "type": "Entworfen"
-    }
+    "source": "Solarpark_Mont-Soleil",
+    "target": "Solarpark_Lac_des_Toules",
+    "type": "Beide_alpine_Solaranlagen"
+  },
+  {
+    "source": "Wasserkraftwerk_Eglisau-Glattfelden",
+    "target": "Rhein",
+    "type": "Nutzt_Wasser"
+  },
+  {
+    "source": "Autobahn_N7",
+    "target": "Bodensee",
+    "type": "Verläuft_entlang"
+  },
+  {
+    "source": "Autobahn_N20",
+    "target": "Autobahn_N5",
+    "type": "Verbindet"
+  },
+  {
+    "source": "Forschungsreaktor_SAPHIR",
+    "target": "Versuchsreaktor_DIORIT",
+    "type": "Nachfolgeprojekt"
+  },
+  {
+    "source": "Raffinerie_Cressier",
+    "target": "Erdgasspeicher_Rümlang",
+    "type": "Versorgt_teilweise"
+  },
+  {
+    "source": "Wasserkraftwerk_Eglisau-Glattfelden",
+    "target": "Autobahn_N7",
+    "type": "Liegt_in_der_Nähe_von"
+  },
+  {
+    "source": "Pumpspeicherwerk_Nant_de_Drance",
+    "target": "Wasserkraftwerk_Cleuson",
+    "type": "Stromnetz_verbunden"
+  },
+  {
+    "source": "Pumpspeicherwerk_Nant_de_Drance",
+    "target": "Rhone",
+    "type": "Zufluss"
+  },
+  {
+    "source": "Solarpark_Lac_des_Toules",
+    "target": "Pumpspeicherwerk_Nant_de_Drance",
+    "type": "Saisonale_Ergänzung"
+  },
+  {
+    "source": "Solarpark_Lac_des_Toules",
+    "target": "Autobahn_N9",
+    "type": "Zufahrt_über"
+  },
+  {
+    "source": "Bodensee",
+    "target": "Rhein",
+    "type": "Abfluss_in"
+  },
+  {
+    "source": "Bodensee",
+    "target": "Autobahn_N7",
+    "type": "Verläuft_entlang"
+  },
+  {
+    "source": "Reuss",
+    "target": "Vierwaldstättersee",
+    "type": "Zufluss"
+  },
+  {
+    "source": "Reuss",
+    "target": "Wasserkraftwerk_Rüchlig",
+    "type": "Versorgt"
+  },
+  {
+    "source": "Forschungsreaktor_SAPHIR",
+    "target": "Versuchsreaktor_DIORIT",
+    "type": "Forschungstechnische_Nachfolge"
+  },
+  {
+    "source": "Forschungsreaktor_SAPHIR",
+    "target": "Kernkraftwerk_Beznau_II",
+    "type": "Wissenschaftlicher_Bezug"
+  },
+  {
+    "source": "Erdgasspeicher_Rümlang",
+    "target": "Raffinerie_Cressier",
+    "type": "Beliefert_teilweise"
+  },
+  {
+    "source": "Erdgasspeicher_Rümlang",
+    "target": "Autobahn_N1",
+    "type": "Anbindung"
+  },
+  {
+    "source": "Autobahn_N7",
+    "target": "Autobahn_N1",
+    "type": "Verbindet_sich_mit"
+  },
+  {
+    "source": "Autobahn_N7",
+    "target": "Autobahn_N13",
+    "type": "Netzergänzung"
+  },
+  {
+    "source": "Autobahn_N20",
+    "target": "Autobahn_N5",
+    "type": "Verzweigt_sich_bei"
+  },
+  {
+    "source": "Autobahn_N20",
+    "target": "Rhone",
+    "type": "Brücke_über"
+  },
+  {
+    "source": "Autobahn_N20",
+    "target": "Autobahn_N5",
+    "type": "Verbindet_sich_mit"
+  },
+  {
+    "source": "Max_Dudler",
+    "target": "Kernkraftwerk_Gösgen",
+    "type": "Entworfen"
+  },
+  {
+    "source": "Max_Dudler",
+    "target": "Wasserkraftwerk_Cleuson",
+    "type": "Entworfen"
+  },
+  {
+    "source": "Mario_Botta",
+    "target": "Kernkraftwerk_Mühleberg",
+    "type": "Entworfen"
+  },
+  {
+    "source": "Mario_Botta",
+    "target": "Autobahn_N1",
+    "type": "Gestalterisch_beeinflusst"
+  },
+  {
+    "source": "Herzog_und_de_Meuron",
+    "target": "Biomassekraftwerk_Zürich",
+    "type": "Entworfen"
+  },
+  {
+    "source": "Herzog_und_de_Meuron",
+    "target": "Solarpark_Mont-Soleil",
+    "type": "Entworfen"
+  },
+  {
+    "source": "Peter_Zumthor",
+    "target": "Pumpspeicherwerk_Nant_de_Drance",
+    "type": "Entworfen"
+  }
   ]
 }

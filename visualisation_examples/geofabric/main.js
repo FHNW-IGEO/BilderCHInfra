@@ -262,30 +262,29 @@ function drawNetwork() {
 
     link.append("title").text(d => d.type);
 
-    // Draw the nodes (circles) representing entities
-    node = svg.append("g")
-        .attr("class", "node")
-        .attr("stroke", "#fff")
-        .attr("stroke-width", 1.5)
-        .selectAll("circle")
-        .data(nodes)
-        .join("circle")
-        .attr("r", 5)
-        .attr("fill", d => {
-            // Color nodes based on their group
-            if (d.group === "thema") {
-                const correspondingNode = nodes.find(node => node.group === d.name && node.group !== "thema");
-                if (correspondingNode) {
-                    return topicColorMap(correspondingNode.group);
-                }
-            } else {
-                return topicColorMap(d.group);
+// Draw the nodes (circles) representing entities
+const node = svg.append("g")
+    .attr("class", "node")
+    .attr("stroke", "#fff")
+    .attr("stroke-width", 1.5)
+    .selectAll("circle")
+    .data(nodes)
+    .join("circle")
+    .attr("r", 5)
+    .attr("fill", d => {
+        // Color nodes based on their group
+        if (d.group === "thema") {
+            const correspondingNode = nodes.find(node => node.group === d.name && node.group !== "thema");
+            if (correspondingNode) {
+                return topicColorMap(correspondingNode.group);
             }
-        })
-        .attr("cx", d => d.x)
-        .attr("cy", d => d.y);
+        } else {
+            return topicColorMap(d.group);
+        }
+    })
+    .attr("cx", d => d.x)
+    .attr("cy", d => d.y);
 
-    node.append("title").text(d => d.id);
-    nodes.forEach((d, i) => d.x_index = i);
+
 }
 
