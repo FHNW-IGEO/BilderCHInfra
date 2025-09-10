@@ -75,6 +75,24 @@ svg {
     opacity: 1;
 }
 
+.arc-group.highlight .arc-path,
+.connector.highlight,
+.nocoordconnector.highlight {
+  stroke: #070157;
+  stroke-width: 2.5;
+   cursor: pointer;
+}
+
+.arc-path, .nocoordconnector, .connector {
+  pointer-events: stroke; /* only stroke is clickable */
+}
+.arc-path.invisible-hitbox , .nocoordconnector.invisible-hitbox, .connector.invisible-hitbox {
+  stroke-width: 10;       /* thicker hitbox */
+  stroke: transparent;    /* not visible */
+}
+
+
+
 </style>
   </head>
   <body>
@@ -83,9 +101,8 @@ svg {
       <div id="chart"></div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
-     <script src="https://d3js.org/d3.v7.min.js"></script>
-     <script src="network_overlay.js"></script>
     <script src="main.js"></script>
+         <script src="network_overlay.js"></script>
 
   </body>
 </html>

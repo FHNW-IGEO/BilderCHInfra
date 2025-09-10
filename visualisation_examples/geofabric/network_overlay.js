@@ -2,8 +2,8 @@
   const DATA_URL = 'kraftwerke.json';
   const OVERLAY_ID = 'network-overlay-svg';
   const MAP_CENTER = [8.3, 46.8];
-  const MAP_SCALE = 6000; // slightly smaller scale to shrink map
-  const RADIUS_RATIO = 0.18; // smaller base ratio so everything fits
+  const MAP_SCALE = 6000;
+  const RADIUS_RATIO = 0.18;
   const DOT_OUT_OFFSET = 6;
   const LANE_SPACING = 6;
   const LINK_COLOR = '#cdcecfff';
@@ -11,41 +11,41 @@
 
   function parseCoords(coordStr) {
     if (typeof coordStr === 'string' && coordStr.includes(',')) {
-      const parts = coordStr.split(',').map(s => parseFloat(s.trim()));
-      if (parts.length === 2 && !parts.some(isNaN)) return [parts[1], parts[0]];
+      const [lat, lon] = coordStr.split(',').map(s => parseFloat(s.trim()));
+      if (!isNaN(lat) && !isNaN(lon)) return [lon, lat];
     }
     return null;
   }
 
   function createOverlaySVG(container) {
-    const prev = container.querySelector('#' + OVERLAY_ID);
+    const prev = container.querySelector(`#${OVERLAY_ID}`);
     if (prev) prev.remove();
-    const rect = container.getBoundingClientRect();
-    if (rect.width === 0 || rect.height === 0) return null;
+    const {
+      width,
+      height
+    } = container.getBoundingClientRect();
+    if (!width || !height) return null;
     const svg = d3.select(container)
       .append('svg')
       .attr('id', OVERLAY_ID)
-      .attr('width', rect.width)
-      .attr('height', rect.height)
+      .attr('width', width)
+      .attr('height', height)
       .style('position', 'absolute')
       .style('inset', 0)
       .style('pointer-events', 'none');
     return {
       svg,
-      width: rect.width,
-      height: rect.height
+      width,
+      height
     };
   }
 
   function arcPath(cx, cy, r, startAngle, endAngle) {
-    // normalize both angles into [0, 2π)
     let a0 = (startAngle + 2 * Math.PI) % (2 * Math.PI);
     let a1 = (endAngle + 2 * Math.PI) % (2 * Math.PI);
-    // compute angular difference
     let delta = a1 - a0;
     if (delta > Math.PI) delta -= 2 * Math.PI;
     if (delta < -Math.PI) delta += 2 * Math.PI;
-    // new end angle is start + shortest delta
     a1 = a0 + delta;
     const x0 = cx + r * Math.cos(a0);
     const y0 = cy + r * Math.sin(a0);
@@ -63,8 +63,8 @@
       width,
       height
     } = overlay;
-    const cx = width / 2,
-      cy = height / 2;
+    const cx = width / 2;
+    const cy = height / 2;
     const baseRadius = Math.min(width, height) * RADIUS_RATIO;
     const projection = d3.geoMercator()
       .center(MAP_CENTER)
@@ -79,19 +79,16 @@
       return;
     }
     const nodesRaw = sampleData.nodes || [];
-    // Separate nodes with and without coordinates
     const innerNodes = nodesRaw
       .filter(n => n.group !== 'thema')
       .map(n => {
-        const c = parseCoords(n.koordinaten);
-        const proj = c ? projection(c) : null;
+        const proj = parseCoords(n.koordinaten) ? projection(parseCoords(n.koordinaten)) : null;
         return {
           ...n,
           proj
         };
       })
       .filter(n => n.proj);
-    // Nodes with no coordinates should be placed on additional circular lanes
     const outerNodes = innerNodes.map((n, i) => {
       const dx = n.proj[0] - cx;
       const dy = n.proj[1] - cy;
@@ -107,23 +104,18 @@
         y: cy + r * Math.sin(angle)
       };
     });
-    // Assign further circular lanes to nodes without coordinates
     const outerNoCoordsNodes = nodesRaw
       .filter(n => n.koordinaten === null)
       .map((n, i) => {
         const r = baseRadius + DOT_OUT_OFFSET + (innerNodes.length + i) * LANE_SPACING;
-        const angle = (i * Math.PI * 2) / nodesRaw.length; // Distribute these nodes evenly
+        const angle = (i * 2 * Math.PI) / nodesRaw.length;
         return {
-          id: n.id,
-          name: n.name,
-          group: n.group,
+          ...n,
           angle,
-          inner: n,
           x: cx + r * Math.cos(angle),
           y: cy + r * Math.sin(angle)
         };
       });
-    // Combine nodes with and without coordinates
     const allOuterNodes = outerNodes.concat(outerNoCoordsNodes);
     // ===== ORIENTATION CIRCLE =====
     svg.append('circle')
@@ -133,11 +125,10 @@
       .attr('fill', 'none')
       .attr('stroke', RING_COLOR)
       .attr('stroke-width', 1)
-      .attr('stroke-opacity', 0.1)
-      .style('pointer-events', 'none');
-
+      .attr('stroke-opacity', 0.1);
     // ===== CONNECTORS =====
     const gLinks = svg.append('g').attr('class', 'ring-links');
+    // Visible lines
     const connectors = gLinks.selectAll('line')
       .data(allOuterNodes)
       .enter()
@@ -145,12 +136,27 @@
       .attr('class', d => `connector connector-${d.id}`)
       .attr('x1', d => d.x)
       .attr('y1', d => d.y)
-      .attr('x2', d => d.inner.proj ? d.inner.proj[0] : d.x) // fallback for no coordinates
-      .attr('y2', d => d.inner.proj ? d.inner.proj[1] : d.y) // fallback for no coordinates
+      .attr('x2', d => d.inner?.proj ? d.inner.proj[0] : d.x)
+      .attr('y2', d => d.inner?.proj ? d.inner.proj[1] : d.y)
       .attr('stroke', LINK_COLOR)
-      .attr('stroke-width', 1)
-      .attr('stroke-opacity', 0.7)
-      .style('pointer-events', 'auto');
+      .attr('stroke-width', 2)
+      .attr('stroke-opacity', 0.8)
+      .style('pointer-events', 'none');
+    // Hitboxes
+    gLinks.selectAll('.connector-hitbox')
+      .data(allOuterNodes)
+      .enter()
+      .append('line')
+      .attr('class', d => `connector-hitbox connector-hitbox-${d.id}`)
+      .attr('x1', d => d.x)
+      .attr('y1', d => d.y)
+      .attr('x2', d => d.inner?.proj ? d.inner.proj[0] : d.x)
+      .attr('y2', d => d.inner?.proj ? d.inner.proj[1] : d.y)
+      .attr('stroke', 'transparent')
+      .attr('stroke-width', 10)
+      .style('pointer-events', 'stroke')
+      .on('mouseenter', (event, d) => highlightNode(svg, d.id, true))
+      .on('mouseleave', (event, d) => highlightNode(svg, d.id, false));
     connectors.lower();
     // ===== OUTER RELATIONSHIPS (INNER LANE ARCS) =====
     const outerLinks = (sampleData.links || [])
@@ -158,259 +164,243 @@
         const source = allOuterNodes.find(n => n.id === l.source);
         const target = allOuterNodes.find(n => n.id === l.target);
         if (!source || !target) return null;
-        const dx = target.x - source.x;
-        const dy = target.y - source.y;
-        const angle = Math.atan2(dy, dx);
-        const rSource = Math.sqrt(Math.pow(source.x - cx, 2) + Math.pow(source.y - cy, 2));
-        const rTarget = Math.sqrt(Math.pow(target.x - cx, 2) + Math.pow(target.y - cy, 2));
         return {
           source,
           target,
-          rSource,
-          rTarget,
-          angle
+          rSource: Math.hypot(source.x - cx, source.y - cy),
+          rTarget: Math.hypot(target.x - cx, target.y - cy),
+          angle: Math.atan2(target.y - cy, target.x - cx)
         };
-      })
-      .filter(d => d);
+      }).filter(d => d);
     const gOuterLinks = svg.append('g').attr('class', 'outer-links');
     const arcGroups = gOuterLinks.selectAll('g.arc-group')
       .data(outerLinks)
       .enter()
       .append('g')
       .attr('class', d => `arc-group arc-${d.source.id} arc-${d.target.id}`);
-    // Arcs
+    const drawArc = d => {
+      const laneRadius = Math.min(d.rSource, d.rTarget) - LANE_SPACING;
+      const startAngle = d.source.angle;
+      const endAngle = Math.atan2(d.target.y - cy, d.target.x - cx);
+      return arcPath(cx, cy, laneRadius, startAngle, endAngle);
+    };
     arcGroups.append('path')
       .attr('class', 'arc-path')
-      .attr('d', d => {
-        const startAngle = d.source.angle;
-        const endAngle = Math.atan2(d.target.y - cy, d.target.x - cx);
-        const laneRadius = Math.min(d.rSource, d.rTarget) - LANE_SPACING;
-        return arcPath(cx, cy, laneRadius, startAngle, endAngle);
-      })
-      .attr('stroke', '#888')
-      .attr('stroke-width', 1)
+      .attr('d', drawArc)
+      .attr('stroke', '#646464ff')
+      .attr('stroke-width', 0.7)
+      .attr('stroke-opacity', 0.9)
       .attr('fill', 'none')
       .style('pointer-events', 'auto');
-    // ===== CONNECTION LINES FOR NODES WITHOUT COORDINATES =====
+    arcGroups.append('path')
+      .attr('class', 'arc-hitbox')
+      .attr('d', drawArc)
+      .attr('stroke', 'transparent')
+      .attr('stroke-width', 10)
+      .attr('fill', 'none')
+      .style('pointer-events', 'stroke');
+    // ===== NO-COORD LINKS =====
     const gNoCoordLinks = svg.append('g').attr('class', 'no-coord-links');
-    const noCoordLinks = gNoCoordLinks.selectAll('line')
+    const drawNoCoord = d => {
+      const angle = Math.atan2(d.y - cy, d.x - cx);
+      const r = baseRadius + DOT_OUT_OFFSET - LANE_SPACING / 2;
+      return {
+        x: cx + r * Math.cos(angle),
+        y: cy + r * Math.sin(angle)
+      };
+    };
+    gNoCoordLinks.selectAll('line')
       .data(outerNoCoordsNodes)
       .enter()
       .append('line')
       .attr('class', d => `nocoordconnector nocoordconnector-${d.id}`)
       .attr('x1', d => d.x)
       .attr('y1', d => d.y)
-      .attr('x2', d => {
-        const angle = Math.atan2(d.y - cy, d.x - cx);
-        const r = baseRadius + DOT_OUT_OFFSET - LANE_SPACING / 2;
-        return cx + r * Math.cos(angle);
-      })
-      .attr('y2', d => {
-        const angle = Math.atan2(d.y - cy, d.x - cx);
-        const r = baseRadius + DOT_OUT_OFFSET - LANE_SPACING / 2;
-        return cy + r * Math.sin(angle);
-      })
+      .attr('x2', d => drawNoCoord(d).x)
+      .attr('y2', d => drawNoCoord(d).y)
+      .attr('stroke', LINK_COLOR)
+      .attr('stroke-width', 2)
+      .attr('stroke-opacity', 0.8)
+      .attr('stroke-dasharray', '4 2')
+      .style('pointer-events', 'none');
+    gNoCoordLinks.selectAll('.nocoordconnector-hitbox')
+      .data(outerNoCoordsNodes)
+      .enter()
+      .append('line')
+      .attr('class', d => `nocoordconnector-hitbox nocoordconnector-hitbox-${d.id}`)
+      .attr('x1', d => d.x)
+      .attr('y1', d => d.y)
+      .attr('x2', d => drawNoCoord(d).x)
+      .attr('y2', d => drawNoCoord(d).y)
+      .attr('stroke', 'transparent')
+      .attr('stroke-width', 10)
+      .style('pointer-events', 'stroke')
+      .on('mouseenter', (event, d) => highlightNode(svg, d.id, true))
+      .on('mouseleave', (event, d) => highlightNode(svg, d.id, false));
+    // ===== OUTER DOTS & LABELS =====
+    const gDots = svg.append('g').attr('class', 'outer-dots');
+    gDots.selectAll('circle')
+      .data(allOuterNodes)
+      .enter()
+      .append('circle')
+      .attr('cx', d => d.x)
+      .attr('cy', d => d.y)
+      .attr('r', 5)
+      .attr('fill', d => topicColorMap(d.group))
       .attr('stroke', '#888')
+      .attr('stroke-opacity', 0.7)
       .attr('stroke-width', 1)
-      .attr('stroke-dasharray', '4 2') // Dashed line for nodes without coordinates
-      .attr('stroke-opacity', 0.5)
-      .style('pointer-events', 'auto'); // Make the lines interactable for highlighting
-    // ===== OUTER DOTS =====
-const gDots = svg.append('g').attr('class', 'outer-dots');
-
-gDots.selectAll('circle')
-  .data(allOuterNodes)
-  .enter()
-  .append('circle')
-  .attr('cx', d => d.x)
-  .attr('cy', d => d.y)
-  .attr('r', 5)
-  .attr("fill", d => topicColorMap(d.group)) // Assuming topicColorMap is defined
-  .attr('stroke', '#888')
-  .attr('stroke-opacity', 0.7)
-  .attr('stroke-width', 1)
-  .style('pointer-events', 'auto');
-
-// Add labels next to the circles
-gDots.selectAll('text')
-  .data(allOuterNodes)
-  .enter()
-  .append('text')
-  .attr('x', d => d.x + 10) // Adjust the offset as needed
-  .attr('y', d => d.y)
-  .attr('dy', -8)
-  .attr('fill', '#000')
-  .attr('font-size', '12px')
-  .attr('text-anchor', 'middle') // Align text to the left of the circle
-  .text(d => d.name)
-  .style('opacity', 0) // Initially hidden
-
-    // Rectangles at start and end of the arc
-    arcGroups.append('rect')
-      .attr('class', 'arc-end')
-      .attr('width', 6)
-      .attr('height', 6)
-      .attr("fill", d => topicColorMap(d.source.group)) // Target color
-      .attr('x', d => {
-        const laneRadius = Math.min(d.rSource, d.rTarget) - LANE_SPACING;
-        const endAngle = Math.atan2(d.target.y - cy, d.target.x - cx);
-        return cx + laneRadius * Math.cos(endAngle) - 3;
-      })
-      .attr('y', d => {
-        const laneRadius = Math.min(d.rSource, d.rTarget) - LANE_SPACING;
-        const endAngle = Math.atan2(d.target.y - cy, d.target.x - cx);
-        return cy + laneRadius * Math.sin(endAngle) - 3;
-      })
-      .attr('transform', d => {
-        const endAngle = Math.atan2(d.target.y - cy, d.target.x - cx);
-        const angleDeg = endAngle * 180 / Math.PI;
-        const x = cx + (Math.min(d.rSource, d.rTarget) - LANE_SPACING) * Math.cos(endAngle);
-        const y = cy + (Math.min(d.rSource, d.rTarget) - LANE_SPACING) * Math.sin(endAngle);
-        return `rotate(${angleDeg}, ${x}, ${y})`;
-      });
-    arcGroups.append('rect')
-      .attr('class', 'arc-end')
-      .attr('width', 6)
-      .attr('height', 6)
-      .attr("fill", d => topicColorMap(d.target.group)) // Source color
-      .attr('x', d => {
-        const laneRadius = Math.min(d.rSource, d.rTarget) - LANE_SPACING;
-        const startAngle = d.source.angle;
-        return cx + laneRadius * Math.cos(startAngle) - 3;
-      })
-      .attr('y', d => {
-        const laneRadius = Math.min(d.rSource, d.rTarget) - LANE_SPACING;
-        const startAngle = d.source.angle;
-        return cy + laneRadius * Math.sin(startAngle) - 3;
-      })
-      .attr('transform', d => {
-        const startAngle = d.source.angle;
-        const angleDeg = startAngle * 180 / Math.PI;
-        const x = cx + (Math.min(d.rSource, d.rTarget) - LANE_SPACING) * Math.cos(startAngle);
-        const y = cy + (Math.min(d.rSource, d.rTarget) - LANE_SPACING) * Math.sin(startAngle);
-        return `rotate(${angleDeg}, ${x}, ${y})`;
-      });
-
-// ===== HOVER INTERACTIONS =====
-    // Hover helper: highlight related arcs and connectors
-
+      .style('pointer-events', 'auto');
+    gDots.selectAll('text')
+      .data(allOuterNodes)
+      .enter()
+      .append('text')
+      .attr('x', d => d.x + 10)
+      .attr('y', d => d.y)
+      .attr('dy', -8)
+      .attr('fill', '#000')
+      .attr('font-size', '12px')
+      .attr('text-anchor', 'middle')
+      .text(d => d.name)
+      .style('opacity', 0);
+    // ===== ARC END RECTANGLES =====
+    const addArcRect = (group, pos, angle) => {
+      const laneRadius = Math.min(pos.rSource, pos.rTarget) - LANE_SPACING;
+      const x = cx + laneRadius * Math.cos(angle) - 3;
+      const y = cy + laneRadius * Math.sin(angle) - 3;
+      group.append('rect')
+        .attr('class', 'arc-end')
+        .attr('width', 6)
+        .attr('height', 6)
+        .attr('fill', topicColorMap(pos[pos === pos.source ? 'source' : 'target'].group))
+        .attr('x', x)
+        .attr('y', y)
+        .attr('transform', `rotate(${angle * 180 / Math.PI}, ${x + 3}, ${y + 3})`);
+    };
+    arcGroups.each(function(d) {
+      addArcRect(d3.select(this), d, d.source.angle);
+      addArcRect(d3.select(this), d, Math.atan2(d.target.y - cy, d.target.x - cx));
+    });
+    // ===== HOVER LOGIC =====
     const hoveredNodes = new Set();
-function highlightNode(svg, nodeId, on) {
-  if (on) {
-    hoveredNodes.add(nodeId);
-  } else {
-    hoveredNodes.delete(nodeId);
-  }
 
-  const stillActive = hoveredNodes.has(nodeId);
-  svg.selectAll(`.connector-${nodeId}`).classed('highlight', stillActive);
-  svg.selectAll(`.nocoordconnector-${nodeId}`).classed('highlight', stillActive);
-  svg.selectAll(`.arc-group.arc-${nodeId}`).classed('highlight', stillActive);
-   svg.selectAll(`text`).filter(d => d.id === nodeId)
-      .style('opacity', stillActive ? 1 : 0); // Show label on highlight
-  
-}
+    function highlightNode(svg, nodeId, on) {
+      if (on) hoveredNodes.add(nodeId);
+      else hoveredNodes.delete(nodeId);
+      const active = hoveredNodes.has(nodeId);
+      svg.selectAll(`.connector-${nodeId}, .nocoordconnector-${nodeId}, .arc-group.arc-${nodeId}`)
+        .classed('highlight', active);
+    svg.selectAll('text:not(.legend-text)')
+  .filter(d => d && d.id === nodeId)
+  .style('opacity', active ? 1 : 0)
+    .attr('font-family', 'sans-serif');
 
-
+    }
     // Arc hover
-arcGroups
-  .on('mouseenter', function (event, d) {
-    d3.select(this).classed('highlight', true);
-    highlightNode(svg, d.source.id, true);
-    highlightNode(svg, d.target.id, true);
-
-    // Highlight all no-coord connectors
-    //svg.selectAll('.nocoordconnector-Max.Dudler').classed('highlight', true);
-  })
-  .on('mouseleave', function (event, d) {
-    d3.select(this).classed('highlight', false);
-    highlightNode(svg, d.source.id, false);
-    highlightNode(svg, d.target.id, false);
-
-    // Unhighlight all no-coord connectors
-    //svg.selectAll('.nocoordconnector').classed('highlight', false);
-  });
-
-
+    arcGroups.on('mouseenter', (event, d) => {
+      highlightNode(svg, d.source.id, true);
+      highlightNode(svg, d.target.id, true);
+    }).on('mouseleave', (event, d) => {
+      highlightNode(svg, d.source.id, false);
+      highlightNode(svg, d.target.id, false);
+    });
     // Connector hover
-    connectors
-      .on('mouseenter', function (event, d) {
-        d3.select(this).classed('highlight', true);
-        highlightNode(svg, d.id, true);
-
-        // Highlight arcs related to this node
-        outerLinks.forEach(link => {
-          if (link.source.id === d.id || link.target.id === d.id) {
-            highlightNode(svg, link.source.id, true);
-            highlightNode(svg, link.target.id, true);
-          }
+    [...connectors.nodes(), ...gNoCoordLinks.selectAll('line').nodes()].forEach(line => {
+      d3.select(line)
+        .on('mouseenter', (event, d) => {
+          highlightNode(svg, d.id, true);
+          outerLinks.forEach(link => {
+            if (link.source.id === d.id || link.target.id === d.id) {
+              highlightNode(svg, link.source.id, true);
+              highlightNode(svg, link.target.id, true);
+            }
+          });
+        })
+        .on('mouseleave', (event, d) => {
+          highlightNode(svg, d.id, false);
+          outerLinks.forEach(link => {
+            if (link.source.id === d.id || link.target.id === d.id) {
+              highlightNode(svg, link.source.id, false);
+              highlightNode(svg, link.target.id, false);
+            }
+          });
         });
-     
-      })
-.on('mouseleave', function (event, d) {
-  d3.select(this).classed('highlight', false);
-  highlightNode(svg, d.id, false);
+    });
 
-  outerLinks.forEach(link => {
-    if (link.source.id === d.id || link.target.id === d.id) {
-      highlightNode(svg, link.source.id, false);
-      highlightNode(svg, link.target.id, false);
-    }
-  });
+// ===== LEGEND BELOW 'THEMA-NODE' =====
+const numThemaNodes = nodes.filter(d => d.group === "thema").length;
+const legendStartY = 55 + numThemaNodes * 20 + 20; // 50=startY, 20=offset, +20 padding
 
-});
-    // NoCoordConnector hover
-    noCoordLinks
-      .on('mouseenter', function (event, d) {
-        d3.select(this).classed('highlight', true);
-        highlightNode(svg, d.id, true);
+const legendGroup = svg.append('g')
+  .attr('class', 'network-legend')
+  .attr('transform', `translate(100, ${legendStartY})`);
 
-        // Highlight arcs related to this node
-        outerLinks.forEach(link => {
-          if (link.source.id === d.id || link.target.id === d.id) {
-            highlightNode(svg, link.source.id, true);
-            highlightNode(svg, link.target.id, true);
-              
-          }
-        });
-      })
-.on('mouseleave', function (event, d) {
-  d3.select(this).classed('highlight', false);
-  highlightNode(svg, d.id, false);
+const legendItems = [
+  { type: 'arc', label: 'Beziehungen' },
+  { type: 'dashed-line', label: 'Immaterielles Netzwerk' },
+  { type: 'solid-line', label: 'Materielles Netzwerk' },
+  { type: 'rect', label: 'Beziehungspunkt' }
+];
 
-  outerLinks.forEach(link => {
-    if (link.source.id === d.id || link.target.id === d.id) {
-      highlightNode(svg, link.source.id, false);
-      highlightNode(svg, link.target.id, false);
-    }
-  });
-});
+let yOffset = 0;
 
-    // ===== CSS HIGHLIGHT STYLE =====
-    svg.append('style').text(`
-      .arc-group.highlight .arc-path {
-        stroke: #d33 !important;
-        stroke-width: 2.5 !important;
-      }
-      .connector.highlight {
-        stroke: #d33 !important;
-        stroke-width: 3 !important;
-      }
-      .nocoordconnector.highlight {
-        stroke: #d33 !important;
-        stroke-width: 3 !important;
-      }
-    `);
+legendItems.forEach(item => {
+  const x = -5;
+  const y = yOffset;
+
+  if (item.type === 'arc') {
+    legendGroup.append('path')
+      .attr('d', arcPath(x + 5, y, 5, Math.PI, 0))
+      .attr('stroke', '#646464ff')
+      .attr('stroke-width', 1)
+      .attr('fill', 'none');
+  } else if (item.type === 'dashed-line') {
+    legendGroup.append('line')
+      .attr('x1', x)
+      .attr('y1', y)
+      .attr('x2', x + 10)
+      .attr('y2', y)
+      .attr('stroke', '#646464ff')
+      .attr('stroke-width', 2)
+      .attr('stroke-dasharray', '4 2');
+  } else if (item.type === 'solid-line') {
+    legendGroup.append('line')
+      .attr('x1', x)
+      .attr('y1', y)
+      .attr('x2', x + 10)
+      .attr('y2', y)
+      .attr('stroke', '#646464ff')
+      .attr('stroke-width', 2);
+  } else if (item.type === 'rect') {
+    legendGroup.append('rect')
+      .attr('x', x + 2 )
+      .attr('y', y - 5)
+      .attr('width', 5)
+      .attr('height',5)
+      .attr('fill', '#646464ff');
   }
 
+legendGroup.append('text')
+  .attr('class', 'legend-text')
+  .attr('x', x + 20)
+  .attr('y', y + 4)
+  .text(item.label)
+  .attr('font-size', 12)
+  .attr('fill', '#333')
+  .attr('font-family', 'sans-serif');
+
+
+  yOffset += 25;
+});
+
+  }
+
+  
   function init() {
     const container = document.getElementById('chart') || document.body;
     if (!container) return;
-    // Draw initially
     draw(container);
-    // Keep redrawing when container resizes
-    const resizeObs = new ResizeObserver(() => draw(container));
-    resizeObs.observe(container);
+    new ResizeObserver(() => draw(container)).observe(container);
   }
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
