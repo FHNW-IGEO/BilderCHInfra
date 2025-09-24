@@ -7,14 +7,14 @@
       "thema": "Nationalstrassen"
     },
     {
-      "id": "Netz",
+      "id": "Hochspannungsnetz",
       "group": "thema",
-      "name": "Netz",
-      "thema": "Netz"
+      "name": "Hochspannungsnetz",
+      "thema": "Hochspannungsnetz"
     },
     {
       "id": "Chippis",
-      "group": "Netz",
+      "group": "Hochspannungsnetz",
       "name": "Chippis",
       "koordinaten": "46.3144, 7.5948",
       "region": "Wallis",
@@ -22,7 +22,7 @@
     },
     {
       "id": "Moerel",
-      "group": "Netz",
+      "group": "Hochspannungsnetz",
       "name": "Mörel",
       "koordinaten": "46.313, 8.2149",
       "region": "Wallis",
@@ -30,7 +30,7 @@
     },
     {
       "id": "Bickigen",
-      "group": "Netz",
+      "group": "Hochspannungsnetz",
       "name": "Bickigen",
       "koordinaten": "47.0021, 7.7069",
       "region": "Bern",
@@ -38,7 +38,7 @@
     },
     {
       "id": "Mettlen",
-      "group": "Netz",
+      "group": "Hochspannungsnetz",
       "name": "Mettlen",
       "koordinaten": "47.4330, 8.9490",
       "region": "Thurgau",
@@ -46,7 +46,7 @@
     },
     {
       "id": "Magadino",
-      "group": "Netz",
+      "group": "Hochspannungsnetz",
       "name": "Magadino",
       "koordinaten": "46.1509, 8.7819",
       "region": "Tessin",
@@ -54,7 +54,7 @@
     },
     {
       "id": "Lavorgo",
-      "group": "Netz",
+      "group": "Hochspannungsnetz",
       "name": "Lavorgo",
       "koordinaten": "46.4755, 8.8450",
       "region": "Tessin",
@@ -62,7 +62,7 @@
     },
     {
       "id": "Sils",
-      "group": "Netz",
+      "group": "Hochspannungsnetz",
       "name": "Sils",
       "koordinaten": "46.4281, 9.7564",
       "region": "Graubünden",
@@ -70,7 +70,7 @@
     },
     {
       "id": "Bonaduz",
-      "group": "Netz",
+      "group": "Hochspannungsnetz",
       "name": "Bonaduz",
       "koordinaten": "46.8120, 9.3980",
       "region": "Graubünden",
@@ -78,7 +78,7 @@
     },
     {
       "id": "Romanel",
-      "group": "Netz",
+      "group": "Hochspannungsnetz",
       "name": "Romanel",
       "koordinaten": "46.5540, 6.6096",
       "region": "Waadt",
@@ -86,7 +86,7 @@
     },
     {
       "id": "Mühleberg",
-      "group": "Netz",
+      "group": "Hochspannungsnetz",
       "name": "Mühleberg",
       "koordinaten": "46.9551, 7.2642",
       "region": "Bern",
@@ -94,7 +94,7 @@
     },
     {
       "id": "Beznau",
-      "group": "Netz",
+      "group": "Hochspannungsnetz",
       "name": "Beznau",
       "koordinaten": "47.5525, 8.2290",
       "region": "Aargau",
@@ -102,7 +102,7 @@
     },
     {
       "id": "Laufenburg",
-      "group": "Netz",
+      "group": "Hochspannungsnetz",
       "name": "Laufenburg",
       "koordinaten": "47.5663, 8.0655",
       "region": "Aargau",
@@ -110,7 +110,7 @@
     },
     {
       "id": "Flumenthal",
-      "group": "Netz",
+      "group": "Hochspannungsnetz",
       "name": "Flumenthal",
       "koordinaten": "47.2385, 7.5825",
       "region": "Solothurn",
@@ -118,7 +118,7 @@
     },
     {
       "id": "Soazza",
-      "group": "Netz",
+      "group": "Hochspannungsnetz",
       "name": "Soazza",
       "koordinaten": "46.3667, 9.2167",
       "region": "Graubünden",
@@ -126,7 +126,7 @@
     },
     {
       "id": "Airolo",
-      "group": "Netz",
+      "group": "Hochspannungsnetz",
       "name": "Airolo",
       "koordinaten": "46.5303, 8.6075",
       "region": "Tessin",
@@ -134,7 +134,7 @@
     },
     {
       "id": "Samaden",
-      "group": "Netz",
+      "group": "Hochspannungsnetz",
       "name": "Samedan",
       "koordinaten": "46.5341, 9.8710",
       "region": "Graubünden",
