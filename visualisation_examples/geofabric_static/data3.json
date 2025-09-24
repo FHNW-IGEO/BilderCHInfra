@@ -1,0 +1,385 @@
+{
+  "nodes": [
+        {
+      "id": "Nationalstrassen",
+      "group": "thema",
+      "name": "Nationalstrassen",
+      "thema": "Nationalstrassen"
+    },
+    {
+      "id": "Netz",
+      "group": "thema",
+      "name": "Netz",
+      "thema": "Netz"
+    },
+    {
+      "id": "Chippis",
+      "group": "Netz",
+      "name": "Chippis",
+      "koordinaten": "46.3144, 7.5948",
+      "region": "Wallis",
+      "geometry":  { "type": "LineString", "coordinates":  [[7.5948, 46.3144], [8.2149, 46.3136]]}
+    },
+    {
+      "id": "Moerel",
+      "group": "Netz",
+      "name": "Mörel",
+      "koordinaten": "46.313, 8.2149",
+      "region": "Wallis",
+      "geometry": null
+    },
+    {
+      "id": "Bickigen",
+      "group": "Netz",
+      "name": "Bickigen",
+      "koordinaten": "47.0021, 7.7069",
+      "region": "Bern",
+      "geometry": { "type": "LineString", "coordinates":  [[7.7069, 47.0021], [8.9490, 47.4330]]}
+    },
+    {
+      "id": "Mettlen",
+      "group": "Netz",
+      "name": "Mettlen",
+      "koordinaten": "47.4330, 8.9490",
+      "region": "Thurgau",
+      "geometry":  { "type": "LineString", "coordinates":  [[8.9490, 47.4330], [8.7819, 46.1509]]}
+    },
+    {
+      "id": "Magadino",
+      "group": "Netz",
+      "name": "Magadino",
+      "koordinaten": "46.1509, 8.7819",
+      "region": "Tessin",
+      "geometry":  { "type": "LineString", "coordinates":  [[8.7819,46.1509], [8.8450, 46.4755]]}
+    },
+    {
+      "id": "Lavorgo",
+      "group": "Netz",
+      "name": "Lavorgo",
+      "koordinaten": "46.4755, 8.8450",
+      "region": "Tessin",
+      "geometry":  { "type": "LineString", "coordinates":  [[8.8450, 46.4755],[8.6075, 46.5303]]}
+    },
+    {
+      "id": "Sils",
+      "group": "Netz",
+      "name": "Sils",
+      "koordinaten": "46.4281, 9.7564",
+      "region": "Graubünden",
+      "geometry":  { "type": "LineString", "coordinates":  [[9.7564, 46.4281], [9.8710, 46.5341]]}
+    },
+    {
+      "id": "Bonaduz",
+      "group": "Netz",
+      "name": "Bonaduz",
+      "koordinaten": "46.8120, 9.3980",
+      "region": "Graubünden",
+      "geometry":  { "type": "LineString", "coordinates":  [[9.3980, 46.8120], [9.7564, 46.4281]]}
+    },
+    {
+      "id": "Romanel",
+      "group": "Netz",
+      "name": "Romanel",
+      "koordinaten": "46.5540, 6.6096",
+      "region": "Waadt",
+      "geometry":  { "type": "LineString", "coordinates":  [[6.6096, 46.5540], [7.2642, 46.9551]]}
+    },
+    {
+      "id": "Mühleberg",
+      "group": "Netz",
+      "name": "Mühleberg",
+      "koordinaten": "46.9551, 7.2642",
+      "region": "Bern",
+      "geometry":  { "type": "LineString", "coordinates":  [[7.2642, 46.9551], [7.7069, 47.0021]]}
+    },
+    {
+      "id": "Beznau",
+      "group": "Netz",
+      "name": "Beznau",
+      "koordinaten": "47.5525, 8.2290",
+      "region": "Aargau",
+      "geometry":  { "type": "LineString", "coordinates":  [[8.2290, 47.5525], [8.0655,  47.5663 ]]}
+    },
+    {
+      "id": "Laufenburg",
+      "group": "Netz",
+      "name": "Laufenburg",
+      "koordinaten": "47.5663, 8.0655",
+      "region": "Aargau",
+      "geometry": null
+    },
+    {
+      "id": "Flumenthal",
+      "group": "Netz",
+      "name": "Flumenthal",
+      "koordinaten": "47.2385, 7.5825",
+      "region": "Solothurn",
+      "geometry":  { "type": "LineString", "coordinates":  [[7.5825, 47.2385], [8.2290, 47.5525]]}
+    },
+    {
+      "id": "Soazza",
+      "group": "Netz",
+      "name": "Soazza",
+      "koordinaten": "46.3667, 9.2167",
+      "region": "Graubünden",
+      "geometry":  { "type": "LineString", "coordinates":  [[9.2167, 46.3667], [ 9.3980, 46.8120 ]]}
+    },
+    {
+      "id": "Airolo",
+      "group": "Netz",
+      "name": "Airolo",
+      "koordinaten": "46.5303, 8.6075",
+      "region": "Tessin",
+      "geometry":  { "type": "LineString", "coordinates":  [[8.6075,46.5303], [9.2167, 46.3667 ]]}
+    },
+    {
+      "id": "Samaden",
+      "group": "Netz",
+      "name": "Samedan",
+      "koordinaten": "46.5341, 9.8710",
+      "region": "Graubünden",
+      "geometry": null
+    },
+
+    {
+      "id": "Autobahn_N1",
+      "group": "Nationalstrassen",
+      "objekt_id": 12,
+      "name": "Autobahn N1",
+      "thema": "Nationalstrassen",
+      "von": 1962,
+      "bis": "Aktiv",
+      "koordinaten": "47.416, 8.566",
+      "region": "Ost–West",
+      "funktion": "Verkehrsinfrastruktur",
+      "geometry":  { "type": "LineString", "coordinates":  [[47.416 ,8.566 ], [ 46.948, 7.447], [ 46.206, 6.146]]}
+    },
+  {
+    "id": "Autobahn_N2",
+    "group": "Nationalstrassen",
+    "objekt_id": 13,
+    "name": "Autobahn N2",
+    "thema": "Nationalstrassen",
+    "von": 1964,
+    "bis": "Aktiv",
+    "koordinaten": "46.545, 7.880",
+    "region": "Nord–Süd",
+    "funktion": "Verkehrsinfrastruktur",
+    "geometry":  { "type": "LineString", "coordinates":  [[47.559, 7.587], [46.519 ,6.634]]}
+  },
+  {
+    "id": "Autobahn_N3",
+    "group": "Nationalstrassen",
+    "objekt_id": 19,
+    "name": "Autobahn N3",
+    "thema": "Nationalstrassen",
+    "von": 1964,
+    "bis": "Aktiv",
+    "koordinaten": "47.172, 9.516",
+    "region": "Nordost–Südwest",
+    "funktion": "Verkehrsinfrastruktur",
+    "geometry":  { "type": "LineString", "coordinates":  [[47.559,7.587], [47.172, 9.516], [ 46.948, 7.447]]}
+  },
+  {
+    "id": "Autobahn_N4",
+    "group": "Nationalstrassen",
+    "objekt_id": 20,
+    "name": "Autobahn N4",
+    "thema": "Nationalstrassen",
+    "von": 1996,
+    "bis": "Aktiv",
+    "koordinaten": "47.015, 8.308",
+    "region": "Zentral",
+    "funktion": "Verkehrsinfrastruktur",
+    "geometry":  { "type": "LineString", "coordinates":  [[47.101, 8.544], [47.015,8.308], [46.861 ,8.227]]}
+  },
+  {
+    "id": "Autobahn_N13",
+    "group": "Nationalstrassen",
+    "objekt_id": 21,
+    "name": "Autobahn N13",
+    "thema": "Nationalstrassen",
+    "von": 1967,
+    "bis": "Aktiv",
+    "koordinaten": "46.869, 9.530",
+    "region": "Graubünden",
+    "funktion": "Verkehrsinfrastruktur",
+    "geometry":  { "type": "LineString", "coordinates":  [[46.869 ,9.530], [46.376, 9.071], [46.091, 8.975]]},
+    "url": ""
+  },
+  {
+    "id": "Autobahn_N9",
+    "group": "Nationalstrassen",
+    "objekt_id": 22,
+    "name": "Autobahn N9",
+    "thema": "Nationalstrassen",
+    "von": 1970,
+    "bis": "Aktiv",
+    "koordinaten": "46.3208, 6.9399549",
+    "region": "Wallis",
+    "funktion": "Verkehrsinfrastruktur",
+    "geometry":  { "type": "LineString", "coordinates":  [[46.869, 9.530], [46.376 ,9.071], [46.091 ,8.975]]},
+    "url": ""
+  },
+  {
+      "id": "Autobahn_N5",
+      "group": "Nationalstrassen",
+      "objekt_id": 27,
+      "name": "Autobahn N5",
+      "thema": "Nationalstrassen",
+      "von": 1974,
+      "bis": "Aktiv",
+      "koordinaten": "47.016, 7.063",
+      "region": "Jura–Neuenburg",
+      "funktion": "Verkehrsinfrastruktur",
+      "geometry":  { "type": "LineString", "coordinates":  [[47.016 ,7.063], [47.000, 6.950], [46.999, 6.855]]},
+      "url": ""
+    },
+    {
+      "id": "Autobahn_N6",
+      "group": "Nationalstrassen",
+      "objekt_id": 35,
+      "name": "Autobahn N6",
+      "thema": "Nationalstrassen",
+      "von": 1973,
+      "bis": "Aktiv",
+      "koordinaten": "46.748, 7.627",
+      "region": "Berner Oberland",
+      "funktion": "Verkehrsinfrastruktur",
+      "geometry":  { "type": "LineString", "coordinates":  [[46.748, 7.627], [46.801, 7.628], [46.916, 7.639]]},
+      "url": ""
+    },
+    {
+      "id": "Autobahn_N8",
+      "group": "Nationalstrassen",
+      "objekt_id": 36,
+      "name": "Autobahn N8",
+      "thema": "Nationalstrassen",
+      "von": 1984,
+      "bis": "Aktiv",
+      "koordinaten": "46.681, 7.859",
+      "region": "Zentralschweiz–Berner Oberland",
+      "funktion": "Verkehrsinfrastruktur",
+      "geometry":  { "type": "LineString", "coordinates":  [[46.681, 7.859], [46.757, 8.093], [46.858 ,8.245]]},
+      "url": ""
+    },
+    {
+      "id": "Autobahn_N7",
+      "group": "Nationalstrassen",
+      "objekt_id": 44,
+      "name": "Autobahn N7",
+      "thema": "Nationalstrassen",
+      "von": 1972,
+      "bis": "Aktiv",
+      "koordinaten": "47.669, 9.177",
+      "region": "Thurgau",
+      "funktion": "Verkehrsinfrastruktur",
+      "geometry":  { "type": "LineString", "coordinates":  [[47.669 ,9.177], [47.600 ,9.100]]},
+      "url": ""
+    },
+    {
+      "id": "Autobahn_N20",
+      "group": "Nationalstrassen",
+      "objekt_id": 45,
+      "name": "Autobahn N20",
+      "thema": "Nationalstrassen",
+      "von": 2005,
+      "bis": "Aktiv",
+      "koordinaten": "47.044, 6.746",
+      "region": "Jura",
+      "funktion": "Verkehrsinfrastruktur",
+      "geometry":  { "type": "LineString", "coordinates":  [[47.044 ,6.746], [47.050 ,6.800]]},
+      "url": ""
+    }
+  ],
+  "links": [
+    { "source": "Chippis", "target": "Moerel", "type": "380kV" },
+    { "source": "Chippis", "target": "Bickigen", "type": "220kV" },
+    { "source": "Bickigen", "target": "Mettlen", "type": "380kV" },
+    { "source": "Mettlen", "target": "Magadino", "type": "380kV" },
+    { "source": "Magadino", "target": "Lavorgo", "type": "220kV" },
+    { "source": "Lavorgo", "target": "Airolo", "type": "220kV" },
+    { "source": "Airolo", "target": "Soazza", "type": "220kV" },
+    { "source": "Soazza", "target": "Bonaduz", "type": "220kV" },
+    { "source": "Bonaduz", "target": "Sils", "type": "220kV" },
+    { "source": "Sils", "target": "Samaden", "type": "220kV" },
+    { "source": "Romanel", "target": "Mühleberg", "type": "220kV" },
+    { "source": "Mühleberg", "target": "Bickigen", "type": "220kV" },
+    { "source": "Bickigen", "target": "Flumenthal", "type": "220kV" },
+    { "source": "Flumenthal", "target": "Beznau", "type": "380kV" },
+    { "source": "Beznau", "target": "Laufenburg", "type": "380kV" },
+    { "source": "Nationalstrassen", "target": "Autobahn_N2", "type": "Belongs_to"
+  },
+  {"source": "Nationalstrassen",
+    "target": "Autobahn_N3",
+    "type": "Belongs_to"
+  },
+  {"source": "Nationalstrassen",
+    "target": "Autobahn_N4",
+    "type": "Belongs_to"
+  },
+  {"source": "Nationalstrassen",
+    "target": "Autobahn_N13",
+    "type": "Belongs_to"
+  },
+  {"source": "Nationalstrassen",
+    "target": "Autobahn_N9",
+    "type": "Belongs_to"
+  },
+  {"source": "Autobahn_N3",
+    "target": "Autobahn_N1",
+    "type": "Verknüpft"
+  },
+  {"source": "Autobahn_N3",
+    "target": "Autobahn_N2",
+    "type": "Verbindet"
+  },
+  {"source": "Autobahn_N4",
+    "target": "Autobahn_N1",
+    "type": "Verzweigung"
+  },
+  {"source": "Autobahn_N4",
+    "target": "Autobahn_N3",
+    "type": "Verzweigung"
+  },
+  {"source": "Autobahn_N13",
+    "target": "Autobahn_N2",
+    "type": "Verknüpft"
+  },
+  {"source": "Autobahn_N13",
+    "target": "Autobahn_N3",
+    "type": "Ergänzt"
+  },
+  {"source": "Autobahn_N5",
+    "target": "Autobahn_N1",
+    "type": "Verbindet_sich_mit"
+  },
+  {"source": "Nationalstrassen",
+    "target": "Autobahn_N8",
+    "type": "Belongs_to"
+  }, {"source": "Autobahn_N6",
+      "target": "Autobahn_N8",
+      "type": "Knotenpunkt"
+    },
+    {"source": "Nationalstrassen",
+      "target": "Autobahn_N6",
+      "type": "Belongs to"
+    },
+    {"source": "Nationalstrassen",
+      "target": "Autobahn_N8",
+      "type": "Belongs to"
+    },
+  {"source": "Autobahn_N7",
+    "target": "Autobahn_N1",
+    "type": "Verbindet_sich_mit"
+  },
+  {"source": "Autobahn_N7",
+    "target": "Autobahn_N13",
+    "type": "Netzergänzung"
+  },
+  {"source": "Autobahn_N20",
+    "target": "Autobahn_N5",
+    "type": "Verzweigt_sich_bei"
+  }
+  ]
+}
