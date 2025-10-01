@@ -1,6 +1,6 @@
 (function() {
-const DATA_URL = '/data/data.json';
-  const GEOM_URL = '/data/geom.geojson';
+const DATA_URL = '/BilderCHInfra/visualisation_examples/data/data.json';
+  const GEOM_URL = '/BilderCHInfra/visualisation_examples/data/geom.geojson';
   const OVERLAY_ID = 'network-overlay-svg';
   const MAP_CENTER = [8.3, 46.8];
   const MAP_SCALE = 6000;
@@ -461,4 +461,5 @@ legendGroup.append('text')
   } else {
     init();
   }
+
 })();
