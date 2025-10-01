@@ -1,5 +1,5 @@
-    const DATA_URL = '/data/kraftwerke.json';
-    const SWISSMAP = '/data/switzerland.geojson';
+    const DATA_URL = '/BilderCHInfra/visualisation_examples/data/kraftwerke.json';
+    const SWISSMAP = '/BilderCHInfra/visualisation_examples/data/switzerland.geojson';
     let sampleData = {};
     let data, svg, simulation;
     let nodes, links, link, node;
@@ -204,5 +204,6 @@
         document.getElementById('startBtn2').disabled = false;
         document.getElementById('resetBtn').disabled = true;
     }
+
 
    
