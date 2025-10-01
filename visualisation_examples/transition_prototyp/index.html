@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BilderCHInfra</title>
+  <link rel="icon" type="image/x-icon" href="./favicon.ico"/>
+
+  <!-- D3 & jQuery -->
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css"/>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <div class="header">
+      <div class="title-left">
+        <div class="title-box">
+          <p style="margin: 0; line-height: 1.3;">
+            <span>Bilder</span><br />
+            <span>Schweizer</span><br />
+            <span>Infrastrukturen</span>
+          </p>
+        </div>
+      </div>
+      <div class="mode-center">
+        <p id="mainModeLabel" style="font-size: 24px; font-weight: bold; margin: 0;">Netzwerk</p>
+        <p id="descriptionBox" style="font-size: 16px; color: #555; margin-top: 8px; max-width: 500px; text-align: center;">
+          Visualisierung des Netzwerks von Infrastrukturen basierend auf Verbindungen.
+        </p>
+      </div>
+    </div>
+
+    <!-- SVG Area -->
+    <div class="svg-container">
+      <svg viewBox="0 0 1200 700">
+        <g id="mapLayer"></g>
+        <g id="legendLayer"></g>
+        <g id="barChart"></g>
+      </svg>
+      <div id="jsonTableContainer" class="json-table-container" style="display:none;">
+        <table id="jsonTable" class="json-table"></table>
+      </div>
+    </div>
+
+    <!-- Info Chart -->
+    <div class="info-container">
+      <svg class="info-chart"></svg>
+    </div>
+
+    <!-- Sliders -->
+    <div class="slider-container">
+      <div class="timeslider-container">
+        <label>
+          <input type="checkbox" id="timeTravelCheckbox" />
+          Aktiviere Zeitreise
+        </label>
+        <div class="timecontainer" id="timecontainer">
+          <div id="slider-range" class="slider-range"></div>
+          <span id="minValue"></span>
+          <span id="maxValue"></span>
+        </div>
+      </div>
+
+      <!-- Mode Switch Slider -->
+      <input type="range" id="slider" name="slider" list="values" step="25" value="0" />
+      <datalist id="values">
+        <option value="0" label="Netzwerk"></option>
+        <option value="50" label="Karte"></option>
+        <option value="100" label="Bubble"></option>
+      </datalist>
+      <div class="slider-labels">
+        <span>Netzwerk</span>
+        <span>Karte</span>
+        <span>Bubble</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript Modules -->
+  <script type="module" src="scripts/script.js"></script>
+  <script type="module" src="scripts//views/infochart.js"></script>
+</body>
+</html>

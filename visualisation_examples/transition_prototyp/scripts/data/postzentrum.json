@@ -1,0 +1,175 @@
+{
+    "nodes": [
+      {
+        "id": "pvz001",
+        "name": "Härkingen",
+        "coordinates": [47.3125, 7.8153],
+        "topicGroup": "Nationales Paketzentrum",
+        "startTime": "2000-01-01",
+        "endTime": null,
+        "region": "Mittelland",
+        "image": "https://example.com/images/haerkingen.jpg",
+        "info": {
+          "capacity": "300'000 Pakete pro Tag",
+          "notes": "Geplante Modernisierung ab 2027"
+        }
+      },
+      {
+        "id": "pvz002",
+        "name": "Frauenfeld",
+        "coordinates": [47.5569, 8.8994],
+        "topicGroup": "Nationales Paketzentrum",
+        "startTime": "2000-01-01",
+        "endTime": null,
+        "region": "Ostschweiz",
+        "image": "https://example.com/images/frauenfeld.jpg",
+        "info": {
+          "capacity": "25'000 Pakete pro Stunde"
+        }
+      },
+      {
+        "id": "pvz003",
+        "name": "Daillens",
+        "coordinates": [46.6486, 6.5619],
+        "topicGroup": "Nationales Paketzentrum",
+        "startTime": "2000-01-01",
+        "endTime": null,
+        "region": "Westschweiz",
+        "image": "https://example.com/images/daillens.jpg",
+        "info": {
+          "capacity": "165'000 Pakete pro Tag"
+        }
+      },
+      {
+        "id": "pvz004",
+        "name": "Cadenazzo",
+        "coordinates": [46.1519, 8.9481],
+        "topicGroup": "Regionales Paketzentrum",
+        "startTime": "2019-01-01",
+        "endTime": null,
+        "region": "Tessin",
+        "image": "https://example.com/images/cadenazzo.jpg",
+        "info": {
+          "capacity": "8'000 Pakete pro Stunde"
+        }
+      },
+      {
+        "id": "pvz005",
+        "name": "Untervaz",
+        "coordinates": [46.9286, 9.5361],
+        "topicGroup": "Regionales Paketzentrum",
+        "startTime": "2020-01-01",
+        "endTime": null,
+        "region": "Graubünden",
+        "image": "https://example.com/images/untervaz.jpg",
+        "info": {
+          "capacity": "8'000 Pakete pro Stunde"
+        }
+      },
+      {
+        "id": "pvz006",
+        "name": "Vétroz",
+        "coordinates": [46.2144, 7.2731],
+        "topicGroup": "Regionales Paketzentrum",
+        "startTime": "2020-01-01",
+        "endTime": null,
+        "region": "Wallis",
+        "image": "https://example.com/images/vetroz.jpg",
+        "info": {
+          "capacity": "8'000 Pakete pro Stunde"
+        }
+      },
+      {
+        "id": "pvz007",
+        "name": "Ostermundigen",
+        "coordinates": [46.9581, 7.4944],
+        "topicGroup": "Regionales Paketzentrum",
+        "startTime": "2020-03-01",
+        "endTime": null,
+        "region": "Bern",
+        "image": "https://example.com/images/ostermundigen.jpg",
+        "info": {
+          "capacity": "5'000 Pakete pro Stunde"
+        }
+      },
+      {
+        "id": "pvz008",
+        "name": "Pratteln",
+        "coordinates": [47.5201, 7.6919],
+        "topicGroup": "Regionales Paketzentrum",
+        "startTime": "2023-01-01",
+        "endTime": null,
+        "region": "Nordwestschweiz",
+        "image": "https://example.com/images/pratteln.jpg",
+        "info": {
+          "notes": "Inbetriebnahme 2023"
+        }
+      },
+      {
+        "id": "pvz009",
+        "name": "Buchs (AG)",
+        "coordinates": [47.3897, 8.0700],
+        "topicGroup": "Regionales Paketzentrum",
+        "startTime": "2023-01-01",
+        "endTime": null,
+        "region": "Aargau",
+        "image": "https://example.com/images/buchs_ag.jpg",
+        "info": {
+          "notes": "Inbetriebnahme 2023"
+        }
+      },
+      {
+        "id": "pvz010",
+        "name": "Wallisellen",
+        "coordinates": [47.4142, 8.5965],
+        "topicGroup": "Regionales Paketzentrum",
+        "startTime": "2023-06-01",
+        "endTime": null,
+        "region": "Zürich",
+        "image": "https://example.com/images/wallisellen.jpg",
+        "info": {
+          "notes": "Inbetriebnahme Juni 2023"
+        }
+      },
+      {
+        "id": "pvz011",
+        "name": "Rümlang",
+        "coordinates": [47.4500, 8.5333],
+        "topicGroup": "Regionales Paketzentrum",
+        "startTime": "2022-01-01",
+        "endTime": null,
+        "region": "Zürich",
+        "image": "https://example.com/images/ruemlang.jpg",
+        "info": {
+          "notes": "Eröffnet 2022"
+        }
+      },
+      {
+        "id": "pvz012",
+        "name": "Zürich-Mülligen",
+        "coordinates": [47.3861, 8.5206],
+        "topicGroup": "Briefzentrum",
+        "startTime": "1999-01-01",
+        "endTime": "2024-12-31",
+        "region": "Zürich",
+        "image": "https://example.com/images/muelligen.jpg",
+        "info": {
+          "notes": "Ehemaliges Briefverteilzentrum"
+        }
+      },
+      {
+        "id": "pvz013",
+        "name": "Sihlpost (Zürich)",
+        "coordinates": [47.3773, 8.5325],
+        "topicGroup": "Briefzentrum",
+        "startTime": "1992-01-01",
+        "endTime": "2009-12-31",
+        "region": "Zürich",
+        "image": "https://example.com/images/sihlpost.jpg",
+        "info": {
+          "notes": "Betrieb von 1992 bis 2009"
+        }
+      }
+    ]
+  }
+  

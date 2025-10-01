@@ -1,0 +1,83 @@
+{
+  "nodes": [
+    {
+      "id": "Systeme",
+      "group": "thema",
+      "name": "Systeme",
+      "thema": "Systeme"
+    },
+        {
+      "id": "Architekten",
+      "group": "thema",
+      "name": "Architekten",
+      "thema": "Architekten"
+    },
+            {
+      "id": "Überbauungen",
+      "group": "thema",
+      "name": "Überbauungen",
+      "thema": "Überbauungen"
+    },
+    { "id": "Camus_FR", "group": "Systeme", "name": "Camus (FR)", "koordinaten": null, "region": "Frankreich", "geometry": null },
+    { "id": "Larsen_Nielsen_DK", "group": "Systeme", "name": "Larsen & Nielsen (DK)", "koordinaten": null, "region": "Dänemark", "geometry": null },
+    { "id": "ALCO_Trelement_DE", "group": "Systeme", "name": "ALCO Trelement (DE)", "koordinaten": null, "region": "Deutschland", "geometry": null },
+    { "id": "ABS_Additivbaukastensystem", "group": "Systeme", "name": "ABS Additivbaukastensystem", "koordinaten": null, "region": "Schweiz", "geometry": null },
+    { "id": "MRS_Elementbau", "group": "Systeme", "name": "MRS Elementbau", "koordinaten": null, "region": "Schweiz", "geometry": null },
+    { "id": "Element_AG", "group": "Systeme", "name": "Element AG", "koordinaten": "46.83261039872203, 7.211962005353542", "region": "Schweiz", "geometry": null },
+    { "id": "IGECO", "group": "Systeme", "name": "IGECO", "koordinaten": null, "region": "Schweiz", "geometry": null },
+    { "id": "Variel_AG", "group": "Systeme", "name": "Variel AG", "koordinaten": "46.92425994160627, 7.617477790982499", "region": "Schweiz", "geometry": null },
+    { "id": "CROCS", "group": "Systeme", "name": "C.R.O.C.S.", "koordinaten": null, "region": "Schweiz", "geometry": null },
+    { "id": "Zwahlen_et_Mayr_SA_Aigle", "group": "Systeme", "name": "Zwahlen et Mayr SA Aigle", "koordinaten": "46.317, 6.966", "region": "Waadt", "geometry": "POINT(46.317 6.966)" },
+
+    { "id": "Claude_Schelling", "group": "Architekten", "name": "Claude Schelling", "koordinaten": "47.39788023683439, 8.516439512711315", "region": "Schweiz", "geometry": null },
+    { "id": "F_Kamm", "group": "Architekten", "name": "F. Kamm", "koordinaten": null, "region": "Schweiz", "geometry": null },
+    { "id": "R_Peikert", "group": "Architekten", "name": "R. Peikert", "koordinaten": null, "region": "Schweiz", "geometry": null },
+    { "id": "ARB", "group": "Architekten", "name": "ARB", "koordinaten": "46.9405401718938, 7.463341269218773", "region": "Schweiz", "geometry": null },
+    { "id": "AAA", "group": "Architekten", "name": "AAA", "koordinaten": "46.94633412246318, 7.465824612272992", "region": "Schweiz", "geometry": null },
+    { "id": "E_Helfer", "group": "Architekten", "name": "E. Helfer", "koordinaten": "46.90714968799609, 7.625543295360508", "region": "Schweiz", "geometry": null },
+    { "id": "H_G_Reinhard", "group": "Architekten", "name": "H. & G. Reinhard", "koordinaten": "46.90714968799609, 7.625543295360508", "region": "Schweiz", "geometry": null },
+    { "id": "MRS_Architekten", "group": "Architekten", "name": "MRS Architekten", "koordinaten": null, "region": "Schweiz", "geometry": null },
+
+    { "id": "Goehner", "group": "Systeme", "name": "Göhner", "koordinaten": null, "region": "Schweiz", "geometry": null },
+    { "id": "Elcon_AG", "group": "Systeme", "name": "Elcon AG", "koordinaten": "47.43717046911085, 8.054741155005738", "region": "Schweiz", "geometry": null },
+    { "id": "Peikert_AG", "group": "Systeme", "name": "Peikert AG", "koordinaten": "47.187449938672394, 8.50222943002393", "region": "Schweiz", "geometry": null },
+    { "id": "Kamm_4D", "group": "Systeme", "name": "Kamm 4D", "koordinaten": null, "region": "Schweiz", "geometry": null },
+
+    { "id": "Siedlung_Esplanade", "group": "Überbauungen", "name": "Siedlung Esplanade", "koordinaten": "47.13630775773605, 7.249660592401183", "region": null, "geometry": null },
+    { "id": "Siedlungen_Bümpliz_Schlieren_Biel_Burgdorf", "group": "Überbauungen", "name": "Siedlungen Bümpliz, Schlieren, Biel, Burgdorf", "koordinaten": "46.94022730460938, 7.390735905532785", "region": "Bern/Zürich", "geometry": "MULTIPOINT(46.943 7.387, 47.399 8.448, 47.133 7.247, 47.059 7.627)" },
+    { "id": "Schulzentrum_Neuenegg", "group": "Überbauungen", "name": "Schulzentrum Neuenegg", "koordinaten": "46.896, 7.301", "region": "Bern", "geometry": "POINT(46.896 7.301)" },
+    { "id": "Gartensiedlung_Eurthal", "group": "Überbauungen", "name": "Gartensiedlung Eurthal", "koordinaten": "47.37367973647867, 8.528386469841012", "region": null, "geometry": null },
+    { "id": "Überbauung_Rothusweg", "group": "Überbauungen", "name": "Überbauung Rothusweg", "koordinaten": "47.170668441, 8.519991361", "region": null, "geometry": null },
+    { "id": "Überbauung_Champel-les-Crêts", "group": "Überbauungen", "name": "Überbauung Champel-les-Crêts", "koordinaten": "46.186, 6.155", "region": "Genf", "geometry": "POINT(46.186 6.155)" },
+    { "id": "Kindergarten_Lamone", "group": "Überbauungen", "name": "Kindergarten Lamone", "koordinaten": "46.041, 8.932", "region": "Tessin", "geometry": "POINT(46.041 8.932)" },
+    { "id": "Ancien_Stand", "group": "Überbauungen", "name": "Ancien Stand", "koordinaten": "46.204, 6.143", "region": "Genf", "geometry": "POINT(46.204 6.143)" },
+    { "id": "Überführungen_Nationalstrassennetz", "group": "Überbauungen", "name": "Überführungen Nationalstrassennetz", "koordinaten": null, "region": "Schweiz", "geometry": null }
+  ],
+
+  "links": [
+    { "source": "Camus_FR", "target": "Überführungen_Nationalstrassennetz", "type": "liefert_System" },
+    { "source": "Larsen_Nielsen_DK", "target": "IGECO", "type": "liefert_System" },
+    { "source": "ALCO_Trelement_DE", "target": "Element_AG", "type": "liefert_System" },
+    { "source": "ABS_Additivbaukastensystem", "target": "Gartensiedlung_Eurthal", "type": "liefert_System" },
+    { "source": "Claude_Schelling", "target": "Goehner", "type": "arbeitet_mit" },
+    { "source": "F_Kamm", "target": "Kamm_4D", "type": "arbeitet_mit" },
+    { "source": "R_Peikert", "target": "Peikert_AG", "type": "arbeitet_mit" },
+    { "source": "MRS_Architekten", "target": "MRS_Elementbau", "type": "arbeitet_mit" },
+    { "source": "E_Helfer", "target": "H_G_Reinhard", "type": "arbeitet_mit" },
+
+    { "source": "ARB", "target": "Siedlungen_Bümpliz_Schlieren_Biel_Burgdorf", "type": "plant" },
+    { "source": "Element_AG", "target": "Schulzentrum_Neuenegg", "type": "baut" },
+    { "source": "CROCS", "target": "Ancien_Stand", "type": "baut" },
+    { "source": "AAA", "target": "Ancien_Stand", "type": "plant" },
+    { "source": "Zwahlen_et_Mayr_SA_Aigle", "target": "Überbauung_Champel-les-Crêts", "type": "liefert_System" },
+    { "source": "Variel_AG", "target": "Elcon_AG", "type": "arbeitet_mit" },
+    { "source": "Elcon_AG", "target": "Variel_AG", "type": "arbeitet_mit" },
+
+    { "source": "Peikert_AG", "target": "Überbauung_Rothusweg", "type": "baut" },
+    { "source": "Kamm_4D", "target": "Überbauung_Rothusweg", "type": "baut" },
+    { "source": "Kindergarten_Lamone", "target": "IGECO", "type": "nutzt" },
+
+    { "source": "Siedlung_Esplanade", "target": "ARB", "type": "plant" },
+    { "source": "MRS_Elementbau", "target": "Überbauung_Rothusweg", "type": "liefert_System" }
+  ]
+}
