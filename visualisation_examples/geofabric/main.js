@@ -1,6 +1,6 @@
 // Declare variables for the data, SVG, simulation, nodes, and links
-const SWISSMAP = '/data/switzerland.geojson';
-const DATA_URL = '/data/data2.json';
+const SWISSMAP = '/BilderCHInfra/visualisation_examples/data/switzerland.geojson';
+const DATA_URL = '/BilderCHInfra/visualisation_examples/data/data2.json';
 let sampleData = {};
 let data, svg, simulation;
 let nodes, links, link, node;
@@ -260,4 +260,5 @@ nodes.forEach((d, i) => {
     })
     .attr("cx", d => d.x)
     .attr("cy", d => d.y);
+
 }
