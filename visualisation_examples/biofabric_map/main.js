@@ -1,6 +1,6 @@
 // Declare variables for the data, SVG, simulation, nodes, and links
-const SWISSMAP = '/data/switzerland.geojson';
-const DATA_URL = '/data/kraftwerke.json';
+const SWISSMAP = '/BilderCHInfra/visualisation_examples/data/switzerland.geojson';
+const DATA_URL = '/BilderCHInfra/visualisation_examples/data/kraftwerke.json';
 let sampleData = {};
 let data, svg, simulation;
 let nodes, links, link, node;
@@ -312,3 +312,4 @@ function resetVisualization() {
     document.getElementById('startBtn2').disabled = false;
     document.getElementById('resetBtn').disabled = true;
 }
+
