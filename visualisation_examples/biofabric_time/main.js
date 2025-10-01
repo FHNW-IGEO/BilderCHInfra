@@ -1,6 +1,6 @@
 // Declare variables for the data, SVG, simulation, nodes, and links
-const SWISSMAP = '/data/switzerland.geojson';
-const DATA_URL = '/data/kraftwerke.json';
+const SWISSMAP = '/BilderCHInfra/visualisation_examples/data/switzerland.geojson';
+const DATA_URL = '/BilderCHInfra/visualisation_examples/data/kraftwerke.json';
 let sampleData = {};
 let data, svg, simulation;
 let nodes, links, link, node;
@@ -290,4 +290,5 @@ function drawNetwork() {
     node.append("title").text(d => d.id);
     nodes.forEach((d, i) => d.x_index = i);
 }
+
 
