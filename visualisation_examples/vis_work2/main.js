@@ -1,6 +1,6 @@
 // Declare variables for the data, SVG, simulation, nodes, and links
-const SWISSMAP = '/data/switzerland.geojson';
-const DATA_URL = '/data/data_short.json';
+const SWISSMAP = '/BilderCHInfra/visualisation_examples/data/switzerland.geojson';
+const DATA_URL = '/BilderCHInfra/visualisation_examples/data/data_short.json';
 const MAP_SCALE = 4000;
 let sampleData = {};
 let data, svg, simulation;
@@ -296,4 +296,5 @@ themaGroup.selectAll('.thema-node')
     highlightThema(themaName);
   });
  
+
 }
