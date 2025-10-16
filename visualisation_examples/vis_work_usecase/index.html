@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Geo Visualization</title>
+    <link rel="icon" type="image/x-icon" href="/data/biofabric.ico">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            flex-direction: column;
+          }
+        h1 {
+          font-family: "Raleway", sans-serif;
+          font-weight: 300;
+          font-size: 100%;
+          text-align: center;
+          text-transform: uppercase;
+          margin: 0;
+          flex-shrink: 0;
+          height: 2vh;
+        }
+        .container {
+          flex-grow: 1;
+          display: flex;
+          flex-direction: column;
+          height: 96vh;
+          width: 99vw;
+        }
+        svg {
+          width: auto;
+          height: auto;
+        }
+        #chart {
+          flex-grow: 1;
+          position: relative;
+          border: 1px solid #ddd;
+          border-radius: 4px;
+        }
+        .dimmed {
+          opacity: 0.2;
+        }
+        .highlighted {
+          opacity: 1;
+        }
+        .connector.highlight,
+        .nocoordconnector.highlight {
+          cursor: pointer;
+        }
+        .arc-group.highlight .arc-path {
+          stroke: #070157;
+          stroke-width: 2.5;
+          cursor: pointer;
+        }
+        .arc-path, .nocoordconnector, .connector {
+          pointer-events: stroke; /* only stroke is clickable */
+        }
+        .arc-path.invisible-hitbox , .nocoordconnector.invisible-hitbox, .connector.invisible-hitbox {
+          stroke-width: 10;       /* thicker hitbox */
+          stroke: transparent;    /* not visible */
+        }
+    </style>
+</head>
+<body>
+    <h1>Interactive Network Visualisation</h1>
+    <div class="container">
+    <div id="chart"></div>
+    <!-- Reset selection button moved to HTML so it's easier to style and position -->
+    <div style="position: absolute; bottom: 10px; left: 10px; z-index: 999;">
+      <button id="reset-button" type="button">Reset Selection</button>
+    </div>
+    </div>
+    <script type="module" src="functions.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+    <script type="module" src="network_overlay.js"></script>
+    <script type="module" src="map.js"></script>
+
+</body>
+</html>
