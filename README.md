@@ -46,7 +46,7 @@ Radial layouts for exploring relationships between heterogeneous infrastructure 
 * ✨ **[RNV – Hover Geometry](https://fhnw-igeo.github.io/BilderCHInfra/visualisation_examples/geofabric_temp)**
 * 🇨🇭 **[RNV – Swiss Use Case 1](https://fhnw-igeo.github.io/BilderCHInfra/visualisation_examples/vis_work)**
 * 🇨🇭 **[RNV – Swiss Use Case 2](https://fhnw-igeo.github.io/BilderCHInfra/visualisation_examples/vis_work2)**
-* 🧪 **[RNV – Swiss Use Case (Extended)](https://fhnw-igeo.github.io/BilderCHInfra/visualisation_examples/vis_work_usecase)**
+* 🇨🇭 **[RNV – Swiss Use Case 3](https://fhnw-igeo.github.io/BilderCHInfra/visualisation_examples/vis_work_usecase)**
 
 ---
 
@@ -73,6 +73,10 @@ This work contributes to ongoing research on:
 * Interdisciplinary methods between architecture & geomatics
 * Exploratory and interactive data visualisation
 
+Publications:
+*  Bleisch, S. and Bronowicz, C.: Supporting understanding of complex spatio-temporal relationships with multi-perspective visualizations linked through smooth display transitions, Abstr. Int. Cartogr. Assoc., 10, 22, https://doi.org/10.5194/ica-abs-10-22-2025, 2025.
+*  further in process
+ 
 ---
 
 ## 📎 Notes
