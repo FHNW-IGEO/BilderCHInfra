@@ -9,8 +9,8 @@ import {
 } from './functions.js';
 import{drawNetwork} from './map.js'
 
-const DATA_URL = '/data/Nationalstrassen_Hochspannung.json';
-const SWISSMAP = '/data/switzerland.geojson';
+const DATA_URL = '/BilderCHInfra/visualisation_examples/data/Nationalstrassen_Hochspannung.json';
+const SWISSMAP = '/BilderCHInfra/visualisation_examples/data/switzerland.geojson';
 const OVERLAY_ID = 'network-overlay-svg';
 const MAP_CENTER = [8.346487710979718, 47.30785442154655];
 const MAP_SCALE = 7500;
@@ -494,5 +494,6 @@ function init() {
         init();
     }
 })();
+
 
 
