@@ -60,7 +60,7 @@ Exploratory prototypes focusing on user-driven interaction and narrative control
 
 ## 🖼️ Preview
 
-<img width="2661" height="1533" alt="Radial Network Visualisation Preview" src="https://github.com/user-attachments/assets/93be65b7-9d35-4e56-bbac-076046d4d381" />
+<img width="2661" alt="Radial Network Visualisation Preview" src="https://github.com/user-attachments/assets/93be65b7-9d35-4e56-bbac-076046d4d381" />
 
 ---
 
