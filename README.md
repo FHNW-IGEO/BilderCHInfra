@@ -84,11 +84,16 @@ Publications:
 * All visualisations are **research prototypes** and may evolve over time.
 * Visualisations are created using d3.js
 
+[Lets go to the Repository](https://github.com/FHNW-IGEO/BilderCHInfra/tree/main)
+
+[Lets see the random data collection](https://github.com/FHNW-IGEO/BilderCHInfra/tree/main/visualisation_examples/data)
+
 ---
 
 ## 🤝 Acknowledgements
 
 Developed at **FHNW, Institute of Geomatics** in close collaboration between researchers from the institute of architecture.
+
 
 ---
 
