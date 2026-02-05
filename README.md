@@ -79,6 +79,10 @@ Publications:
  
 ---
 
+## 👣 Next Steps
+
+<img width="4312" height="1501" alt="zOOMABLE" src="https://github.com/user-attachments/assets/dcf036b2-d48c-4835-9e00-eee7dd5160ac" />
+
 ## 📎 Notes
 
 * All visualisations are **research prototypes** and may evolve over time.
@@ -88,8 +92,9 @@ Publications:
 
 [Lets see the random data collection](https://github.com/FHNW-IGEO/BilderCHInfra/tree/main/visualisation_examples/data)
 
----
 
+
+---
 ## 🤝 Acknowledgements
 
 Developed at **FHNW, Institute of Geomatics** in close collaboration between researchers from the institute of architecture.
