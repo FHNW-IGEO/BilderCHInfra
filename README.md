@@ -98,6 +98,7 @@ Publications:
 ## 🤝 Acknowledgements
 
 Developed at **FHNW, Institute of Geomatics** in close collaboration between researchers from the institute of architecture.
+The project was funded by [Stiftung FHNW](https://www.stiftungfhnw.ch/projekt-bilder).
 
 
 ---
