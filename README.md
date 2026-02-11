@@ -81,7 +81,9 @@ Publications:
 
 ## 👣 Next Steps
 
-<img alt="zOOMABLE" src="https://github.com/user-attachments/assets/dcf036b2-d48c-4835-9e00-eee7dd5160ac" />
+<img alt="zOOMABLE" src="<img alt="image" src="https://github.com/user-attachments/assets/83b8331c-cd8a-4f26-b32c-46277e60ec0c" />![Uploading image.png…]()" />
+
+
 
 ## 📎 Notes
 
