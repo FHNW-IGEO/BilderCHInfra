@@ -17,7 +17,7 @@ import {
 } from './map.js'
 
 const DATA_URL = '/BilderCHInfra/visualisation_examples/data/Nationalstrassen_Hochspannung.json';
-const GEOM_URL = '/BilderCHInfra/visualisation_examples/data/geom.geojson';
+const SWISSMAP = '/BilderCHInfra/visualisation_examples/data/switzerland.geojson';
 const OVERLAY_ID = 'network-overlay-svg';
 const MAP_CENTER = [8.311026555744672, 47.33633643561324];
 const MAP_SCALE = 9000;
@@ -566,3 +566,4 @@ const ITEM_OPACITY_HIGH = 1;
         init();
     }
 })();
+
