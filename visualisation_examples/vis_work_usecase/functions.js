@@ -26,7 +26,7 @@ export function createOverlaySVG(container, OVERLAY_ID) {
         .style('position', 'absolute')
         .style('inset', 0)
         .style('pointer-events', 'none')
-        // ensure overlay sits below the main SVG by default so main content (thema nodes, legend) can be raised
+    // ensure overlay sits below the main SVG by default so main content (thema nodes, legend) can be raised
     return {
         svg,
         width,
@@ -137,11 +137,10 @@ export function highlightThema(themaName, nodeSelection) {
         });
 
     // Highlight outer overlay nodes
-    d3.selectAll('.outer-dots circle') 
+    d3.selectAll('.outer-dots circle')
         .attr('opacity', d => d.group === themaName ? 0.9 : 0.05)
 
-    // Highlight overlay labels
-    d3.selectAll('.outer-dots .label text')
+    d3.selectAll('.label text')
         .attr('opacity', d => d.group === themaName ? 0.9 : 0.05);
 
 
@@ -162,7 +161,7 @@ export function highlightThema(themaName, nodeSelection) {
         .attr('stroke-opacity', d => d.group === themaName ? 0.9 : 0.05);
 
     // Highlight geometry paths
-	d3.selectAll('.link-geom').attr('opacity', 1).attr('stroke-opacity', 0);
+    d3.selectAll('.link-geom').attr('opacity', 1).attr('stroke-opacity', 0);
     d3.selectAll('.link-geom-group').attr('stroke-opacity', 0)
         .attr('stroke-opacity', d => (d.source.group === themaName || d.target.group === themaName) ? 0.9 : 0.05);
 
@@ -244,15 +243,28 @@ export function descriptiveLegend(nodesRaw, svg) {
 
     // Keep legend on top
     legendGroup.raise();
-    const legendItems = [
-                        {type: 'arc',label: 'Beziehungen'},
-                        {type: 'dashed-line',label: 'Immaterielles Netzwerk'},
-                        {type: 'solid-line',label: 'Materielles Netzwerk'},
-                        {type: 'rect',label: 'Beziehungspunkt'}
-                    ];
+    const legendItems = [{
+            type: 'arc',
+            label: 'Beziehungen'
+        },
+        {
+            type: 'dashed-line',
+            label: 'Immaterielles Netzwerk'
+        },
+        {
+            type: 'solid-line',
+            label: 'Materielles Netzwerk'
+        },
+        {
+            type: 'rect',
+            label: 'Beziehungspunkt'
+        }
+    ];
 
     let yOffset = 0;
-    legendItems.forEach(item => {const x = -5; const y = yOffset;
+    legendItems.forEach(item => {
+        const x = -5;
+        const y = yOffset;
 
         if (item.type === 'arc') {
             legendGroup.append('path')
@@ -308,7 +320,7 @@ export function hoverMouseEnter(arcGroups, svg, getArcClassFromElement, getConne
 
         // Dim all other elements except selected ones
         svg.selectAll('.arc-path, .connector, .arc-end')
-            .filter(function () {
+            .filter(function() {
                 const el = this;
                 const arcClass = getArcClassFromElement(el);
                 const connClass = getConnectorClassFromElement(el);
@@ -325,36 +337,50 @@ export function hoverMouseEnter(arcGroups, svg, getArcClassFromElement, getConne
 
         if (!activeThema) {
             allLinks.filter(geom => geom.source.id === d.source.id || geom.source.id === d.target.id ||
-                geom.target.id === d.source.id || geom.target.id === d.target.id
-            )
+                    geom.target.id === d.source.id || geom.target.id === d.target.id
+                )
                 .attr('stroke-width', 1.5)
                 .attr('opacity', ITEM_OPACITY_HIGH);
 
             highlightLinks.attr('stroke-width', 2.5).attr('opacity', ITEM_OPACITY_HIGH);
         } else {
             allLinks.filter(geom => (geom.source.group === activeThema || geom.target.group === activeThema) &&
-                (geom.source.id === d.source.id || geom.source.id === d.target.id ||
-                    geom.target.id === d.source.id || geom.target.id === d.target.id)
-            )
+                    (geom.source.id === d.source.id || geom.source.id === d.target.id ||
+                        geom.target.id === d.source.id || geom.target.id === d.target.id)
+                )
                 .attr('stroke-width', 1.5)
                 .attr('opacity', ITEM_OPACITY_HIGH);
 
-            highlightLinks.filter(geom => geom.source.group === activeThema || geom.target.group === activeThema
-            )
+            highlightLinks.filter(geom => geom.source.group === activeThema || geom.target.group === activeThema)
                 .attr('stroke-width', 2.5)
                 .attr('opacity', ITEM_OPACITY_HIGH);
         }
 
         // Highlight connected arcs
         svg.selectAll(`.arc-path.arc-path-${d.source.id}, .arc-path.arc-path-${d.target.id}`)
-            .filter(function () {
+            .filter(function() {
                 const arcClass = getArcClassFromElement(this);
                 return arcClass !== `arc-${d.source.id}-${d.target.id}` && !selectedElements.has(arcClass);
             })
             .attr('stroke', '#000000ff')
+            .attr('stroke-width', 0.7)
+            .attr('opacity', 1)
+            .attr('stroke-opacity', ITEM_OPACITY_HIGH);
+
+        // Highlight hovered arcs
+        svg.selectAll(`.arc-${d.source.id}-${d.target.id}`)
+            .attr('stroke', '#000000ff')
             .attr('stroke-width', 2.5)
             .attr('opacity', 1)
-            .attr('stroke-opacity', ITEM_OPACITY_MID);
+            .attr('stroke-opacity', ITEM_OPACITY_HIGH);
+
+        svg.selectAll(`.connector-${d.source.id}, .connector-${d.target.id}`)
+            .attr('opacity', 1)
+            .attr('stroke-opacity', ITEM_OPACITY_HIGH);
+
+        svg.selectAll(`[data-arc-class="arc-${d.source.id}-${d.target.id}"]`)
+            .attr('opacity', 1)
+
     });
 }
 
@@ -366,7 +392,7 @@ export function hoverMouseLeave(arcGroups, svg, getArcClassFromElement, getConne
 
             // Restore opacity of all elements except selected ones
             svg.selectAll('.arc-path, .connector, .arc-end')
-                .filter(function () {
+                .filter(function() {
                     const el = this;
                     const arcClass = getArcClassFromElement(el);
                     const connClass = getConnectorClassFromElement(el);
@@ -379,37 +405,52 @@ export function hoverMouseLeave(arcGroups, svg, getArcClassFromElement, getConne
 
             if (!getActiveThema()) {
                 resetLinks.attr('stroke-width', 0.7).attr('opacity', ITEM_OPACITY_MID);
-                allLinks.filter(function () {
-                    const arcClass = getArcClassFromElement(this);
-                    return !selectedElements.has(arcClass);
-                })
+
+                allLinks.filter(function() {
+                        const arcClass = getArcClassFromElement(this);
+                        return !selectedElements.has(arcClass);
+                    })
                     .attr('stroke-width', 1)
                     .attr('opacity', ITEM_OPACITY_MID);
+
+                svg.selectAll(`.connector-${d.source.id}, .connector-${d.target.id}`)
+                    .attr('stroke-opacity', ITEM_OPACITY_MID);
+
+                svg.selectAll(`.arc-end-${d.source.id}, .arc-end-${d.target.id}`)
+                    .attr('stroke-opacity', ITEM_OPACITY_MID);
+
             } else {
-                resetLinks.filter(geom => geom.source.group === getActiveThema() || geom.target.group === getActiveThema()
-                )
+                resetLinks.filter(geom => geom.source.group === getActiveThema() || geom.target.group === getActiveThema())
                     .attr('stroke-width', 0.7)
                     .attr('opacity', ITEM_OPACITY_MID);
 
-                allLinks.filter(function () {
-                    const arcClass = getArcClassFromElement(this);
-                    return !selectedElements.has(arcClass);
-                })
+                allLinks.filter(function() {
+                        const arcClass = getArcClassFromElement(this);
+                        return !selectedElements.has(arcClass);
+                    })
                     .attr('stroke-width', 1)
                     .attr('opacity', ITEM_OPACITY_MID);
             }
 
             // Reset connected arcs
             svg.selectAll(`.arc-path.arc-path-${d.source.id}, .arc-path.arc-path-${d.target.id}`)
-                .filter(function () {
+                .filter(function() {
                     const arcClass = getArcClassFromElement(this);
                     return !selectedElements.has(arcClass);
                 })
                 .attr('stroke', '#646464ff')
                 .attr('stroke-width', 0.7)
                 .attr('opacity', 1)
+                .attr('stroke-opacity', 0.11111);
+
+
+            svg.selectAll(`.connector-${d.source.id}, .connector-${d.target.id}`).filter(geom => {console.log(geom); return geom.source.group === getActiveThema() || geom.target.group === getActiveThema()})
+                .attr('stroke-opacity', ITEM_OPACITY_MID);
+
+            svg.selectAll(`.arc-end-${d.source.id}, .arc-end-${d.target.id}`).filter(geom => geom.source.group === getActiveThema() || geom.target.group === getActiveThema())
                 .attr('stroke-opacity', ITEM_OPACITY_MID);
         }
+
     });
 }
 
@@ -447,21 +488,21 @@ export function hoverClick(arcGroups, selectedElements, ITEM_OPACITY_LOW, ITEM_O
     });
 }
 
- export function getArcClassFromElement(el) {
-            if (!el) return null;
-            const classes = el.getAttribute && el.getAttribute('class') || '';
-            const cls = classes.split(/\s+/);
-            let arcClass = cls.find(c => c.startsWith('arc-') && c.split('-').length >= 3);
-            if (!arcClass && el.parentNode && el.parentNode.getAttribute) {
-                const pcls = el.parentNode.getAttribute('class') || '';
-                arcClass = pcls.split(/\s+/).find(c => c.startsWith('arc-') && c.split('-').length >= 3);
-            }
-            return arcClass || null;
-        }
+export function getArcClassFromElement(el) {
+    if (!el) return null;
+    const classes = el.getAttribute && el.getAttribute('class') || '';
+    const cls = classes.split(/\s+/);
+    let arcClass = cls.find(c => c.startsWith('arc-') && c.split('-').length >= 3);
+    if (!arcClass && el.parentNode && el.parentNode.getAttribute) {
+        const pcls = el.parentNode.getAttribute('class') || '';
+        arcClass = pcls.split(/\s+/).find(c => c.startsWith('arc-') && c.split('-').length >= 3);
+    }
+    return arcClass || null;
+}
 
-          // Helper: find connector class (connector-<id>) from an element
+// Helper: find connector class (connector-<id>) from an element
 export function getConnectorClassFromElement(el) {
-            if (!el) return null;
-            const classes = el.getAttribute && el.getAttribute('class') || '';
-            return classes.split(/\s+/).find(c => c.startsWith('connector-')) || null;
-        }
+    if (!el) return null;
+    const classes = el.getAttribute && el.getAttribute('class') || '';
+    return classes.split(/\s+/).find(c => c.startsWith('connector-')) || null;
+}
