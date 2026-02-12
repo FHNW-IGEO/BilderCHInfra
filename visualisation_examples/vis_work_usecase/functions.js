@@ -141,7 +141,7 @@ export function highlightThema(themaName, nodeSelection) {
         .attr('opacity', d => d.group === themaName ? 0.9 : 0.05)
 
     d3.selectAll('.label text')
-        .attr('opacity', d => d.group === themaName ? 0.9 : 0.05);
+        .attr('opacity', d => d.group === themaName ? 1 : 1);
 
 
     // Highlight overlay labels
@@ -304,7 +304,7 @@ export function descriptiveLegend(nodesRaw, svg) {
             .attr('y', y + 4)
             .text(item.label)
             .attr('font-size', 12)
-            .attr('fill', '#333')
+            .attr('fill', '#000000')
             .attr('font-family', 'sans-serif');
         yOffset += 25;
     });
