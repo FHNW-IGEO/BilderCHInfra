@@ -3,20 +3,27 @@ import {
     createOverlaySVG,
     arcPath,
     assignRadiusLines,
-    highlightNode,
     getActiveThema,
-    setActiveThema, descriptiveLegend, hoverClick, hoverMouseEnter, hoverMouseLeave, getArcClassFromElement, getConnectorClassFromElement
+    setActiveThema,
+    descriptiveLegend,
+    hoverClick,
+    hoverMouseEnter,
+    hoverMouseLeave,
+    getArcClassFromElement,
+    getConnectorClassFromElement
 } from './functions.js';
-import{drawNetwork} from './map.js'
+import {
+    drawNetwork
+} from './map.js'
 
-const DATA_URL = '/BilderCHInfra/visualisation_examples/data/Nationalstrassen_Hochspannung.json';
-const SWISSMAP = '/BilderCHInfra/visualisation_examples/data/switzerland.geojson';
+const DATA_URL = '/data/Verkehrs_Energie_Subset.json';
+const SWISSMAP = '/data/switzerland.geojson';
 const OVERLAY_ID = 'network-overlay-svg';
-const MAP_CENTER = [8.346487710979718, 47.30785442154655];
-const MAP_SCALE = 7500;
-const RADIUS_RATIO = 0.5;
-const DOT_OUT_OFFSET = 6;
-const LANE_SPACING = 6;
+const MAP_CENTER = [8.3, 46.8];
+const MAP_SCALE = 6000;
+const RADIUS_RATIO = 0.;
+const DOT_OUT_OFFSET = 1;
+const LANE_SPACING = 4;
 const ITEM_OPACITY_LOW = 0.1;
 const ITEM_OPACITY_MID = 0.5;
 const ITEM_OPACITY_HIGH = 1;
@@ -26,7 +33,11 @@ const ITEM_OPACITY_HIGH = 1;
     async function draw(container) {
         const overlay = createOverlaySVG(container, OVERLAY_ID);
         if (!overlay) return;
-        const {svg, width, height} = overlay;
+        const {
+            svg,
+            width,
+            height
+        } = overlay;
         const cx = width / 2;
         const cy = height / 2;
         const baseRadius = Math.min(cx, cy) * RADIUS_RATIO;
@@ -38,7 +49,7 @@ const ITEM_OPACITY_HIGH = 1;
 
         const geoPathGenerator = d3.geoPath().projection(projection);
 
-        svg.selectAll("path").attr("d", geoPathGenerator); 
+        svg.selectAll("path").attr("d", geoPathGenerator);
         let sampleData;
         try {
             const resp = await fetch(DATA_URL);
@@ -49,6 +60,14 @@ const ITEM_OPACITY_HIGH = 1;
         }
         const nodesRaw = sampleData.nodes || [];
 
+        svg.append('circle')
+            .attr('cx', cx)
+            .attr('cy', cy)
+            .attr('r', baseRadius + DOT_OUT_OFFSET - LANE_SPACING / 2)
+            .attr('fill', 'none')
+            .attr('stroke', 'grey')
+            .attr('stroke-width', 1)
+            .attr('stroke-opacity', ITEM_OPACITY_LOW);
         // Merge geometry into nodes before any filtering
         //nodesRaw.forEach(n => {
         //    const match = geomData.features.find(f => f.properties.gehoert_zu === n.id);
@@ -59,7 +78,10 @@ const ITEM_OPACITY_HIGH = 1;
             .filter(n => n.group !== 'thema')
             .map(n => {
                 const proj = parseCoords(n.koordinaten) ? projection(parseCoords(n.koordinaten)) : null;
-                return {...n, proj};
+                return {
+                    ...n,
+                    proj
+                };
             })
             .filter(n => n.proj);
 
@@ -94,7 +116,7 @@ const ITEM_OPACITY_HIGH = 1;
             });
 
         const allNetworkNodes = networkNodes.concat(outerNoCoordsNodes);
-        
+
         //allNetworkNodes.sort((a, b) => {
         //    const groupA = a.group || '';
         //    const groupB = b.group || '';
@@ -109,24 +131,70 @@ const ITEM_OPACITY_HIGH = 1;
             .domain([...new Set(nodesRaw.map(d => d.group))]) // Replace `allOuterNodes` with the appropriate data
             .range(d3.schemeTableau10);
 
-
-
         // Hitboxes
         gLinks.selectAll('.connector-hitbox')
             .data(allNetworkNodes)
             .enter()
             .append('line')
             .attr('class', d => `connector-hitbox connector-hitbox-${d.id}`)
-            .attr('data-connector-class', d => `connector-${d.id}`)
+            .attr('data-connector-class', d => `connector-group connector-${d.id}`)
             .attr('x1', d => d.x)
             .attr('y1', d => d.y)
             .attr('x2', d => d.inner?.proj ? d.inner.proj[0] : d.x)
             .attr('y2', d => d.inner?.proj ? d.inner.proj[1] : d.y)
             .attr('stroke', 'transparent')
             .attr('stroke-width', 10)
-            .style('pointer-events', 'stroke');
+            .attr('fill', 'black')
+            .style('pointer-events', 'stroke')
 
 
+        gLinks.selectAll('.connector-hitbox')
+            .on('mouseenter', function(event, d) {
+                const activeThema = getActiveThema();
+                console.log(activeThema)
+                if (activeThema) {
+                    temp = svg.selectAll(`.connector-${d.id}`).filter(d => {console.log(d); return null})//d.group === getActiveThema()})
+                        //.attr('stroke-width', 3)
+                        .attr('stroke-opacity', ITEM_OPACITY_HIGH)
+                        console.log(temp)
+
+                } else {
+                    console.log("ola")
+                    // Highlight the corresponding connector line
+                    svg.selectAll(`.connector-${d.id}`)
+                        .attr('stroke-width', 3)
+                        .attr('stroke-opacity', ITEM_OPACITY_HIGH);
+
+                    svg.selectAll(`.text-label-${d.id} text`)
+                        .attr('opacity', ITEM_OPACITY_HIGH)
+
+                }
+            })
+            .on('mouseleave', function(event, d) {
+                 const activeThema = getActiveThema();
+                 if (activeThema) {
+                // Reset connector
+                svg.selectAll(`.connector-${d.id}`)
+                  .attr('stroke-width', 1)
+                 .attr('stroke-opacity', ITEM_OPACITY_MID);
+
+                // Reset label
+                svg.selectAll(`.text-label-${d.id} text`)
+                    .attr('opacity', ITEM_OPACITY_MID)
+                 }
+                 else{
+                    // Reset connector
+                svg.selectAll(`.connector-${d.id}`)
+                  .attr('stroke-width', 1)
+                 .attr('stroke-opacity', ITEM_OPACITY_MID);
+
+                // Reset label
+                svg.selectAll(`.text-label-${d.id} text`)
+                    .attr('opacity', ITEM_OPACITY_MID)
+
+
+                 }
+            });
 
 
         // ===== OUTER RELATIONSHIPS (INNER LANE ARCS) =====
@@ -174,13 +242,13 @@ const ITEM_OPACITY_HIGH = 1;
             const sourceNode = networkNodes.find(n => n.id === link.source.id);
             const targetNode = networkNodes.find(n => n.id === link.target.id);
             const laneRadius = Math.round(spacedRadii[i]); // Use the calculated spaced radii
-//
+            //
             if (sourceNode) {
                 sourceNode.radius = Math.max(sourceNode.radius, laneRadius);
                 sourceNode.x = cx + sourceNode.radius * Math.cos(sourceNode.angle);
                 sourceNode.y = cy + sourceNode.radius * Math.sin(sourceNode.angle);
             }
-//
+            //
             if (targetNode) {
                 targetNode.radius = Math.max(targetNode.radius, laneRadius);
                 targetNode.x = cx + targetNode.radius * Math.cos(targetNode.angle);
@@ -188,14 +256,18 @@ const ITEM_OPACITY_HIGH = 1;
             }
         });
 
-            console.log(allNetworkNodes)
+        console.log(allNetworkNodes)
         // Rebind data and update connectors
         gLinks.selectAll('line.connector')
             .data(allNetworkNodes)
             .join('line') // Ensure the data is re-bound
             .attr('class', d => `connector connector-${d.id}`)
-            .attr('x1', d => { return d.x })
-            .attr('y1', d => {return d.y})
+            .attr('x1', d => {
+                return d.x
+            })
+            .attr('y1', d => {
+                return d.y
+            })
             .attr('x2', d => {
                 if (d.inner?.proj) {
                     const dx = d.inner.proj[0] - cx;
@@ -208,8 +280,8 @@ const ITEM_OPACITY_HIGH = 1;
             })
             .attr('y2', d => {
                 if (d.inner?.proj) {
-                    const dx = d.inner.proj[0] - cx ;
-                    const dy = d.inner.proj[1] - cy ;
+                    const dx = d.inner.proj[0] - cx;
+                    const dy = d.inner.proj[1] - cy;
                     const len = Math.sqrt(dx * dx + dy * dy);
                     const clampedLen = Math.min(len, d.radius); // Clamp to the node's radius
                     return cy + (dy / len) * clampedLen;
@@ -248,7 +320,7 @@ const ITEM_OPACITY_HIGH = 1;
             .attr('class', 'arc-label')
             .attr('text-anchor', 'middle') // Center the text along the path
             .attr('font-size', '10px')
-            .attr('fill', '#333')
+            .attr('fill', 'black')
             .attr('opacity', 0) // Initially hidden
             .append('textPath')
             .attr('xlink:href', (d, i) => `#arc-path-${i}`) // Reference the arc path by ID
@@ -301,7 +373,8 @@ const ITEM_OPACITY_HIGH = 1;
             .data(allNetworkNodes)
             .enter()
             .append('g') // group for rect + text
-            .attr('class', 'label')
+
+            .attr("class", d => `label text-label-${d.id}`)
             .attr('transform', d => {
                 const dx = d.x - cx;
                 const dy = d.y - cy;
@@ -312,6 +385,7 @@ const ITEM_OPACITY_HIGH = 1;
 
         // add text
         labels.append('text')
+            .datum(d => d)
             .attr('font-size', '10px')
             .attr('text-anchor', d => (d.x < cx ? 'end' : 'start'))
             .attr('dy', '0.35em')
@@ -323,8 +397,8 @@ const ITEM_OPACITY_HIGH = 1;
             const x = cx + laneRadius * Math.cos(angle) - 3;
             const y = cy + laneRadius * Math.sin(angle) - 3;
             group.append('rect')
-                    .attr('class', 'arc-end')
-                    .attr('data-arc-class', `arc-${pos.source.id}-${pos.target.id}`)
+                .attr('class', 'arc-end')
+                .attr('data-arc-class', `arc-${pos.source.id}-${pos.target.id}`)
                 .attr('width', 6)
                 .attr('height', 6)
                 .attr('fill', topicColorMap(pos[pos === pos.source ? 'source' : 'target'].group))
@@ -349,9 +423,8 @@ const ITEM_OPACITY_HIGH = 1;
         const selectedElements = new Set();
         // ===== Hovering logic ===== 
         hoverMouseEnter(arcGroups, svg, getArcClassFromElement, getConnectorClassFromElement, selectedElements, ITEM_OPACITY_LOW, ITEM_OPACITY_MID, ITEM_OPACITY_HIGH);
-        hoverMouseLeave(arcGroups, svg, getArcClassFromElement, getConnectorClassFromElement, selectedElements,  ITEM_OPACITY_LOW, ITEM_OPACITY_MID, ITEM_OPACITY_HIGH);
+        hoverMouseLeave(arcGroups, svg, getArcClassFromElement, getConnectorClassFromElement, selectedElements, ITEM_OPACITY_LOW, ITEM_OPACITY_MID, ITEM_OPACITY_HIGH);
         hoverClick.call(this, arcGroups, selectedElements, ITEM_OPACITY_LOW, ITEM_OPACITY_MID, ITEM_OPACITY_HIGH);
-
         // Use reset button provided in HTML and attach reset handler
         const resetButton = d3.select('#reset-button');
 
@@ -363,7 +436,7 @@ const ITEM_OPACITY_HIGH = 1;
                 .enter()
                 .append("g")
                 .attr("class", d => `geom-group geom-${d.id}`)
-                .each(function (d) {
+                .each(function(d) {
                     const group = d3.select(this);
                     let coordinates = [];
 
@@ -405,7 +478,7 @@ const ITEM_OPACITY_HIGH = 1;
                 .enter()
                 .append("g")
                 .attr("class", d => `link-geom-group link-geom-${d.source.id}-${d.target.id}`)
-                .each(function (d) {
+                .each(function(d) {
                     const group = d3.select(this);
                     const coordinates = d.geometry.type === "LineString" ? [d.geometry.coordinates] : d.geometry.coordinates;
 
@@ -439,12 +512,12 @@ const ITEM_OPACITY_HIGH = 1;
             if (!container) return;
             setActiveThema(null);
             // Redraw both overlay and main network
-            drawNetwork(sampleData, SWISSMAP, MAP_CENTER, MAP_SCALE, RADIUS_RATIO) 
+            drawNetwork(sampleData, SWISSMAP, MAP_CENTER, MAP_SCALE, RADIUS_RATIO)
             draw(container);
 
             // Clear selection set
             selectedElements.clear();
-        }  
+        }
         resetButton.on('click', resetSelection);
 
         // ===== LEGEND BELOW 'THEMA-NODE' =====
@@ -452,38 +525,37 @@ const ITEM_OPACITY_HIGH = 1;
     }
 
 
-function init() {
-    const container = document.getElementById('chart') || document.body;
-    if (!container) return;
+    function init() {
+        const container = document.getElementById('chart') || document.body;
+        if (!container) return;
 
-    let mapData = {};
-    let data;
+        let mapData = {};
+        let data;
 
-    fetch(DATA_URL)
-        .then(response => response.json())
-        .then(json => {
-            mapData = json; // Save the fetched data
-            data = JSON.parse(JSON.stringify(mapData)); // Deep copy
+        fetch(DATA_URL)
+            .then(response => response.json())
+            .then(json => {
+                mapData = json; // Save the fetched data
+                data = JSON.parse(JSON.stringify(mapData)); // Deep copy
 
-            // Now that data is available, draw the network
-            drawNetwork(data, SWISSMAP, MAP_CENTER, MAP_SCALE, RADIUS_RATIO);
-            draw(container);
-
-            // Add ResizeObserver after initial draw
-            const resizeObserver = new ResizeObserver(() => {
+                // Now that data is available, draw the network
+                drawNetwork(data, SWISSMAP, MAP_CENTER, MAP_SCALE, RADIUS_RATIO);
                 draw(container);
-            });
-            resizeObserver.observe(container);
-        })
-        .catch(error => console.error('Error loading JSON:', error)); // Handle errors
-}
+
+                // Add ResizeObserver after initial draw
+                const resizeObserver = new ResizeObserver(() => {
+                    draw(container);
+                });
+                resizeObserver.observe(container);
+            })
+            .catch(error => console.error('Error loading JSON:', error)); // Handle errors
+    }
 
     window.addEventListener('resize', () => {
         const container = document.getElementById('chart');
-        if (container){
+        if (container) {
             draw(container)
-                    }
-            else{
+        } else {
             return null
         }
     });
@@ -494,6 +566,3 @@ function init() {
         init();
     }
 })();
-
-
-
