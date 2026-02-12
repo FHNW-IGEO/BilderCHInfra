@@ -92,7 +92,7 @@ export function drawNetwork(data, swissmap, map_center, map_scale, radius_ratio)
                 .text(d.id)
                 .style("opacity", 1)
                 .attr("font-size", 12)
-                .attr("fill", "#333")
+                .attr("fill", "#000000")
                 .attr("font-family", "sans-serif");
         } else if (coords) {
             const [xProj, yProj] = projection(coords);
