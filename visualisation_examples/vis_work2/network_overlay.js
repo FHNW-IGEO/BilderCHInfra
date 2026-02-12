@@ -11,7 +11,7 @@ const DATA_URL = '/BilderCHInfra/visualisation_examples/data/Nationalstrassen_Ho
 const GEOM_URL = '/BilderCHInfra/visualisation_examples/data/geom.geojson';
 const OVERLAY_ID = 'network-overlay-svg';
 const MAP_CENTER = [8.3, 46.8];
-const MAP_SCALE = 4000;
+const MAP_SCALE = 6000;
 const RADIUS_RATIO = 0.3;
 const DOT_OUT_OFFSET = 6;
 const LANE_SPACING = 8;
@@ -584,5 +584,6 @@ arcGroups.on('mouseenter', (event, d) => {
 		if (container) draw(container);
 	});
 })();
+
 
 
