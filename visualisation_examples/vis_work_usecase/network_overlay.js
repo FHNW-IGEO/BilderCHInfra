@@ -16,14 +16,14 @@ import {
     drawNetwork
 } from './map.js'
 
-const DATA_URL = '/data/Verkehrs_Energie_Subset.json';
-const SWISSMAP = '/data/switzerland.geojson';
+const DATA_URL = '/BilderCHInfra/visualisation_examples/data/Nationalstrassen_Hochspannung.json';
+const GEOM_URL = '/BilderCHInfra/visualisation_examples/data/geom.geojson';
 const OVERLAY_ID = 'network-overlay-svg';
-const MAP_CENTER = [8.3, 46.8];
-const MAP_SCALE = 6000;
-const RADIUS_RATIO = 0.;
+const MAP_CENTER = [8.311026555744672, 47.33633643561324];
+const MAP_SCALE = 9000;
+const RADIUS_RATIO = 0.5;
 const DOT_OUT_OFFSET = 1;
-const LANE_SPACING = 4;
+const LANE_SPACING = 7;
 const ITEM_OPACITY_LOW = 0.1;
 const ITEM_OPACITY_MID = 0.5;
 const ITEM_OPACITY_HIGH = 1;
@@ -166,7 +166,7 @@ const ITEM_OPACITY_HIGH = 1;
                         .attr('stroke-opacity', ITEM_OPACITY_HIGH);
 
                     svg.selectAll(`.text-label-${d.id} text`)
-                        .attr('opacity', ITEM_OPACITY_HIGH)
+                        .attr('opacity', 1)
 
                 }
             })
@@ -180,7 +180,7 @@ const ITEM_OPACITY_HIGH = 1;
 
                 // Reset label
                 svg.selectAll(`.text-label-${d.id} text`)
-                    .attr('opacity', ITEM_OPACITY_MID)
+                    .attr('opacity', 1)
                  }
                  else{
                     // Reset connector
@@ -190,7 +190,7 @@ const ITEM_OPACITY_HIGH = 1;
 
                 // Reset label
                 svg.selectAll(`.text-label-${d.id} text`)
-                    .attr('opacity', ITEM_OPACITY_MID)
+                    .attr('opacity', 1)
 
 
                  }
@@ -389,7 +389,7 @@ const ITEM_OPACITY_HIGH = 1;
             .attr('font-size', '10px')
             .attr('text-anchor', d => (d.x < cx ? 'end' : 'start'))
             .attr('dy', '0.35em')
-            .attr('opacity', ITEM_OPACITY_MID)
+            .attr('opacity', 1)
             .text(d => d.name)
 
         // ===== ARC END RECTANGLES =====
