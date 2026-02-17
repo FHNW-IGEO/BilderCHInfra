@@ -1,8 +1,8 @@
 # Bilder Schweizer Infrastrukturen (BilderCHInfra)
 
 > **Visualising Switzerland’s complex infrastructure networks**
-> An interdisciplinary research project by the *Institute of Geomatics*and the *Institute of Architecture* ,
-> ** FHNW University of Applied Sciences and Arts Northwestern Switzerland**.
+> An interdisciplinary research project by the *Institute of Geomatics* and the *Institute of Architecture* ,
+> **FHNW University of Applied Sciences and Arts Northwestern Switzerland**.
 
 ---
 
