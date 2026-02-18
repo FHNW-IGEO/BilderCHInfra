@@ -103,7 +103,7 @@ The project "Bilder Schweizer Infrastrukturen" (BilderCHInfra) was funded by [St
 
 
 ---
-## Literture
+## 📖 Literature
 Longabaugh, W.J. Combing the hairball with BioFabric: a new approach for visualization of large networks. BMC Bioinformatics 13, 275 (2012). https://doi.org/10.1186/1471-2105-13-275
 
 Tominski, C., Andrienko, G., Andrienko, N., Bleisch, S., Fabrikant, S. I., Mayr, E., Miksch, S., Pohl, M., & Skupin, A. (2021). Toward flexible visual analytics augmented through smooth display transitions. Visual Informatics, 5(3), 28–38. https://doi.org/10.1016/j.visinf.2021.06.004
