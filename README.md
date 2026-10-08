@@ -5,6 +5,8 @@
 > **FHNW University of Applied Sciences and Arts Northwestern Switzerland**.
 
 ---
+Ready to use visualisation: **[Radial Network Interactive Dashboard](https://fhnw-igeo.github.io/BilderCHInfra/visualisation_examples/radial-network_extension)**
+
 
 ## ✨ About the Project
 
@@ -47,8 +49,6 @@ Radial layouts for exploring relationships between heterogeneous infrastructure 
 * 🇨🇭 **[RNV – Swiss Use Case 1](https://fhnw-igeo.github.io/BilderCHInfra/visualisation_examples/vis_work)**
 * 🇨🇭 **[RNV – Swiss Use Case 2](https://fhnw-igeo.github.io/BilderCHInfra/visualisation_examples/vis_work2)**
 * 🇨🇭 **[RNV – Swiss Use Case 3](https://fhnw-igeo.github.io/BilderCHInfra/visualisation_examples/vis_work_usecase)**
-
-* * 🇨🇭 **[RNV – Swiss Use Case 3](https://fhnw-igeo.github.io/BilderCHInfra/visualisation_examples/radial-network_extension)**
 
 ---
 
