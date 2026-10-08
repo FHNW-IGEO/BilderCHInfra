@@ -9,20 +9,20 @@
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#F2F4F1; --panel:#FBFCFA; --ink:#1D2B36; --muted:#5C6A72; --land:#E1E6DE; --land-edge:#FFFFFF;
-  --lake:#C3D8E5; --guide:#B9C3BD; --rule:#D6DDD7; --hover:#E8ECE7; --focus:#1D5FA8;
+  --bg:#F2F4F1; --panel:#FBFCFA; --ink:#1D2B36; --muted:#5C6A72; --land:#DCE3D8; --land-edge:#FFFFFF;
+  --lake:#C3D8E5; --disc:#E9EDE7; --guide:#B9C3BD; --rule:#D6DDD7; --hover:#E8ECE7; --focus:#1D5FA8;
   box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
   color-scheme:light;
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
     --bg:#10171C; --panel:#151E24; --ink:#E2E8EB; --muted:#94A2A9; --land:#1E2A30; --land-edge:#10171C;
-    --lake:#21384A; --guide:#3A4950; --rule:#27333A; --hover:#1E2930; --focus:#7FB2EE; color-scheme:dark;
+    --lake:#21384A; --disc:#162026; --guide:#3A4950; --rule:#27333A; --hover:#1E2930; --focus:#7FB2EE; color-scheme:dark;
   }
 }
 :root[data-theme="dark"]{
   --bg:#10171C; --panel:#151E24; --ink:#E2E8EB; --muted:#94A2A9; --land:#1E2A30; --land-edge:#10171C;
-  --lake:#21384A; --guide:#3A4950; --rule:#27333A; --hover:#1E2930; --focus:#7FB2EE; color-scheme:dark;
+  --lake:#21384A; --disc:#162026; --guide:#3A4950; --rule:#27333A; --hover:#1E2930; --focus:#7FB2EE; color-scheme:dark;
 }
 html{scroll-padding-top:env(safe-area-inset-top,0px); height:100%}
 *,*::before,*::after{box-sizing:border-box}
@@ -80,6 +80,16 @@ main{position:relative; min-width:0; min-height:0}
 .lake{fill:var(--lake)}
 .border{fill:none; stroke:var(--guide); stroke-width:.8}
 .guide{fill:none; stroke:var(--guide); stroke-width:1}
+.disc{fill:var(--disc)}
+.lens{fill:none; stroke:var(--guide); stroke-width:1.2; pointer-events:none}
+.leader.out{stroke-dasharray:1.5 2.5}
+.outmark{cursor:pointer; stroke:var(--bg); stroke-width:.8}
+.cluster{cursor:zoom-in}
+.cluster circle{stroke:var(--bg); stroke-width:1.5}
+.cluster text{fill:#fff; font-size:9px; font-weight:650; pointer-events:none}
+.lbl.outl{font-style:italic}
+.tools button{min-width:34px}
+.showmap{margin:0 0 10px}
 .guide.dash{stroke-dasharray:2 3}
 .geo{fill:none; stroke-width:1.6; stroke-opacity:.55; stroke-linecap:round}
 .leader{fill:none; stroke-width:1; stroke-opacity:.55}
@@ -128,13 +138,21 @@ svg *{vector-effect:non-scaling-stroke}
       <option value="span">Eine Ebene pro Beziehung, nach Spannweite</option>
       <option value="biofabric">Eine Ebene pro Beziehung, BioFabric-Reihenfolge</option>
     </select>
+    <select id="placement" aria-label="Platzierung der nicht-räumlichen Knoten" style="margin-top:6px">
+      <option value="opt">Nicht-räumliche Knoten frei optimiert</option>
+      <option value="even">Gleichmässig verteilt, Reihenfolge optimiert</option>
+      <option value="bary">Gleichmässig verteilt, nach Schwerpunkt</option>
+    </select>
     <label class="row" style="margin-top:6px"><input type="checkbox" id="spread" checked> Anschlüsse am Ring entzerren</label>
     <label class="row"><input type="checkbox" id="showGeo" checked> Leitungen und Strassen auf der Karte</label>
+    <label class="row"><input type="checkbox" id="cluster" checked> Nahe Knoten zusammenfassen</label>
 
     <h2>Lesehilfe</h2>
     <div class="enc">
       <svg width="20" height="12"><line x1="0" y1="6" x2="20" y2="6" stroke="currentColor" stroke-width="1.2"/></svg><span>Leitlinie eines räumlichen Knotens</span>
       <svg width="20" height="12"><line x1="0" y1="6" x2="20" y2="6" stroke="currentColor" stroke-width="1.2" stroke-dasharray="3 2.5"/></svg><span>Leitlinie eines nicht-räumlichen Knotens</span>
+      <svg width="20" height="12"><path d="M4 2L11 6L4 10Z" fill="currentColor"/><line x1="11" y1="6" x2="20" y2="6" stroke="currentColor" stroke-width="1.2" stroke-dasharray="1.5 2.5"/></svg><span>Räumlicher Knoten ausserhalb des Kartenausschnitts, in seiner Richtung</span>
+      <svg width="20" height="14"><circle cx="10" cy="7" r="6.5" fill="currentColor"/><text x="10" y="10" text-anchor="middle" font-size="9" fill="var(--panel)">3</text></svg><span>Zusammengefasste Knoten, anklicken zum Hineinzoomen</span>
       <svg width="20" height="12"><path d="M1 11 A10 10 0 0 1 19 11" fill="none" stroke="currentColor" stroke-width="1.2"/></svg><span>Beziehung (Bogen auf eigener Ebene)</span>
       <svg width="20" height="12"><rect x="7" y="3" width="6" height="6" fill="currentColor"/></svg><span>Ansatzpunkt, materielle Beziehung</span>
       <svg width="20" height="12"><circle cx="10" cy="6" r="3.2" fill="currentColor"/></svg><span>Ansatzpunkt, immaterielle Beziehung</span>
@@ -167,8 +185,8 @@ Knoten ohne lat/lon gelten als nicht-räumlich.
   </aside>
   <main>
     <div id="chart" role="img" aria-label="Radiale Netzwerkvisualisierung über einer Karte der Schweiz"></div>
-    <div class="tools"><button id="zoomReset" type="button">Ansicht zurücksetzen</button></div>
-    <div class="hint">Scrollen oder ziehen zum Zoomen und Verschieben</div>
+    <div class="tools"><button id="zoomIn" type="button" aria-label="Karte vergrössern">+</button><button id="zoomOut" type="button" aria-label="Karte verkleinern">−</button><button id="zoomReset" type="button">Ganze Karte</button></div>
+    <div class="hint">Auf der Karte scrollen, ziehen oder mit zwei Fingern zoomen</div>
     <div id="tip"></div>
   </main>
 </div>
@@ -808,26 +826,29 @@ function prepare(raw){
 }
 
 /* ---------- state ---------- */
-const state = {hiddenNet:new Set(), hiddenType:new Set(), layerMode:"packed", spread:true, showGeo:true, pinned:null, hover:null};
-let LAY = null;
+/* ---------- state ---------- */
+const state = {hiddenNet:new Set(), hiddenType:new Set(), layerMode:"packed", placement:"opt", spread:true, showGeo:true, cluster:true, pinned:null, hover:null};
+let BASEL = null, LAY = null, mapT = d3.zoomIdentity;
+const reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 /* ---------- layout ---------- */
-function placeAbstract(abs, spatial, g){
-  const k = abs.length; if (!k) return;
-  abs.forEach(n => {
-    const sp = n.nb.filter(m => m.spatial);
+// free = nodes without a map anchor (non-spatial); anchored = nodes with an angle theta0
+function baryInit(free, anchored, g){
+  const k = free.length; if (!k) return;
+  free.forEach(n => {
+    const sp = n.nb.filter(m => m.pt);
     n.bary = sp.length ? cmean(sp.map(m => m.theta0)) : null;
   });
-  abs.forEach(n => {
+  free.forEach(n => {
     if (n.bary != null) return;
-    const a = n.nb.filter(m => m.spatial || m.bary != null).map(m => m.spatial ? m.theta0 : m.bary);
+    const a = n.nb.filter(m => m.pt || m.bary != null).map(m => m.pt ? m.theta0 : m.bary);
     if (a.length) n.bary = cmean(a);
   });
-  const withB = abs.filter(n => n.bary != null).sort((a, b) => norm(a.bary) - norm(b.bary));
-  const rest = abs.filter(n => n.bary == null).sort((a, b) => d3.ascending(a.network, b.network) || d3.ascending(a.name, b.name));
-  const order = withB.concat(rest), step = TAU / k, sp = spatial.map(n => n.theta0);
+  const withB = free.filter(n => n.bary != null).sort((a, b) => norm(a.bary) - norm(b.bary));
+  const rest = free.filter(n => n.bary == null).sort((a, b) => d3.ascending(a.network, b.network) || d3.ascending(a.name, b.name));
+  const order = withB.concat(rest), step = TAU / k, sp = anchored.map(n => n.theta0);
   let best = Infinity, bestOff = 0;
-  for (let o = 0; o < 360; o++) {
+  for (let o = 0; o < 360; o += 2) {
     const off = o * DEG; let s = 0;
     order.forEach((n, i) => {
       const slot = off + i * step;
@@ -842,16 +863,17 @@ function placeAbstract(abs, spatial, g){
 function spreadAngles(nodes, g){
   const n = nodes.length; if (n < 2) return;
   g = Math.min(g, TAU * 0.98 / n);
-  for (let it = 0; it < 500; it++) {
+  // phase 1: separate while pulling towards the anchors; phase 2: separate only, so labels never overlap
+  for (let it = 0; it < 900; it++) {
     nodes.sort((a, b) => norm(a.theta) - norm(b.theta));
     let moved = false;
     for (let i = 0; i < n; i++) {
       const a = nodes[i], b = nodes[(i + 1) % n];
       const d = norm(b.theta - a.theta);
-      if (d < g - 1e-6) { const s = (g - d) / 2; a.theta -= s; b.theta += s; moved = true; }
+      if (d < g - 1e-6) { const s = (g - d) / 2 + 1e-5; a.theta -= s; b.theta += s; moved = true; }
     }
-    nodes.forEach(m => { m.theta += sdiff(m.theta, m.anchor) * 0.03; });
-    if (!moved && it > 30) break;
+    if (it < 300) nodes.forEach(m => { m.theta += sdiff(m.theta, m.anchor) * 0.03; });
+    else if (!moved) break;
   }
   nodes.forEach(m => m.theta = norm(m.theta));
 }
@@ -881,14 +903,126 @@ function assignLayers(edges, nodes, pad){
     order = edges.slice().sort((a, b) => a.span - b.span || a.start - b.start);
   }
   if (state.layerMode !== "packed") { order.forEach((e, i) => e.layer = i); return order.length; }
-  const layers = [];
-  for (const e of order) {
-    let k = 0;
-    while (k < layers.length && layers[k].some(f => overlap(e, f, pad))) k++;
-    if (k === layers.length) layers.push([]);
-    layers[k].push(e); e.layer = k;
+  const greedy = seq => {
+    const layers = [], res = new Map();
+    for (const e of seq) {
+      let k = 0;
+      while (k < layers.length && layers[k].some(f => overlap(e, f, pad))) k++;
+      if (k === layers.length) layers.push([]);
+      layers[k].push(e); res.set(e, k);
+    }
+    return {n:layers.length, res};
+  };
+  // a: short arcs on the inner layers (easier to read); b: sweep from the least loaded angle (fewer layers)
+  const a = greedy(order);
+  const load = new Float64Array(NB);
+  edges.forEach(e => arcBins(e.start, e.start + e.span, x => { load[x]++; }));
+  let cut = 0; for (let i = 1; i < NB; i++) if (load[i] < load[cut]) cut = i;
+  const cutA = cut * BW, rel = e => norm(e.start - cutA);
+  const crossing = e => rel(e) + e.span > TAU;
+  const sweep = edges.slice().sort((x, y) => (crossing(y) - crossing(x)) || rel(x) - rel(y) || x.span - y.span);
+  const b = greedy(sweep);
+  const best = b.n < a.n ? b : a;
+  edges.forEach(e => e.layer = best.res.get(e));
+  return best.n;
+}
+
+/* Placement of non-spatial nodes by arc congestion.
+   The circle is split into bins; the cost of a layout is the sum over bins of (number of arcs crossing the bin)^2,
+   so parallel arcs are penalised quadratically. Nodes that sit too close to others get an extra penalty. */
+const NB = 180, BW = TAU / NB, CROWD = 40;
+let PEXP = 3;
+const binCost = L => PEXP === 2 ? L * L : L * L * L;
+const warmAng = new Map();
+function arcBins(a, b, fn){
+  const d = sdiff(a, b), s = d >= 0 ? a : b, n = Math.max(1, Math.round(Math.abs(d) / BW)), b0 = Math.floor(norm(s) / BW) % NB;
+  for (let i = 0; i < n; i++) fn((b0 + i) % NB);
+}
+function placeFree(free, anchored, de, g, mode){
+  if (!free.length) return;
+  baryInit(free, anchored, g);
+  free.forEach(n => n.ang = mode === "opt" && warmAng.has(n.id) ? warmAng.get(n.id) : n.slot);
+  if (mode === "bary") return;
+  const angOf = n => n.pt ? n.theta0 : n.ang;
+  const load = new Float64Array(NB);
+  const addEdge = (e, w) => arcBins(angOf(e.s), angOf(e.t), b => { load[b] += w; });
+  const gg = g * 1.2;
+  const crowd = (x, self, withFree) => {
+    let p = 0;
+    for (const m of anchored) { const d = adist(x, m.theta0); if (d < gg) p += 1 - d / gg; }
+    if (withFree) for (const m of free) { if (m === self) continue; const d = adist(x, m.ang); if (d < gg) p += 1 - d / gg; }
+    return p * CROWD;
+  };
+  const warm = mode === "opt" && free.every(n => warmAng.has(n.id));
+  if (!warm) {
+    // even spacing as in the paper; only the order and the rotation are optimised
+    const order = free.slice().sort((a, b) => norm(a.slot) - norm(b.slot)), k = order.length, step = TAU / k;
+    let off = norm(order[0].slot);
+    const evalAll = () => {
+      order.forEach((n, i) => n.ang = norm(off + i * step));
+      load.fill(0); de.forEach(e => addEdge(e, 1));
+      let s = 0; for (let i = 0; i < NB; i++) s += binCost(load[i]);
+      order.forEach(n => { s += crowd(n.ang, n, false); });
+      return s;
+    };
+    let cur = evalAll();
+    for (let pass = 0; pass < 25; pass++) {
+      let improved = false;
+      for (let i = 0; i < k; i++) for (let j = i + 1; j < k; j++) {
+        [order[i], order[j]] = [order[j], order[i]];
+        const c = evalAll();
+        if (c < cur - 1e-9) { cur = c; improved = true; } else [order[i], order[j]] = [order[j], order[i]];
+      }
+      const save = off; let bestOff = off;
+      for (let q = 0; q * BW < step; q++) { off = save + q * BW - step / 2; const c = evalAll(); if (c < cur - 1e-9) { cur = c; bestOff = off; improved = true; } }
+      off = bestOff; cur = evalAll();
+      if (!improved) break;
+    }
   }
-  return layers.length;
+  if (mode === "opt") {
+    load.fill(0);
+    // coordinate descent: move one node at a time to its cheapest angle, hubs first
+    de.forEach(e => addEdge(e, 1));
+    const order = free.slice().sort((a, b) => b.deg - a.deg || d3.ascending(a.name, b.name));
+    const own = new Float64Array(NB);
+    for (let sweep = 0; sweep < 5; sweep++) {
+      let changed = false;
+      for (const v of order) {
+        const inc = de.filter(e => e.s === v || e.t === v);
+        inc.forEach(e => addEdge(e, -1));
+        const costAt = x => {
+          v.ang = x; own.fill(0); let c = 0;
+          for (const e of inc) arcBins(angOf(e.s), angOf(e.t), b => { const L = load[b] + own[b]; c += binCost(L + 1) - binCost(L); own[b]++; });
+          return c + crowd(x, v, true);
+        };
+        const prev = v.ang, prevCost = costAt(prev);
+        let best = prevCost, bestA = prev;
+        for (let c = 0; c < NB; c++) { const x = (c + 0.5) * BW, cost = costAt(x); if (cost < best - 1e-9) { best = cost; bestA = x; } }
+        if (best > prevCost * 0.97 - 0.5) bestA = prev;   // hysteresis keeps the layout calm while zooming
+        v.ang = bestA; inc.forEach(e => addEdge(e, 1));
+        if (bestA !== prev) changed = true;
+      }
+      if (!changed) break;
+    }
+  }
+}
+
+// angles for all display nodes, then routing layers for all display edges
+function arrange(dn, de, C){
+  dn.forEach(n => { n.deg = 0; n.nb = []; });
+  de.forEach(e => { e.s.deg++; e.t.deg++; e.s.nb.push(e.t); e.t.nb.push(e.s); });
+  const anchored = dn.filter(n => n.pt), free = dn.filter(n => !n.pt);
+  anchored.forEach(n => n.theta0 = Math.atan2(n.pt[1] - C[1], n.pt[0] - C[0]));
+  const gap = Math.min(0.8 * TAU / Math.max(dn.length, 1), 3.6 * DEG);
+  placeFree(free, anchored, de, gap, state.placement);
+  free.forEach(n => warmAng.set(n.id, n.ang));
+  dn.forEach(n => { n.anchor = n.pt ? n.theta0 : n.ang; n.theta = norm(n.anchor); });
+  if (state.spread) spreadAngles(dn.slice(), gap);
+  de.forEach(e => {
+    const d = sdiff(e.s.theta, e.t.theta);
+    e.start = norm(d >= 0 ? e.s.theta : e.t.theta); e.span = Math.abs(d);
+  });
+  return {nL: assignLayers(de, dn, Math.max(gap * 0.55, 1.2 * DEG)), gap};
 }
 
 const measureCtx = document.createElement("canvas").getContext("2d");
@@ -899,68 +1033,137 @@ function fitText(s, px, maxW){
   return t.trimEnd() + "…";
 }
 
-function computeLayout(w, h){
-  const nodes = DATA.nodes.filter(n => !state.hiddenNet.has(n.network)).map(n => ({...n, deg:0, nb:[]}));
-  const byId = new Map(nodes.map(n => [n.id, n]));
-  const edges = DATA.links.map((l, i) => ({...l, id:"e" + i, s:byId.get(l.source), t:byId.get(l.target), T:DATA.types.get(l.type)}))
-    .filter(e => e.s && e.t && e.s !== e.t && !state.hiddenType.has(e.type));
-  edges.forEach(e => { e.s.deg++; e.t.deg++; e.s.nb.push(e.t); e.t.nb.push(e.s); });
+// Fixed geometry for the current data, filters and window size: ring radii, label space, base projection.
+function computeBase(w, h){
+  const nodes = DATA.nodes.filter(n => !state.hiddenNet.has(n.network));
+  const ids = new Set(nodes.map(n => n.id));
+  const edges = DATA.links.map((l, i) => ({...l, id:"e" + i, T:DATA.types.get(l.type)}))
+    .filter(e => ids.has(e.source) && ids.has(e.target) && e.source !== e.target && !state.hiddenType.has(e.type));
 
-  // unit projection: angles are scale-invariant, so layer packing can happen before sizing
   const proj = d3.geoMercator().fitSize([1000, 1000], BASE.country);
   const [[x0, y0], [x1, y1]] = d3.geoPath(proj).bounds(BASE.country);
   const c = [(x0 + x1) / 2, (y0 + y1) / 2];
   let rU = 0;
   eachCoord(BASE.country, (lon, lat) => { const p = proj([lon, lat]); rU = Math.max(rU, Math.hypot(p[0] - c[0], p[1] - c[1])); });
-  const spatial = nodes.filter(n => n.spatial), abs = nodes.filter(n => !n.spatial);
-  spatial.forEach(n => {
-    const p = proj([n.lon, n.lat]), dx = p[0] - c[0], dy = p[1] - c[1];
-    n.pu = p; rU = Math.max(rU, Math.hypot(dx, dy) * 1.02); n.theta0 = Math.atan2(dy, dx);
-  });
+  nodes.filter(n => n.spatial).forEach(n => { const p = proj([n.lon, n.lat]); rU = Math.max(rU, Math.hypot(p[0] - c[0], p[1] - c[1]) * 1.02); });
 
-  const N = nodes.length;
-  const gap = Math.min(0.8 * TAU / Math.max(N, 1), 3.6 * DEG);
-  placeAbstract(abs, spatial, gap);
-  nodes.forEach(n => { n.anchor = n.spatial ? n.theta0 : n.slot; n.theta = norm(n.anchor); });
-  if (state.spread) spreadAngles(nodes.slice(), gap);
+  // probe the initial view (no grouping) to size the routing band
+  const byId = new Map(), dn = nodes.map(n => { const d = {...n, pt:n.spatial ? proj([n.lon, n.lat]) : null}; byId.set(n.id, d); return d; });
+  const de = edges.map(e => ({...e, s:byId.get(e.source), t:byId.get(e.target)}));
+  const {nL, gap} = arrange(dn, de, c);
 
-  edges.forEach(e => {
-    const d = sdiff(e.s.theta, e.t.theta);
-    e.start = norm(d >= 0 ? e.s.theta : e.t.theta); e.span = Math.abs(d);
-  });
-  const nL = assignLayers(edges, nodes, Math.max(gap * 0.55, 1.2 * DEG));
-
-  // sizing
   const A = Math.min(w, h) / 2 - 12;
   const fan = state.spread ? clamp(A * 0.07, 12, 26) : 8, toLayers = clamp(A * 0.045, 8, 16), maxFont = 12;
-  let labelW = (d3.max(nodes, n => textW(n.name, maxFont)) || 0) + 10;
-  let fontCap = maxFont;
+  let labelW = (d3.max(nodes, n => textW(n.name + " +9", maxFont)) || 0) + 10, fontCap = maxFont;
   const labelCap = A * (A < 260 ? 0.27 : 0.38);
   if (labelW > labelCap) { fontCap = Math.max(7.5, maxFont * labelCap / labelW); labelW = labelCap; }
   const B = A - labelW - 8 - fan - toLayers;
   const span = Math.max(nL - 1, 1);
-  let s = clamp(B * 0.32 / span, 2.2, 7), Rmap = B - (nL - 1) * s;
-  if (Rmap < B * 0.5) { Rmap = B * 0.5; s = (B - Rmap) / span; }
-  const Rring = Rmap + fan, R0 = Rring + toLayers, Rout = R0 + Math.max(nL - 1, 0) * s + 10, Rlab = Rout + 6;
+  let s0 = clamp(B * 0.32 / span, 2.2, 7), Rmap = B - (nL - 1) * s0;
+  if (Rmap < B * 0.5) { Rmap = B * 0.5; s0 = (B - Rmap) / span; }
+  const band = Math.max((nL - 1) * s0, 30);
+  const Rring = Rmap + fan, R0 = Rring + toLayers, Rout = R0 + band + 10, Rlab = Rout + 6;
   const font = state.spread ? clamp(gap * Rlab * 0.92, 7.5, fontCap) : Math.min(10, fontCap);
-  nodes.forEach(n => { n.label = fitText(n.name, font, labelW - 10); });
 
   const f = Rmap / rU, C = [w / 2, h / 2], t0 = proj.translate();
-  const P = d3.geoMercator().scale(proj.scale() * f).translate([C[0] + f * (t0[0] - c[0]), C[1] + f * (t0[1] - c[1])]);
-  spatial.forEach(n => { n.p = P([n.lon, n.lat]); n.rp = Math.hypot(n.p[0] - C[0], n.p[1] - C[1]); });
-  edges.forEach(e => e.r = R0 + e.layer * s);
+  const Pb = d3.geoMercator().scale(proj.scale() * f).translate([C[0] + f * (t0[0] - c[0]), C[1] + f * (t0[1] - c[1])]);
+  return {nodes, edges, Pb, C, Rmap, Rring, R0, Rout, Rlab, fan, font, s0, band, labelW, w, h};
+}
 
-  return {nodes, edges, byId, edgeById:new Map(edges.map(e => [e.id, e])), nL, P, C, Rmap, Rring, R0, Rout, Rlab, fan, font, w, h};
+// Everything that depends on the current map view: which nodes are on the map, grouped, or outside the window.
+function computeView(){
+  const B = BASEL, t = mapT, T = B.Pb.translate();
+  const P = d3.geoMercator().scale(B.Pb.scale() * t.k).translate([T[0] * t.k + t.x, T[1] * t.k + t.y])
+    .clipExtent([[B.C[0] - B.Rmap - 2, B.C[1] - B.Rmap - 2], [B.C[0] + B.Rmap + 2, B.C[1] + B.Rmap + 2]]);
+  const rIn = B.Rmap - 4;
+  const base = B.nodes.map(n => {
+    const p = n.spatial ? P([n.lon, n.lat]) : null;
+    return {n, p, inView: !!p && Math.hypot(p[0] - B.C[0], p[1] - B.C[1]) <= rIn};
+  });
+  const pos = new Map(base.filter(b => b.p).map(b => [b.n.id, b.p]));
+
+  // group map nodes that would overlap on screen at this zoom level
+  const inside = base.filter(b => b.inView), groups = [];
+  if (state.cluster) {
+    const deg = d3.rollup(B.edges.flatMap(e => [e.source, e.target]), v => v.length, d => d);
+    const order = inside.slice().sort((a, b) => (deg.get(b.n.id) || 0) - (deg.get(a.n.id) || 0) || d3.ascending(a.n.name, b.n.name));
+    const used = new Set(), thr = 14;
+    for (const a of order) {
+      if (used.has(a)) continue;
+      const g = [a]; used.add(a);
+      for (const b of order) if (!used.has(b) && Math.hypot(a.p[0] - b.p[0], a.p[1] - b.p[1]) < thr) { g.push(b); used.add(b); }
+      groups.push(g);
+    }
+  } else inside.forEach(b => groups.push([b]));
+
+  const dn = [], alias = new Map();
+  groups.forEach(g => {
+    const lead = g[0], multi = g.length > 1;
+    const d = {id:multi ? "c:" + lead.n.id : lead.n.id, name:lead.n.name, network:lead.n.network, note:lead.n.note,
+               kind:multi ? "cluster" : "map", pt:multi ? [d3.mean(g, b => b.p[0]), d3.mean(g, b => b.p[1])] : lead.p, members:g.map(b => b.n)};
+    dn.push(d); g.forEach(b => alias.set(b.n.id, d));
+  });
+  base.filter(b => b.n.spatial && !b.inView).forEach(b => {
+    const d = {id:b.n.id, name:b.n.name, network:b.n.network, note:b.n.note, kind:"outside", pt:b.p, members:[b.n]};
+    dn.push(d); alias.set(b.n.id, d);
+  });
+  base.filter(b => !b.n.spatial).forEach(b => {
+    const d = {id:b.n.id, name:b.n.name, network:b.n.network, note:b.n.note, kind:"abstract", pt:null, members:[b.n]};
+    dn.push(d); alias.set(b.n.id, d);
+  });
+
+  const de = [], internal = new Map();
+  B.edges.forEach(e => {
+    const s = alias.get(e.source), tt = alias.get(e.target);
+    if (s === tt) { internal.set(s.id, (internal.get(s.id) || 0) + 1); return; }
+    de.push({...e, s, t:tt});
+  });
+  const {nL} = arrange(dn, de, B.C);
+  const s = nL > 1 ? Math.min(B.s0, B.band / (nL - 1)) : B.s0;
+  de.forEach(e => e.r = B.R0 + e.layer * s);
+  dn.forEach(d => {
+    d.internal = internal.get(d.id) || 0;
+    d.label = fitText(d.kind === "cluster" ? `${d.name} +${d.members.length - 1}` : d.name, B.font, B.labelW - 10);
+    if (d.kind === "map" || d.kind === "cluster") d.rp = Math.hypot(d.pt[0] - B.C[0], d.pt[1] - B.C[1]);
+  });
+  return {...B, P, pos, nodes:dn, edges:de, byId:new Map(dn.map(d => [d.id, d])), edgeById:new Map(de.map(e => [e.id, e])), alias, nL};
 }
 
 /* ---------- rendering ---------- */
 const chartEl = document.getElementById("chart");
 const svg = d3.select(chartEl).append("svg");
+const defs = svg.append("defs");
+const clipCircle = defs.append("clipPath").attr("id", "mapclip").append("circle");
 const root = svg.append("g");
 const tip = document.getElementById("tip");
-const zoom = d3.zoom().scaleExtent([0.6, 10]).on("zoom", ev => root.attr("transform", ev.transform));
+
+const zoom = d3.zoom().scaleExtent([1, 60])
+  .filter(ev => {
+    if (!BASEL || ev.button || (ev.ctrlKey && ev.type !== "wheel") || ev.type === "dblclick") return false;
+    const src = ev.touches && ev.touches.length ? ev.touches[0] : ev;
+    const [x, y] = d3.pointer(src, svg.node());
+    return Math.hypot(x - BASEL.C[0], y - BASEL.C[1]) <= BASEL.Rring;
+  })
+  .on("zoom", ev => { mapT = ev.transform; scheduleView(); });
 svg.call(zoom).on("dblclick.zoom", null);
-svg.on("click", ev => { if (ev.target === svg.node()) { state.pinned = null; refreshFocus(); } });
+svg.on("click", ev => { if (ev.target === svg.node() || ev.target.classList.contains("disc")) { state.pinned = null; refreshFocus(); } });
+
+let viewRq = null;
+function scheduleView(){ if (viewRq == null) viewRq = requestAnimationFrame(() => { viewRq = null; drawView(); }); }
+
+function zoomToNodes(ns, minK = 1){
+  const pts = ns.filter(n => n.spatial).map(n => BASEL.Pb([n.lon, n.lat])); if (!pts.length) return;
+  const cx = d3.mean(pts, p => p[0]), cy = d3.mean(pts, p => p[1]);
+  const ext = d3.max(pts, p => Math.hypot(p[0] - cx, p[1] - cy));
+  // for a group: zoom just far enough that its members separate on screen
+  let dmin = Infinity;
+  pts.forEach((a, i) => pts.forEach((b, j) => { if (j > i) dmin = Math.min(dmin, Math.hypot(a[0] - b[0], a[1] - b[1])); }));
+  let k = ext > 0.5 ? BASEL.Rmap * 0.45 / ext : 8;
+  if (isFinite(dmin) && dmin > 0) k = Math.min(k, Math.max(mapT.k * 1.5, 42 / dmin));
+  k = clamp(Math.max(k, minK), 1, 60);
+  const t = d3.zoomIdentity.translate(BASEL.C[0] - k * cx, BASEL.C[1] - k * cy).scale(k);
+  svg.transition().duration(reduceMotion ? 0 : 550).call(zoom.transform, t);
+}
 
 const pol = (r, a) => [LAY.C[0] + r * Math.cos(a), LAY.C[1] + r * Math.sin(a)];
 const fmt = p => p[0].toFixed(2) + "," + p[1].toFixed(2);
@@ -969,88 +1172,111 @@ function arcD(r, a, span){
   return `M${fmt(p0)}A${r.toFixed(2)},${r.toFixed(2)} 0 ${span > Math.PI ? 1 : 0} 1 ${fmt(p1)}`;
 }
 function leaderD(n){
-  const {Rring, Rout, fan} = LAY;
-  if (!n.spatial) return `M${fmt(pol(Rring, n.theta))}L${fmt(pol(Rout, n.theta))}`;
-  const r1 = Math.max(LAY.Rmap, n.rp);
-  if (!state.spread) return `M${fmt(n.p)}L${fmt(pol(Rout, n.theta0))}`;
-  return `M${fmt(n.p)}L${fmt(pol(r1, n.theta0))}C${fmt(pol(r1 + fan * 0.55, n.theta0))} ${fmt(pol(Rring - fan * 0.45, n.theta))} ${fmt(pol(Rring, n.theta))}L${fmt(pol(Rout, n.theta))}`;
+  const {Rring, Rout, fan, Rmap} = LAY;
+  if (n.kind === "abstract") return `M${fmt(pol(Rring, n.theta))}L${fmt(pol(Rout, n.theta))}`;
+  const start = n.kind === "outside" ? pol(Rmap, n.theta0) : n.pt;
+  const r1 = n.kind === "outside" ? Rmap : Math.max(Rmap, n.rp);
+  if (!state.spread) return `M${fmt(start)}L${fmt(pol(Rout, n.theta0))}`;
+  return `M${fmt(start)}L${fmt(pol(r1, n.theta0))}C${fmt(pol(r1 + fan * 0.55, n.theta0))} ${fmt(pol(Rring - fan * 0.45, n.theta))} ${fmt(pol(Rring, n.theta))}L${fmt(pol(Rout, n.theta))}`;
 }
 const netColor = n => DATA.nets.get(n.network).color;
 
+// full re-layout: data, filters, settings or window size changed
 function render(){
   const {width:w, height:h} = chartEl.getBoundingClientRect();
   if (w < 60 || h < 60) return;
-  state.hover = null; hideTip();
-  LAY = computeLayout(w, h);
+  let keep = null;
+  if (BASEL && mapT.k > 1.001) keep = {k:mapT.k, geo:BASEL.Pb.invert(mapT.invert(BASEL.C))};
+  BASEL = computeBase(w, h);
+  const {C, Rmap} = BASEL;
   svg.attr("viewBox", `0 0 ${w} ${h}`);
+  clipCircle.attr("cx", C[0]).attr("cy", C[1]).attr("r", Rmap);
+  const box = [[C[0] - Rmap, C[1] - Rmap], [C[0] + Rmap, C[1] + Rmap]];
+  zoom.extent(box).translateExtent(box);
+  if (keep) { const p = BASEL.Pb(keep.geo); mapT = d3.zoomIdentity.translate(C[0] - keep.k * p[0], C[1] - keep.k * p[1]).scale(keep.k); }
+  else mapT = d3.zoomIdentity;
+  svg.node().__zoom = mapT;
+  drawView();
+}
+
+function drawView(){
+  if (!BASEL) return;
+  state.hover = null; hideTip();
+  LAY = computeView();
   root.selectAll("*").remove();
-  const path = d3.geoPath(LAY.P);
+  const path = d3.geoPath(LAY.P), C = LAY.C;
 
   const base = root.append("g");
-  base.append("g").selectAll("path").data(BASE.country.features).join("path").attr("class", "land").attr("d", path);
-  base.append("g").selectAll("path").data(BASE.cantons.features).join("path").attr("class", "canton").attr("d", path);
-  base.append("g").selectAll("path").data(BASE.lakes.features).join("path").attr("class", "lake").attr("d", path);
-  base.append("g").selectAll("path").data(BASE.country.features).join("path").attr("class", "border").attr("d", path);
-  base.append("circle").attr("class", "guide dash").attr("cx", LAY.C[0]).attr("cy", LAY.C[1]).attr("r", LAY.Rmap);
-  base.append("circle").attr("class", "guide").attr("cx", LAY.C[0]).attr("cy", LAY.C[1]).attr("r", LAY.Rring);
-
-  // physical geometry on the map
-  const geoEdges = state.showGeo ? LAY.edges.filter(e => e.T.material && e.s.spatial && e.t.spatial) : [];
-  root.append("g").selectAll("path").data(geoEdges).join("path")
+  base.append("circle").attr("class", "disc").attr("cx", C[0]).attr("cy", C[1]).attr("r", LAY.Rmap);
+  const mapG = base.append("g").attr("clip-path", "url(#mapclip)");
+  mapG.append("g").selectAll("path").data(BASE.country.features).join("path").attr("class", "land").attr("d", path);
+  mapG.append("g").selectAll("path").data(BASE.cantons.features).join("path").attr("class", "canton").attr("d", path);
+  mapG.append("g").selectAll("path").data(BASE.lakes.features).join("path").attr("class", "lake").attr("d", path);
+  mapG.append("g").selectAll("path").data(BASE.country.features).join("path").attr("class", "border").attr("d", path);
+  // material links stay on the map even when their endpoints are grouped or outside the window
+  const geoEdges = state.showGeo ? BASEL.edges.filter(e => e.T.material && LAY.pos.has(e.source) && LAY.pos.has(e.target)) : [];
+  mapG.append("g").selectAll("path").data(geoEdges).join("path")
     .attr("class", "geo").attr("stroke", e => e.T.color)
-    .attr("d", e => e.geometry ? path(e.geometry) : `M${fmt(e.s.p)}L${fmt(e.t.p)}`);
+    .attr("d", e => e.geometry ? path(e.geometry) : `M${fmt(LAY.pos.get(e.source))}L${fmt(LAY.pos.get(e.target))}`);
+  base.append("circle").attr("class", "lens").attr("cx", C[0]).attr("cy", C[1]).attr("r", LAY.Rmap);
+  base.append("circle").attr("class", "guide").attr("cx", C[0]).attr("cy", C[1]).attr("r", LAY.Rring);
 
-  // leaders
-  const gLead = root.append("g");
-  gLead.selectAll("path.leader").data(LAY.nodes).join("path")
-    .attr("class", n => "leader" + (n.spatial ? "" : " immat")).attr("stroke", netColor).attr("d", leaderD);
+  root.append("g").selectAll("path").data(LAY.nodes).join("path")
+    .attr("class", n => "leader" + (n.kind === "abstract" ? " immat" : n.kind === "outside" ? " out" : ""))
+    .attr("stroke", netColor).attr("d", leaderD);
 
-  // arcs
-  const gArc = root.append("g");
-  gArc.selectAll("path.arc").data(LAY.edges).join("path")
+  root.append("g").selectAll("path").data(LAY.edges).join("path")
     .attr("class", "arc").attr("style", e => `--c:${e.T.color}`).attr("d", e => arcD(e.r, e.start, e.span));
 
-  // markers where an arc meets a leader
   const mk = LAY.edges.flatMap(e => [{e, n:e.s}, {e, n:e.t}]);
-  const gMk = root.append("g").attr("pointer-events", "none");
-  gMk.selectAll("g").data(mk).join("g")
-    .attr("transform", d => { const p = pol(d.e.r, d.n.theta); return `translate(${fmt(p)}) rotate(${(d.n.theta / DEG).toFixed(1)})`; })
+  root.append("g").attr("pointer-events", "none").selectAll("g").data(mk).join("g")
+    .attr("transform", d => `translate(${fmt(pol(d.e.r, d.n.theta))}) rotate(${(d.n.theta / DEG).toFixed(1)})`)
     .each(function(d){
       const g = d3.select(this);
       if (d.e.T.material) g.append("rect").attr("class", "mk").attr("x", -2.8).attr("y", -2.8).attr("width", 5.6).attr("height", 5.6).attr("fill", d.e.T.color);
       else g.append("circle").attr("class", "mk").attr("r", 3).attr("fill", d.e.T.color);
     });
 
-  // nodes
   const gNode = root.append("g");
-  gNode.selectAll("circle.mapnode").data(LAY.nodes.filter(n => n.spatial)).join("circle")
-    .attr("class", "mapnode").attr("r", 4.2).attr("fill", netColor).attr("cx", n => n.p[0]).attr("cy", n => n.p[1]);
-  gNode.selectAll("circle.ringnode").data(LAY.nodes.filter(n => !n.spatial)).join("circle")
+  gNode.selectAll("path.outmark").data(LAY.nodes.filter(n => n.kind === "outside")).join("path")
+    .attr("class", "outmark").attr("fill", netColor).attr("d", "M-1,-4.2L5,0L-1,4.2Z")
+    .attr("transform", n => `translate(${fmt(pol(LAY.Rmap + 1, n.theta0))}) rotate(${(n.theta0 / DEG).toFixed(1)})`);
+  gNode.selectAll("circle.mapnode").data(LAY.nodes.filter(n => n.kind === "map")).join("circle")
+    .attr("class", "mapnode").attr("r", 4.2).attr("fill", netColor).attr("cx", n => n.pt[0]).attr("cy", n => n.pt[1]);
+  const cl = gNode.selectAll("g.cluster").data(LAY.nodes.filter(n => n.kind === "cluster")).join("g")
+    .attr("class", "cluster").attr("transform", n => `translate(${fmt(n.pt)})`);
+  cl.append("circle").attr("r", 7.5).attr("fill", netColor);
+  cl.append("text").attr("dy", "0.35em").attr("text-anchor", "middle").text(n => n.members.length);
+  gNode.selectAll("circle.ringnode").data(LAY.nodes.filter(n => n.kind === "abstract")).join("circle")
     .attr("class", "ringnode").attr("r", 4.6).attr("stroke", netColor)
     .attr("cx", n => pol(LAY.Rring, n.theta)[0]).attr("cy", n => pol(LAY.Rring, n.theta)[1]);
 
-  // labels
   root.append("g").selectAll("text").data(LAY.nodes).join("text")
-    .attr("class", n => "lbl" + (n.deg ? "" : " iso"))
-    .attr("font-size", LAY.font.toFixed(2))
-    .attr("dy", "0.34em")
+    .attr("class", n => "lbl" + (n.deg ? "" : " iso") + (n.kind === "outside" ? " outl" : ""))
+    .attr("font-size", LAY.font.toFixed(2)).attr("dy", "0.34em")
     .attr("text-anchor", n => Math.cos(n.theta) < 0 ? "end" : "start")
     .attr("transform", n => { const p = pol(LAY.Rlab, n.theta), d = n.theta / DEG; return `translate(${fmt(p)}) rotate(${(Math.cos(n.theta) < 0 ? d + 180 : d).toFixed(1)})`; })
     .text(n => n.label);
 
-  // hit areas
   const gHit = root.append("g");
   gHit.selectAll("path.hl").data(LAY.nodes).join("path").attr("class", "hit hl").attr("d", leaderD);
   gHit.selectAll("path.ha").data(LAY.edges).join("path").attr("class", "hit ha").attr("d", e => arcD(e.r, e.start, e.span));
 
-  const nodeTargets = root.selectAll(".hl, .mapnode, .ringnode, .lbl");
-  bindHover(nodeTargets, n => ({kind:"node", id:n.id}));
+  bindHover(root.selectAll(".hl, .mapnode, .ringnode, .lbl, .outmark, .cluster"), n => ({kind:"node", id:n.id}));
   bindHover(root.selectAll(".ha"), e => ({kind:"edge", id:e.id}));
 
-  if (state.pinned && !(state.pinned.kind === "node" ? LAY.byId.has(state.pinned.id) : LAY.edgeById.has(state.pinned.id))) state.pinned = null;
+  if (state.pinned && !resolvePinned()) state.pinned = null;
+  const nOut = LAY.nodes.filter(n => n.kind === "outside").length, nCl = LAY.nodes.filter(n => n.kind === "cluster").length;
   document.getElementById("stats").textContent =
-    `${LAY.nodes.length} Knoten (${LAY.nodes.filter(n => n.spatial).length} räumlich), ${LAY.edges.length} Beziehungen, ${LAY.nL} Ebenen`;
+    `${BASEL.nodes.length} Knoten, ${LAY.edges.length} Beziehungen, ${LAY.nL} Ebenen. Zoom ${mapT.k.toFixed(1)}×` +
+    (nOut ? `, ${nOut} ausserhalb des Ausschnitts` : "") + (nCl ? `, ${nCl} Gruppen` : "");
   refreshFocus();
+}
+
+function resolvePinned(){
+  const k = state.pinned; if (!k) return null;
+  if (k.kind === "node") return LAY.alias.get(k.id) || LAY.byId.get(k.id) || null;
+  return LAY.edgeById.get(k.id) || null;
 }
 
 function bindHover(sel, key){
@@ -1059,6 +1285,7 @@ function bindHover(sel, key){
      .on("pointerleave", () => { state.hover = null; hideTip(); refreshFocus(); })
      .on("click", (ev, d) => {
        ev.stopPropagation();
+       if (d.kind === "cluster") { zoomToNodes(d.members); return; }
        const k = key(d);
        state.pinned = state.pinned && state.pinned.kind === k.kind && state.pinned.id === k.id ? null : k;
        refreshFocus();
@@ -1069,8 +1296,10 @@ function focusSets(){
   const f = state.hover || state.pinned; if (!f) return null;
   const nodes = new Set(), edges = new Set();
   if (f.kind === "node") {
-    nodes.add(f.id);
-    LAY.edges.forEach(e => { if (e.s.id === f.id || e.t.id === f.id) { edges.add(e.id); nodes.add(e.s.id); nodes.add(e.t.id); } });
+    const d = LAY.alias.get(f.id) || LAY.byId.get(f.id); if (!d) return null;
+    nodes.add(d.id);
+    LAY.edges.forEach(e => { if (e.s === d || e.t === d) { edges.add(e.id); nodes.add(e.s.id); nodes.add(e.t.id); } });
+    if (d.kind === "cluster") BASEL.edges.forEach(e => { if (d.members.some(m => m.id === e.source) && d.members.some(m => m.id === e.target)) edges.add(e.id); });
   } else {
     const e = LAY.edgeById.get(f.id); if (!e) return null;
     edges.add(e.id); nodes.add(e.s.id); nodes.add(e.t.id);
@@ -1082,7 +1311,7 @@ function refreshFocus(){
   const F = focusSets();
   const nOn = n => !F || F.nodes.has(n.id), eOn = e => !F || F.edges.has(e.id);
   root.selectAll(".leader").classed("dim", n => !nOn(n)).classed("hot", n => !!F && nOn(n));
-  root.selectAll(".mapnode, .ringnode").classed("dim", n => !nOn(n));
+  root.selectAll(".mapnode, .ringnode, .outmark, .cluster").classed("dim", n => !nOn(n));
   root.selectAll(".lbl").classed("dim", n => !nOn(n)).classed("hot", n => !!F && nOn(n));
   root.selectAll(".arc").classed("dim", e => !eOn(e)).classed("hot", e => !!F && eOn(e));
   root.selectAll(".geo").classed("dim", e => !eOn(e));
@@ -1092,17 +1321,24 @@ function refreshFocus(){
 
 /* ---------- tooltip and side panel ---------- */
 const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c]));
+const relCount = n => n === 1 ? "1 Beziehung" : n ? `${n} Beziehungen` : "Keine Beziehungen";
 function describe(k){
   if (k.kind === "node") {
-    const n = LAY.byId.get(k.id);
-    return {title:n.name, sub:`${DATA.nets.get(n.network).label}, ${n.note || (n.spatial ? "verortet" : "nicht verortet")}`,
-            line:n.deg === 1 ? "1 Beziehung" : n.deg ? `${n.deg} Beziehungen` : "Keine Beziehungen"};
+    const d = LAY.alias.get(k.id) || LAY.byId.get(k.id); if (!d) return null;
+    const net = DATA.nets.get(d.network).label;
+    if (d.kind === "cluster")
+      return {d, title:`${d.name} und ${d.members.length - 1} weitere`, sub:`Gruppe: ${d.members.map(m => m.name).join(", ")}`,
+              line:relCount(d.deg) + (d.internal ? `, ${d.internal} innerhalb der Gruppe` : "") + ". Klicken zum Hineinzoomen"};
+    const where = d.kind === "outside" ? "ausserhalb des Kartenausschnitts" : d.note || (d.kind === "abstract" ? "nicht verortet" : "verortet");
+    return {d, title:d.name, sub:`${net}, ${where}`, line:relCount(d.deg)};
   }
-  const e = LAY.edgeById.get(k.id);
-  return {title:`${e.s.name} – ${e.t.name}`, sub:e.T.label, line:e.T.material ? "materiell" : "immateriell"};
+  const e = LAY.edgeById.get(k.id); if (!e) return null;
+  return {title:`${e.s.kind === "cluster" ? e.s.name + " (Gruppe)" : e.s.name} – ${e.t.kind === "cluster" ? e.t.name + " (Gruppe)" : e.t.name}`,
+          sub:e.T.label, line:e.T.material ? "materiell" : "immateriell"};
 }
 function showTip(ev, k){
-  const d = describe(k), r = chartEl.getBoundingClientRect();
+  const d = describe(k); if (!d) return;
+  const r = chartEl.getBoundingClientRect();
   tip.innerHTML = `<strong>${esc(d.title)}</strong><br><span class="s">${esc(d.sub)}</span><br>${esc(d.line)}`;
   const x = ev.clientX - r.left + 14, y = ev.clientY - r.top + 14;
   tip.style.left = Math.min(x, r.width - tip.offsetWidth - 8) + "px";
@@ -1112,25 +1348,33 @@ function showTip(ev, k){
 function hideTip(){ tip.style.opacity = 0; }
 
 const detailEl = document.getElementById("detail");
+let lastDetail = "";
 function updateDetail(){
   const k = state.pinned;
   document.getElementById("nodeSelect").value = k && k.kind === "node" ? k.id : "";
-  if (!k) { detailEl.innerHTML = `<p class="empty">Knoten oder Beziehung anklicken, um sie festzuhalten.</p>`; return; }
-  const d = describe(k);
-  let rel;
-  if (k.kind === "node") {
-    rel = LAY.edges.filter(e => e.s.id === k.id || e.t.id === k.id)
-      .map(e => ({e, o:e.s.id === k.id ? e.t : e.s}))
-      .sort((a, b) => d3.ascending(a.e.T.label, b.e.T.label) || d3.ascending(a.o.name, b.o.name));
-  } else {
-    const e = LAY.edgeById.get(k.id); rel = [{e, o:e.s}, {e, o:e.t}];
+  let html;
+  const d = k ? describe(k) : null;
+  if (!d) html = `<p class="empty">Knoten oder Beziehung anklicken, um sie festzuhalten.</p>`;
+  else {
+    let rel, showBtn = "";
+    if (k.kind === "node") {
+      const dn = d.d;
+      rel = LAY.edges.filter(e => e.s === dn || e.t === dn).map(e => ({e, o:e.s === dn ? e.t : e.s}))
+        .sort((a, b) => d3.ascending(a.e.T.label, b.e.T.label) || d3.ascending(a.o.name, b.o.name));
+      const baseNode = DATA.nodes.find(n => n.id === k.id);
+      if (baseNode && baseNode.spatial) showBtn = `<button type="button" class="showmap" data-show="${esc(k.id)}">Auf der Karte zeigen</button>`;
+    } else {
+      const e = LAY.edgeById.get(k.id); rel = [{e, o:e.s}, {e, o:e.t}];
+    }
+    html = `<h3>${esc(d.title)}</h3><p class="meta">${esc(d.sub)}. ${esc(d.line)}.</p>${showBtn}
+      <ul>${rel.map(r => `<li><span class="swatch ${r.e.T.material ? "sw-sq" : "sw-ci"}" style="background:${r.e.T.color}"></span>
+        <button type="button" data-node="${esc(r.o.members[0].id)}">${esc(r.o.kind === "cluster" ? r.o.name + " +" + (r.o.members.length - 1) : r.o.name)}</button><span class="t">${esc(r.e.T.label)}</span></li>`).join("")}</ul>`;
   }
-  detailEl.innerHTML = `<h3>${esc(d.title)}</h3><p class="meta">${esc(d.sub)}. ${esc(d.line)}.</p>
-    <ul>${rel.map(r => `<li><span class="swatch ${r.e.T.material ? "sw-sq" : "sw-ci"}" style="background:${r.e.T.color}"></span>
-      <button type="button" data-node="${esc(r.o.id)}">${esc(r.o.name)}</button><span class="t">${esc(r.e.T.label)}</span></li>`).join("")}</ul>`;
+  if (html === lastDetail) return;
+  lastDetail = html; detailEl.innerHTML = html;
   detailEl.querySelectorAll("button[data-node]").forEach(b => b.onclick = () => { state.pinned = {kind:"node", id:b.dataset.node}; refreshFocus(); });
+  detailEl.querySelectorAll("button[data-show]").forEach(b => b.onclick = () => zoomToNodes([DATA.nodes.find(n => n.id === b.dataset.show)], 6));
 }
-
 /* ---------- controls ---------- */
 function buildControls(){
   const counts = d3.rollup(DATA.nodes, v => v.length, n => n.network);
@@ -1162,15 +1406,19 @@ document.getElementById("nodeSelect").onchange = ev => {
   state.pinned = id ? {kind:"node", id} : null; refreshFocus();
 };
 document.getElementById("layerMode").onchange = ev => { state.layerMode = ev.target.value; render(); };
+document.getElementById("placement").onchange = ev => { state.placement = ev.target.value; warmAng.clear(); render(); };
 document.getElementById("spread").onchange = ev => { state.spread = ev.target.checked; render(); };
 document.getElementById("showGeo").onchange = ev => { state.showGeo = ev.target.checked; render(); };
-document.getElementById("zoomReset").onclick = () => svg.transition().duration(300).call(zoom.transform, d3.zoomIdentity);
+document.getElementById("zoomReset").onclick = () => svg.transition().duration(reduceMotion ? 0 : 450).call(zoom.transform, d3.zoomIdentity);
+document.getElementById("zoomIn").onclick = () => svg.transition().duration(reduceMotion ? 0 : 250).call(zoom.scaleBy, 2, BASEL.C);
+document.getElementById("zoomOut").onclick = () => svg.transition().duration(reduceMotion ? 0 : 250).call(zoom.scaleBy, 0.5, BASEL.C);
+document.getElementById("cluster").onchange = ev => { state.cluster = ev.target.checked; drawView(); };
 document.addEventListener("keydown", ev => { if (ev.key === "Escape") { state.pinned = null; refreshFocus(); } });
 
 const errEl = document.getElementById("err");
 function loadData(raw){
   try {
-    DATA = prepare(raw);
+    DATA = prepare(raw); BASEL = null; mapT = d3.zoomIdentity; warmAng.clear();
     state.hiddenNet.clear(); state.hiddenType.clear(); state.pinned = null; state.hover = null;
     errEl.hidden = true; buildControls(); render();
   } catch (e) { errEl.textContent = "Datei nicht übernommen: " + e.message; errEl.hidden = false; }
