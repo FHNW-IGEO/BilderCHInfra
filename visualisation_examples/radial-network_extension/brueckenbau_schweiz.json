@@ -1,0 +1,503 @@
+{
+ "title": "Brückenbau Schweiz: Maillart, Menn, Isler",
+ "networks": [
+  {
+   "id": "bauwerke",
+   "label": "Brücken und Bauwerke",
+   "color": "#1F6F78"
+  },
+  {
+   "id": "personen",
+   "label": "Ingenieure und Bauleute",
+   "color": "#6B4FA0"
+  },
+  {
+   "id": "org",
+   "label": "Büros und Hochschule",
+   "color": "#B5651D"
+  }
+ ],
+ "types": [
+  {
+   "id": "entwurf",
+   "label": "Entwurf",
+   "color": "#2F5D8C",
+   "material": false
+  },
+  {
+   "id": "ausf",
+   "label": "Ausführung, Bau, Gerüst",
+   "color": "#D49A1E",
+   "material": false
+  },
+  {
+   "id": "gutacht",
+   "label": "Gutachten, Belastungsprobe",
+   "color": "#8C8A1E",
+   "material": false
+  },
+  {
+   "id": "lehrer",
+   "label": "Lehrer von",
+   "color": "#9C4FB0",
+   "material": false
+  },
+  {
+   "id": "vorbild",
+   "label": "Vorbild für",
+   "color": "#D88BC8",
+   "material": false
+  },
+  {
+   "id": "inst",
+   "label": "Studium oder Professur",
+   "color": "#3FA7A0",
+   "material": false
+  },
+  {
+   "id": "buero",
+   "label": "Gründer oder angestellt",
+   "color": "#8A6A4A",
+   "material": false
+  },
+  {
+   "id": "linie",
+   "label": "Weiterentwicklung Tragsystem",
+   "color": "#B0223F",
+   "material": false
+  },
+  {
+   "id": "a1",
+   "label": "Gleiche Nationalstrasse (A1)",
+   "color": "#1E7B4A",
+   "material": true
+  }
+ ],
+ "nodes": [
+  {
+   "id": "B1",
+   "name": "Innbrücke Zuoz",
+   "network": "bauwerke",
+   "lat": 46.5969,
+   "lon": 9.9628,
+   "note": "1901, Koordinaten Wikipedia"
+  },
+  {
+   "id": "B2",
+   "name": "Rheinbrücke Tavanasa",
+   "network": "bauwerke",
+   "lat": 46.7538,
+   "lon": 9.0593,
+   "note": "1905, Koordinaten Wikipedia"
+  },
+  {
+   "id": "B3",
+   "name": "Aarebrücke Aarburg",
+   "network": "bauwerke",
+   "lat": 47.32,
+   "lon": 7.899,
+   "note": "1912, Koordinaten genähert (Ortslage)"
+  },
+  {
+   "id": "B4",
+   "name": "Salginatobelbrücke",
+   "network": "bauwerke",
+   "lat": 46.9818,
+   "lon": 9.7177,
+   "note": "1930, Koordinaten Wikipedia"
+  },
+  {
+   "id": "B5",
+   "name": "Landquartbrücke Klosters",
+   "network": "bauwerke",
+   "lat": 46.876,
+   "lon": 9.874,
+   "note": "1930, Koordinaten genähert (Ortslage)"
+  },
+  {
+   "id": "B6",
+   "name": "Lorrainebrücke Bern",
+   "network": "bauwerke",
+   "lat": 46.9555,
+   "lon": 7.4445,
+   "note": "1930, Koordinaten genähert (Ortslage)"
+  },
+  {
+   "id": "B7",
+   "name": "Schwandbachbrücke",
+   "network": "bauwerke",
+   "lat": 46.8294,
+   "lon": 7.4023,
+   "note": "1933, Koordinaten Wikipedia"
+  },
+  {
+   "id": "B8",
+   "name": "Arvebrücke Vessy",
+   "network": "bauwerke",
+   "lat": 46.17,
+   "lon": 6.164,
+   "note": "1936, Koordinaten genähert (Ortslage)"
+  },
+  {
+   "id": "B9",
+   "name": "Rheinbrücke Reichenau",
+   "network": "bauwerke",
+   "lat": 46.823,
+   "lon": 9.411,
+   "note": "1962, Koordinaten genähert (Ortslage)"
+  },
+  {
+   "id": "B10",
+   "name": "Felsenaubrücke Bern",
+   "network": "bauwerke",
+   "lat": 46.969,
+   "lon": 7.447,
+   "note": "1974, Koordinaten genähert (Ortslage)"
+  },
+  {
+   "id": "B11",
+   "name": "Ganterbrücke",
+   "network": "bauwerke",
+   "lat": 46.27,
+   "lon": 8.039,
+   "note": "1980, Koordinaten genähert (Ortslage)"
+  },
+  {
+   "id": "B12",
+   "name": "Sunnibergbrücke",
+   "network": "bauwerke",
+   "lat": 46.8854,
+   "lon": 9.8566,
+   "note": "1998, Koordinaten Wikipedia"
+  },
+  {
+   "id": "B13",
+   "name": "Raststätte Deitingen Süd",
+   "network": "bauwerke",
+   "lat": 47.221,
+   "lon": 7.623,
+   "note": "1968, Koordinaten genähert (Ortslage)"
+  },
+  {
+   "id": "B14",
+   "name": "Reussbrücke Wassen",
+   "network": "bauwerke",
+   "lat": 46.707,
+   "lon": 8.599,
+   "note": "1972, Koordinaten genähert (Ortslage)"
+  },
+  {
+   "id": "P1",
+   "name": "Wilhelm Ritter",
+   "network": "personen"
+  },
+  {
+   "id": "P2",
+   "name": "Robert Maillart",
+   "network": "personen"
+  },
+  {
+   "id": "P3",
+   "name": "Othmar H. Ammann",
+   "network": "personen"
+  },
+  {
+   "id": "P4",
+   "name": "Pierre Lardy",
+   "network": "personen"
+  },
+  {
+   "id": "P5",
+   "name": "Christian Menn",
+   "network": "personen"
+  },
+  {
+   "id": "P6",
+   "name": "Heinz Isler",
+   "network": "personen"
+  },
+  {
+   "id": "P7",
+   "name": "Florian Prader",
+   "network": "personen"
+  },
+  {
+   "id": "P8",
+   "name": "Richard Coray",
+   "network": "personen"
+  },
+  {
+   "id": "O1",
+   "name": "ETH Zürich",
+   "network": "org"
+  },
+  {
+   "id": "O2",
+   "name": "Maillart & Cie",
+   "network": "org"
+  },
+  {
+   "id": "O3",
+   "name": "Pümpin & Herzog",
+   "network": "org"
+  },
+  {
+   "id": "O4",
+   "name": "Ingenieurbüro Menn, Chur",
+   "network": "org"
+  },
+  {
+   "id": "O5",
+   "name": "Emch + Berger, Bern",
+   "network": "org"
+  }
+ ],
+ "links": [
+  {
+   "source": "P2",
+   "target": "B1",
+   "type": "entwurf",
+   "source_ref": "Wikipedia / B-TU Projektliste Maillart"
+  },
+  {
+   "source": "P2",
+   "target": "B2",
+   "type": "entwurf",
+   "source_ref": "Wikipedia / B-TU Projektliste Maillart"
+  },
+  {
+   "source": "P2",
+   "target": "B3",
+   "type": "entwurf",
+   "source_ref": "Wikipedia / B-TU Projektliste Maillart"
+  },
+  {
+   "source": "P2",
+   "target": "B4",
+   "type": "entwurf",
+   "source_ref": "Wikipedia / B-TU Projektliste Maillart"
+  },
+  {
+   "source": "P2",
+   "target": "B5",
+   "type": "entwurf",
+   "source_ref": "Wikipedia / B-TU Projektliste Maillart"
+  },
+  {
+   "source": "P2",
+   "target": "B6",
+   "type": "entwurf",
+   "source_ref": "Wikipedia / B-TU Projektliste Maillart"
+  },
+  {
+   "source": "P2",
+   "target": "B7",
+   "type": "entwurf",
+   "source_ref": "Wikipedia / B-TU Projektliste Maillart"
+  },
+  {
+   "source": "P2",
+   "target": "B8",
+   "type": "entwurf",
+   "source_ref": "Wikipedia / B-TU Projektliste Maillart"
+  },
+  {
+   "source": "P5",
+   "target": "B9",
+   "type": "entwurf",
+   "source_ref": "swissinfo 2018 / Structurae"
+  },
+  {
+   "source": "P5",
+   "target": "B10",
+   "type": "entwurf",
+   "source_ref": "swissinfo 2018 / Structurae"
+  },
+  {
+   "source": "P5",
+   "target": "B11",
+   "type": "entwurf",
+   "source_ref": "swissinfo 2018 / Structurae"
+  },
+  {
+   "source": "P5",
+   "target": "B12",
+   "type": "entwurf",
+   "source_ref": "swissinfo 2018 / Structurae"
+  },
+  {
+   "source": "P5",
+   "target": "B14",
+   "type": "entwurf",
+   "source_ref": "swissinfo 2018 / Structurae"
+  },
+  {
+   "source": "P6",
+   "target": "B13",
+   "type": "entwurf",
+   "source_ref": "Billington, Swiss Legacy"
+  },
+  {
+   "source": "O5",
+   "target": "B10",
+   "type": "entwurf",
+   "source_ref": "Structurae: Wettbewerb 1970 mit Emch und Berger"
+  },
+  {
+   "source": "O2",
+   "target": "B2",
+   "type": "ausf",
+   "source_ref": "Structurae"
+  },
+  {
+   "source": "O2",
+   "target": "B3",
+   "type": "ausf",
+   "source_ref": "Structurae"
+  },
+  {
+   "source": "O2",
+   "target": "B4",
+   "type": "ausf",
+   "source_ref": "Structurae"
+  },
+  {
+   "source": "P7",
+   "target": "B4",
+   "type": "ausf",
+   "source_ref": "Wikipedia: Bauunternehmer Prader"
+  },
+  {
+   "source": "P8",
+   "target": "B4",
+   "type": "ausf",
+   "source_ref": "Wikipedia: Lehrgerüst Coray"
+  },
+  {
+   "source": "P1",
+   "target": "B1",
+   "type": "gutacht",
+   "source_ref": "Wikipedia: Ritter als kantonaler Gutachter, Belastungsprobe"
+  },
+  {
+   "source": "P1",
+   "target": "P2",
+   "type": "lehrer",
+   "source_ref": "Princeton CASCE"
+  },
+  {
+   "source": "P1",
+   "target": "P3",
+   "type": "lehrer",
+   "source_ref": "Princeton CASCE"
+  },
+  {
+   "source": "P4",
+   "target": "P5",
+   "type": "lehrer",
+   "source_ref": "Structurae: Assistent und Doktorand bei Lardy"
+  },
+  {
+   "source": "P4",
+   "target": "P6",
+   "type": "lehrer",
+   "source_ref": "Princeton CASCE"
+  },
+  {
+   "source": "P3",
+   "target": "P5",
+   "type": "vorbild",
+   "source_ref": "swissinfo 2018"
+  },
+  {
+   "source": "P2",
+   "target": "P5",
+   "type": "vorbild",
+   "source_ref": "Structurae: erste Brücken im Einfluss Maillarts"
+  },
+  {
+   "source": "P1",
+   "target": "O1",
+   "type": "inst",
+   "source_ref": "Professor"
+  },
+  {
+   "source": "P4",
+   "target": "O1",
+   "type": "inst",
+   "source_ref": "Professor"
+  },
+  {
+   "source": "P5",
+   "target": "O1",
+   "type": "inst",
+   "source_ref": "Studium, Professor 1971–1992"
+  },
+  {
+   "source": "P2",
+   "target": "O1",
+   "type": "inst",
+   "source_ref": "Studium 1890–1894"
+  },
+  {
+   "source": "P3",
+   "target": "O1",
+   "type": "inst",
+   "source_ref": "Studium"
+  },
+  {
+   "source": "P6",
+   "target": "O1",
+   "type": "inst",
+   "source_ref": "Studium"
+  },
+  {
+   "source": "P2",
+   "target": "O2",
+   "type": "buero",
+   "source_ref": "HLS: Teilhaber ab 1902"
+  },
+  {
+   "source": "P2",
+   "target": "O3",
+   "type": "buero",
+   "source_ref": "HLS: Ingenieur 1894–1896"
+  },
+  {
+   "source": "P5",
+   "target": "O4",
+   "type": "buero",
+   "source_ref": "Structurae: Gründung 1957"
+  },
+  {
+   "source": "B1",
+   "target": "B2",
+   "type": "linie",
+   "source_ref": "Wikipedia: Zuoz → Tavanasa"
+  },
+  {
+   "source": "B2",
+   "target": "B4",
+   "type": "linie",
+   "source_ref": "Wikipedia: Salginatobel nimmt Tavanasa-Form auf"
+  },
+  {
+   "source": "B7",
+   "target": "B9",
+   "type": "linie",
+   "source_ref": "Billington: versteifter Stabbogen in Maillart-Tradition"
+  },
+  {
+   "source": "B11",
+   "target": "B12",
+   "type": "linie",
+   "source_ref": "Extradosed-Linie Ganter → Sunniberg"
+  },
+  {
+   "source": "B10",
+   "target": "B13",
+   "type": "a1",
+   "source_ref": "beide an der A1"
+  }
+ ]
+}
